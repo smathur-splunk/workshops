@@ -87,3 +87,5 @@ You should see a line that says `New Record address='<SNMP_AGENT_IP>'`.
 `index="netops" sourcetype="sc4snmp:event"`
 `| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"`
 And in Splunk Observability by going to Metric Finder and searching for `sc4snmp`.
+
+![Custom SNMP Dashboard in Splunk Observability](images/snmp_dash.png)
