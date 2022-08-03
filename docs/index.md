@@ -2,7 +2,8 @@
 
 Welcome! 
 
-This website features 4 workshops as an extension of the main Splunk Observability workshops found at [signalfx.github.io/observability-workshop](https://signalfx.github.io/observability-workshop/latest).
+This website features three workshops as an extension of the main Splunk 
+Observability workshops found at [signalfx.github.io/observability-workshop](https://signalfx.github.io/observability-workshop/latest).
 
 Featured workshops:
 
