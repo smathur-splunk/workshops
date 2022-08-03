@@ -1,0 +1,2 @@
+- Check to see if your SNMP agent is connected to SC4SNMP by running `sudo service snmpd status` on the SNMP agent. You should see some lines that say:
+`snmpd[4983]: Connection from UDP: [<SC4SNMP_PUBLIC_IP>]:22405->[<SNMP_AGENT_IP>]:161`

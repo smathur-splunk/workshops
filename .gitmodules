@@ -1,0 +1,4 @@
+[submodule "smathur-splunk.github.io"]
+	path = smathur-splunk.github.io
+	url = https://github.com/smathur-splunk/smathur-splunk.github.io
+	branch = main

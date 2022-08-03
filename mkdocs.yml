@@ -1,0 +1,105 @@
+site_name: Splunk Observability Workshops
+site_url: https://smathur-splunk.github.io/workshops/
+site_author: Sales Engineering GSS
+site_description: >-
+  This workshop is going to take you through the best-in-class observability platform
+  for ingesting, monitoring, visualizing and analyzing metrics, traces and spans
+
+repo_name: smathur-splunk/workshops
+repo_url: https://github.com/smathur-splunk/workshops/
+edit_uri: ""
+copyright: Copyright &copy; 2022 Splunk Inc. All rights reserved.
+remote_branch: gh-pages
+
+theme:
+  name: material
+  custom_dir: !ENV [THEME_DIR, "overrides"]
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  favicon: images/logo.png
+  logo: images/logo.png
+  font:
+    text: "Century Gothic"
+    code: Roboto Mono
+  include_search_page: false
+  search_index_only: true
+  language: en
+  features:
+    - content.code.annotate
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+
+markdown_extensions:
+  - footnotes
+  - admonition
+  - attr_list
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.keys
+  - meta
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+
+extra_css:
+  - extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/smathur-splunk/workshops
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/splunk
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/splunk/
+  version:
+    provider: mike
+
+nav:
+    - 'index.md'
+    - AWS Lambda in Splunk APM: 
+        - Introduction: lambda_intro.md
+        - Steps: lambda_steps.md
+        - Conclusion: lambda_conc.md
+        - Troubleshooting: lambda_ts.md
+    - SNMP Insights:
+        - Introduction: snmp_intro.md
+        - SNMP Agent Setup (Sending Data): snmp_agent.md
+        - SC4SNMP Setup (Receiving Data): snmp_host.md
+        - Troubleshooting: snmp_ts.md
+    - OTel to Splunk Core and O11y:
+        - Introduction: otel_intro.md
+        - Initial Setup: otel_init.md
+        - Send data to Splunk Enterprise/Cloud: otel_core.md
+        - Send data to Splunk Observability: otel_o11y.md
+        - Resources: otel_res.md
+plugins:
+  - git-revision-date-localized:
+      type: date
+
