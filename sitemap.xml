@@ -6,7 +6,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://smathur-splunk.github.io/workshops/lambda_app/</loc>
+         <lastmod>2022-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_conc/</loc>
+         <lastmod>2022-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://smathur-splunk.github.io/workshops/lambda_gen/</loc>
+         <lastmod>2022-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://smathur-splunk.github.io/workshops/lambda_instr/</loc>
          <lastmod>2022-08-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -16,7 +31,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smathur-splunk.github.io/workshops/lambda_steps/</loc>
+         <loc>https://smathur-splunk.github.io/workshops/lambda_tags/</loc>
          <lastmod>2022-08-03</lastmod>
          <changefreq>daily</changefreq>
     </url>

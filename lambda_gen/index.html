@@ -12,21 +12,21 @@
         <meta name="author" content="Sales Engineering GSS">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_gen/">
       
-      <link rel="icon" href="images/logo.png">
+      <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Splunk Observability Workshops</title>
+        <title>Generate APM Data - Splunk Observability Workshops</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -42,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="extra.css">
+      <link rel="stylesheet" href="../extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -52,10 +52,12 @@
     
   
   
+    
+  
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops">
+  <meta property="og:title" content="Splunk Observability Workshops - Generate APM Data">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/lambda_gen/">
   <meta property="og:image" content="">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -83,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homepage" class="md-skip">
+        <a href="#run-the-app-to-generate-apm-data" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../.">
+  <a href="../..">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -127,9 +129,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Splunk Observability Workshops" class="md-header__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
+    <a href=".." title="Splunk Observability Workshops" class="md-header__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
       
-  <img src="images/logo.png" alt="logo">
+  <img src="../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -145,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Homepage
+              Generate APM Data
             
           </span>
         </div>
@@ -206,12 +208,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href=".." class="md-tabs__link">
       Homepage
     </a>
   </li>
@@ -220,13 +220,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="lambda_intro/" class="md-tabs__link">
+      <a href="../lambda_intro/" class="md-tabs__link md-tabs__link--active">
         AWS Lambda in Splunk APM
       </a>
     </li>
@@ -242,7 +244,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="snmp_intro/" class="md-tabs__link">
+      <a href="../snmp_intro/" class="md-tabs__link">
         SNMP Insights
       </a>
     </li>
@@ -258,7 +260,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="otel_intro/" class="md-tabs__link">
+      <a href="../otel_intro/" class="md-tabs__link">
         OTel to Splunk Core and O11y
       </a>
     </li>
@@ -288,9 +290,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Splunk Observability Workshops" class="md-nav__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
+    <a href=".." title="Splunk Observability Workshops" class="md-nav__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
       
-  <img src="images/logo.png" alt="logo">
+  <img src="../images/logo.png" alt="logo">
 
     </a>
     Splunk Observability Workshops
@@ -316,21 +318,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         Homepage
       </a>
-      
     </li>
   
 
@@ -341,12 +333,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -385,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_intro/" class="md-nav__link">
+      <a href="../lambda_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -399,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_app/" class="md-nav__link">
+      <a href="../lambda_app/" class="md-nav__link">
         Create a Microservices App
       </a>
     </li>
@@ -413,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_instr/" class="md-nav__link">
+      <a href="../lambda_instr/" class="md-nav__link">
         Instrument Lambda Functions
       </a>
     </li>
@@ -425,11 +419,48 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="lambda_gen/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Generate APM Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Generate APM Data
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-app-to-generate-apm-data" class="md-nav__link">
+    Run the app to generate APM data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -441,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_tags/" class="md-nav__link">
+      <a href="../lambda_tags/" class="md-nav__link">
         [Optional] Custom Span Tags
       </a>
     </li>
@@ -455,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_conc/" class="md-nav__link">
+      <a href="../lambda_conc/" class="md-nav__link">
         Conclusion
       </a>
     </li>
@@ -469,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_ts/" class="md-nav__link">
+      <a href="../lambda_ts/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -527,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_intro/" class="md-nav__link">
+      <a href="../snmp_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -541,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_agent/" class="md-nav__link">
+      <a href="../snmp_agent/" class="md-nav__link">
         SNMP Agent Setup (Sending Data)
       </a>
     </li>
@@ -555,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_host/" class="md-nav__link">
+      <a href="../snmp_host/" class="md-nav__link">
         SC4SNMP Setup (Receiving Data)
       </a>
     </li>
@@ -569,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_ts/" class="md-nav__link">
+      <a href="../snmp_ts/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -629,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_intro/" class="md-nav__link">
+      <a href="../otel_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -643,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_init/" class="md-nav__link">
+      <a href="../otel_init/" class="md-nav__link">
         Initial Setup
       </a>
     </li>
@@ -657,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_core/" class="md-nav__link">
+      <a href="../otel_core/" class="md-nav__link">
         Send data to Splunk Enterprise/Cloud
       </a>
     </li>
@@ -671,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_o11y/" class="md-nav__link">
+      <a href="../otel_o11y/" class="md-nav__link">
         Send data to Splunk Observability
       </a>
     </li>
@@ -685,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_res/" class="md-nav__link">
+      <a href="../otel_res/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -713,17 +744,27 @@
                 
 
 
-<h1 id="homepage">Homepage<a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h1>
-<p>Welcome! </p>
-<p>This website features three workshops as an extension of the main Splunk 
-Observability workshops found at <a href="https://signalfx.github.io/observability-workshop/latest">signalfx.github.io/observability-workshop</a>.</p>
-<p>Featured workshops:</p>
-<ul>
-<li><a href="https://smathur-splunk.github.io/workshops/lambda_intro">AWS Lambda in Splunk APM</a></li>
-<li><a href="https://smathur-splunk.github.io/workshops/snmp_intro">SNMP Insights</a></li>
-<li><a href="https://smathur-splunk.github.io/workshops/otel_intro">OTel to Splunk Core and O11y</a></li>
-</ul>
-<p>If you have any questions, comments, or feedback, please feel free to reach out to me at <a href="mailto:smathur@splunk.com">smathur@splunk.com</a>.</p>
+  <h1>Generate APM Data</h1>
+
+<h3 id="run-the-app-to-generate-apm-data">Run the app to generate APM data<a class="headerlink" href="#run-the-app-to-generate-apm-data" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Time to finally run the code and see some data! Manually run these 3 functions in order: 'watchlistUpdater', 'stockRanker', and 'buyStocks'. To run them, open up each function, and under the 'Function overview' section, click on the <code>Test</code> tab. Enter an event name (e.g. <code>test</code>), and at the top right, click the orange <code>Test</code> button. <img src="https://smathur-splunk.github.io/workshops/images/step13.png" style="width:50%"/></li>
+<li>If 'watchlistUpdater' and 'stockRanker' run as expected, you should see 'Execution result: succeeded'.</li>
+<li>When running the 'buyStocks' function, you will get an error--<strong>this is expected!</strong> If you go into the service map in Splunk APM, you will now see that all 4 of our functions are there, as well as the S3 bucket that some of them are talking to. There will be a red circle for 'buyStocks', indicating that an error occurred! This is especially useful if Lambda functions are scheduled to run automatically, in which case errors won't be immediately apparent without APM. <img src="https://smathur-splunk.github.io/workshops/images/step18.png"/></li>
+<li>In the APM service map, click on <code>buyStocks</code> and select <code>Traces</code> on the right. Find the trace with the error we just saw, and see if you can find the issue. If not, go to the next step.</li>
+<li>Go back to the AWS Lambda page for 'buyStocks' and in 'index.py', uncomment line 13. Click <code>Deploy</code> to save your changes.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+    <span class="n">alpaca_id</span> <span class="o">=</span> <span class="s2">&quot;PK6MU6XGW0KY0SSI402E&quot;</span>
+    <span class="n">alpaca_secret</span> <span class="o">=</span> <span class="s2">&quot;ZBvSlwEB8mk1DnbFZHCm18mkmeYdxVLu5nw6c8cR&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;APCA-API-KEY-ID&#39;</span><span class="p">:</span><span class="n">alpaca_id</span><span class="p">,</span> <span class="s1">&#39;APCA-API-SECRET-KEY&#39;</span><span class="p">:</span><span class="n">alpaca_secret</span><span class="p">}</span>
+
+    <span class="n">rankings_file</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;BUCKET_NAME&#39;</span><span class="p">],</span> <span class="n">Key</span><span class="o">=</span><span class="s1">&#39;rankings.txt&#39;</span><span class="p">)</span>
+    <span class="c1">#stock_ranking = rankings_file[&#39;Body&#39;].read().decode(&#39;utf-8&#39;).split(&#39; &#39;)</span>
+    <span class="c1"># ^^^ UNCOMMENT THE LINE ABOVE</span>
+</code></pre></div></li>
+<li>Go to the <code>Test</code> tab and run this function again. You should now see 'Execution result: succeeded', and another trace should pop up in Splunk APM as well (this time without any errors).</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
@@ -754,15 +795,30 @@ Observability workshops found at <a href="https://signalfx.github.io/observabili
     
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
+        
+        <a href="../lambda_instr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Instrument Lambda Functions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Instrument Lambda Functions
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="lambda_intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+        <a href="../lambda_tags/" class="md-footer__link md-footer__link--next" aria-label="Next: [Optional] Custom Span Tags" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Introduction
+              [Optional] Custom Span Tags
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -827,10 +883,10 @@ Observability workshops found at <a href="https://signalfx.github.io/observabili
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>

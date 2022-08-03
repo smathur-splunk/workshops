@@ -12,14 +12,14 @@
         <meta name="author" content="Sales Engineering GSS">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_steps/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_app/">
       
       <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Steps - Splunk Observability Workshops</title>
+        <title>Create a Microservices App - Splunk Observability Workshops</title>
       
     
     
@@ -55,9 +55,9 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Steps">
+  <meta property="og:title" content="Splunk Observability Workshops - Create a Microservices App">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/lambda_steps/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/lambda_app/">
   <meta property="og:image" content="">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Steps
+              Create a Microservices App
             
           </span>
         </div>
@@ -353,6 +353,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2">
@@ -395,12 +401,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Steps
+          Create a Microservices App
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Steps
+        Create a Microservices App
       </a>
       
         
@@ -430,31 +436,52 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#instrument-the-lambda-functions" class="md-nav__link">
-    Instrument the Lambda functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-app-to-generate-apm-data" class="md-nav__link">
-    Run the app to generate APM data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-add-custom-span-tags-for-additional-info" class="md-nav__link">
-    [Optional] Add custom span tags for additional info
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda_instr/" class="md-nav__link">
+        Instrument Lambda Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda_gen/" class="md-nav__link">
+        Generate APM Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda_tags/" class="md-nav__link">
+        [Optional] Custom Span Tags
+      </a>
     </li>
   
 
@@ -724,7 +751,7 @@
                 
 
 
-  <h1>Steps</h1>
+  <h1>Create a Microservices App</h1>
 
 <h3 id="create-the-microservices-environment-gui">Create the microservices environment (GUI)<a class="headerlink" href="#create-the-microservices-environment-gui" title="Permanent link">&para;</a></h3>
 <ol>
@@ -757,60 +784,6 @@ As an example:
 --capabilities CAPABILITY_NAMED_IAM <span class="se">\</span>
 --role-arn arn:aws:iam::12345678:role/cloudformation-service-role
 </code></pre></div></li>
-</ol>
-<h3 id="instrument-the-lambda-functions">Instrument the Lambda functions<a class="headerlink" href="#instrument-the-lambda-functions" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Navigate to <a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions">AWS Lambda</a> and take a moment to understand the functions in this app. There are 4 of them: 'watchlistUpdater', 'stockRanker', 'getFinancials', and 'buyStocks'. The architecture of these functions will become clear once you instrument them for APM.</li>
-<li>Navigate to the Splunk O11y 'Data Setup' page, and search for <code>lambda</code> (you may have to click <code>Extend search across all integrations</code>). Select <code>AWS Lambda (Serverless instrumentation)</code>, and click <code>Add Integration</code>.</li>
-<li>For 'Function name', enter the name of the first Lambda function you will instrument (e.g. <code>watchlistUpdater</code>). Select your Splunk access token (make sure it has the right permissions for APM), and enter a name for this app's environment (e.g. <code>lambda-app</code>). Click 'Next'. <strong>Make sure the environment name is the same for all your functions in this app.</strong></li>
-<li>On the 'Install Integration' page, select <code>Python</code>. Follow the steps on this page to add the Splunk OTel layer and set the environment variables. For the ARN, use <code>arn:aws:lambda:us-east-1:254067382080:layer:splunk-apm:51</code>. <img src="https://smathur-splunk.github.io/workshops/images/step11-1.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-2.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-3.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-4.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-5.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-6.png" style="width:50%"/></li>
-<li>Phew! That was a lot. Now repeat Step 11 for all 4 Lambda functions. (You do not need to go through the Splunk O11y GDI wizard again; simply make the changes necessary in AWS.)</li>
-</ol>
-<h3 id="run-the-app-to-generate-apm-data">Run the app to generate APM data<a class="headerlink" href="#run-the-app-to-generate-apm-data" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Time to finally run the code and see some data! Manually run these 3 functions in order: 'watchlistUpdater', 'stockRanker', and 'buyStocks'. To run them, open up each function, and under the 'Function overview' section, click on the <code>Test</code> tab. Enter an event name (e.g. <code>test</code>), and at the top right, click the orange <code>Test</code> button. <img src="https://smathur-splunk.github.io/workshops/images/step13.png" style="width:50%"/></li>
-<li>If 'watchlistUpdater' and 'stockRanker' run as expected, you should see 'Execution result: succeeded'.</li>
-<li>When running the 'buyStocks' function, you will get an error--<strong>this is expected!</strong> If you go into the service map in Splunk APM, you will now see that all 4 of our functions are there, as well as the S3 bucket that some of them are talking to. There will be a red circle for 'buyStocks', indicating that an error occurred! This is especially useful if Lambda functions are scheduled to run automatically, in which case errors won't be immediately apparent without APM. <img src="https://smathur-splunk.github.io/workshops/images/step18.png"/></li>
-<li>In the APM service map, click on <code>buyStocks</code> and select <code>Traces</code> on the right. Find the trace with the error we just saw, and see if you can find the issue. If not, go to the next step.</li>
-<li>Go back to the AWS Lambda page for 'buyStocks' and in 'index.py', uncomment line 13. Click <code>Deploy</code> to save your changes.
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
-    <span class="n">alpaca_id</span> <span class="o">=</span> <span class="s2">&quot;PK6MU6XGW0KY0SSI402E&quot;</span>
-    <span class="n">alpaca_secret</span> <span class="o">=</span> <span class="s2">&quot;ZBvSlwEB8mk1DnbFZHCm18mkmeYdxVLu5nw6c8cR&quot;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;APCA-API-KEY-ID&#39;</span><span class="p">:</span><span class="n">alpaca_id</span><span class="p">,</span> <span class="s1">&#39;APCA-API-SECRET-KEY&#39;</span><span class="p">:</span><span class="n">alpaca_secret</span><span class="p">}</span>
-
-    <span class="n">rankings_file</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;BUCKET_NAME&#39;</span><span class="p">],</span> <span class="n">Key</span><span class="o">=</span><span class="s1">&#39;rankings.txt&#39;</span><span class="p">)</span>
-    <span class="c1">#stock_ranking = rankings_file[&#39;Body&#39;].read().decode(&#39;utf-8&#39;).split(&#39; &#39;)</span>
-    <span class="c1"># ^^^ UNCOMMENT THE LINE ABOVE</span>
-</code></pre></div></li>
-<li>Go to the <code>Test</code> tab and run this function again. You should now see 'Execution result: succeeded', and another trace should pop up in Splunk APM as well (this time without any errors).</li>
-</ol>
-<h3 id="optional-add-custom-span-tags-for-additional-info">[Optional] Add custom span tags for additional info<a class="headerlink" href="#optional-add-custom-span-tags-for-additional-info" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Custom span tags are already added for 3 of the functions. Let's take a look at how to add custom span tags in the 4th one, 'getFinancials'. Open up the 'getFinancials' Lambda function.</li>
-<li>
-<p>Under line 2, add a new line and write <code>from opentelemetry import trace</code>.  Under line 6, add <strong>with proper indentation</strong> 
-<div class="highlight"><pre><span></span><code><span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
-<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
-<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
-</code></pre></div>
-The final result should look like this:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">opentelemetry</span> <span class="kn">import</span> <span class="n">trace</span>
-
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">ticker</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span>
-
-    <span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
-    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
-    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
-</code></pre></div>
-Source: <a href="https://docs.splunk.com/Observability/apm/span-tags/add-context-trace-span.html#instrument-your-application-code-to-add-tags-to-spans">Instrument your application code to add tags to spans</a></p>
-</li>
-<li>
-<p>Click <code>Deploy</code> to save your changes. Now if you run 'stockRanker' and look at the traces for 'getFinancials' in Splunk APM, you'll see that each span has tags for the stock symbol being analyzed and the API token being used. This can help with troubleshooting, in case of any errors. <img src="https://smathur-splunk.github.io/workshops/images/step21.png"/></p>
-</li>
 </ol>
 
   <hr>
@@ -859,13 +832,13 @@ Source: <a href="https://docs.splunk.com/Observability/apm/span-tags/add-context
       
       
         
-        <a href="../lambda_conc/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion" rel="next">
+        <a href="../lambda_instr/" class="md-footer__link md-footer__link--next" aria-label="Next: Instrument Lambda Functions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Conclusion
+              Instrument Lambda Functions
             </div>
           </div>
           <div class="md-footer__button md-icon">

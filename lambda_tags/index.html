@@ -12,21 +12,21 @@
         <meta name="author" content="Sales Engineering GSS">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_tags/">
       
-      <link rel="icon" href="images/logo.png">
+      <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Splunk Observability Workshops</title>
+        <title>[Optional] Custom Span Tags - Splunk Observability Workshops</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -42,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="extra.css">
+      <link rel="stylesheet" href="../extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -52,10 +52,12 @@
     
   
   
+    
+  
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops">
+  <meta property="og:title" content="Splunk Observability Workshops - [Optional] Custom Span Tags">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/lambda_tags/">
   <meta property="og:image" content="">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -83,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homepage" class="md-skip">
+        <a href="#optional-add-custom-span-tags-for-additional-info" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../.">
+  <a href="../..">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -127,9 +129,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Splunk Observability Workshops" class="md-header__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
+    <a href=".." title="Splunk Observability Workshops" class="md-header__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
       
-  <img src="images/logo.png" alt="logo">
+  <img src="../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -145,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Homepage
+              [Optional] Custom Span Tags
             
           </span>
         </div>
@@ -206,12 +208,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href=".." class="md-tabs__link">
       Homepage
     </a>
   </li>
@@ -220,13 +220,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="lambda_intro/" class="md-tabs__link">
+      <a href="../lambda_intro/" class="md-tabs__link md-tabs__link--active">
         AWS Lambda in Splunk APM
       </a>
     </li>
@@ -242,7 +244,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="snmp_intro/" class="md-tabs__link">
+      <a href="../snmp_intro/" class="md-tabs__link">
         SNMP Insights
       </a>
     </li>
@@ -258,7 +260,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="otel_intro/" class="md-tabs__link">
+      <a href="../otel_intro/" class="md-tabs__link">
         OTel to Splunk Core and O11y
       </a>
     </li>
@@ -288,9 +290,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Splunk Observability Workshops" class="md-nav__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
+    <a href=".." title="Splunk Observability Workshops" class="md-nav__button md-logo" aria-label="Splunk Observability Workshops" data-md-component="logo">
       
-  <img src="images/logo.png" alt="logo">
+  <img src="../images/logo.png" alt="logo">
 
     </a>
     Splunk Observability Workshops
@@ -316,21 +318,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         Homepage
       </a>
-      
     </li>
   
 
@@ -341,12 +333,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -385,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_intro/" class="md-nav__link">
+      <a href="../lambda_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -399,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_app/" class="md-nav__link">
+      <a href="../lambda_app/" class="md-nav__link">
         Create a Microservices App
       </a>
     </li>
@@ -413,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_instr/" class="md-nav__link">
+      <a href="../lambda_instr/" class="md-nav__link">
         Instrument Lambda Functions
       </a>
     </li>
@@ -427,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_gen/" class="md-nav__link">
+      <a href="../lambda_gen/" class="md-nav__link">
         Generate APM Data
       </a>
     </li>
@@ -439,11 +433,48 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="lambda_tags/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          [Optional] Custom Span Tags
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         [Optional] Custom Span Tags
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#optional-add-custom-span-tags-for-additional-info" class="md-nav__link">
+    [Optional] Add custom span tags for additional info
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -455,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_conc/" class="md-nav__link">
+      <a href="../lambda_conc/" class="md-nav__link">
         Conclusion
       </a>
     </li>
@@ -469,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lambda_ts/" class="md-nav__link">
+      <a href="../lambda_ts/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -527,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_intro/" class="md-nav__link">
+      <a href="../snmp_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -541,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_agent/" class="md-nav__link">
+      <a href="../snmp_agent/" class="md-nav__link">
         SNMP Agent Setup (Sending Data)
       </a>
     </li>
@@ -555,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_host/" class="md-nav__link">
+      <a href="../snmp_host/" class="md-nav__link">
         SC4SNMP Setup (Receiving Data)
       </a>
     </li>
@@ -569,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="snmp_ts/" class="md-nav__link">
+      <a href="../snmp_ts/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -629,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_intro/" class="md-nav__link">
+      <a href="../otel_intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -643,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_init/" class="md-nav__link">
+      <a href="../otel_init/" class="md-nav__link">
         Initial Setup
       </a>
     </li>
@@ -657,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_core/" class="md-nav__link">
+      <a href="../otel_core/" class="md-nav__link">
         Send data to Splunk Enterprise/Cloud
       </a>
     </li>
@@ -671,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_o11y/" class="md-nav__link">
+      <a href="../otel_o11y/" class="md-nav__link">
         Send data to Splunk Observability
       </a>
     </li>
@@ -685,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="otel_res/" class="md-nav__link">
+      <a href="../otel_res/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -713,17 +744,35 @@
                 
 
 
-<h1 id="homepage">Homepage<a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h1>
-<p>Welcome! </p>
-<p>This website features three workshops as an extension of the main Splunk 
-Observability workshops found at <a href="https://signalfx.github.io/observability-workshop/latest">signalfx.github.io/observability-workshop</a>.</p>
-<p>Featured workshops:</p>
-<ul>
-<li><a href="https://smathur-splunk.github.io/workshops/lambda_intro">AWS Lambda in Splunk APM</a></li>
-<li><a href="https://smathur-splunk.github.io/workshops/snmp_intro">SNMP Insights</a></li>
-<li><a href="https://smathur-splunk.github.io/workshops/otel_intro">OTel to Splunk Core and O11y</a></li>
-</ul>
-<p>If you have any questions, comments, or feedback, please feel free to reach out to me at <a href="mailto:smathur@splunk.com">smathur@splunk.com</a>.</p>
+  <h1>[Optional] Custom Span Tags</h1>
+
+<h3 id="optional-add-custom-span-tags-for-additional-info">[Optional] Add custom span tags for additional info<a class="headerlink" href="#optional-add-custom-span-tags-for-additional-info" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Custom span tags are already added for 3 of the functions. Let's take a look at how to add custom span tags in the 4th one, 'getFinancials'. Open up the 'getFinancials' Lambda function.</li>
+<li>
+<p>Under line 2, add a new line and write <code>from opentelemetry import trace</code>.  Under line 6, add <strong>with proper indentation</strong> 
+<div class="highlight"><pre><span></span><code><span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
+<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
+<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
+</code></pre></div>
+The final result should look like this:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">opentelemetry</span> <span class="kn">import</span> <span class="n">trace</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">ticker</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span>
+
+    <span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
+    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
+    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
+</code></pre></div>
+Source: <a href="https://docs.splunk.com/Observability/apm/span-tags/add-context-trace-span.html#instrument-your-application-code-to-add-tags-to-spans">Instrument your application code to add tags to spans</a></p>
+</li>
+<li>
+<p>Click <code>Deploy</code> to save your changes. Now if you run 'stockRanker' and look at the traces for 'getFinancials' in Splunk APM, you'll see that each span has tags for the stock symbol being analyzed and the API token being used. This can help with troubleshooting, in case of any errors. <img src="https://smathur-splunk.github.io/workshops/images/step21.png"/></p>
+</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
@@ -754,15 +803,30 @@ Observability workshops found at <a href="https://signalfx.github.io/observabili
     
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
+        
+        <a href="../lambda_gen/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Generate APM Data" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Generate APM Data
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="lambda_intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+        <a href="../lambda_conc/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Introduction
+              Conclusion
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -827,10 +891,10 @@ Observability workshops found at <a href="https://signalfx.github.io/observabili
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>
