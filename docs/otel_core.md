@@ -36,6 +36,7 @@ Metric search for validating search:
 ```
 
 ### Learn how to work with metric data
-13. See:
+See:
+
 - [Splunk Enterprise docs: Visualize metrics in the Analytics Workspace](https://docs.splunk.com/Documentation/Splunk/8.2.6/Metrics/Visualize)
 - [Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)](https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics)
