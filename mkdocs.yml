@@ -88,7 +88,7 @@ nav:
         - Create a Microservices App: lambda_app.md
         - Instrument Lambda Functions: lambda_instr.md
         - Generate APM Data: lambda_gen.md
-        - [Optional] Custom Span Tags: lambda_tags.md
+        - "[Optional] Custom Span Tags": lambda_tags.md
         - Conclusion: lambda_conc.md
         - Troubleshooting: lambda_ts.md
     - SNMP Insights:
