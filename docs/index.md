@@ -1,7 +1,5 @@
 # Homepage
 
-<meta name="image" property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
-
 Welcome! 
 
 This website features three workshops as an extension of the main Splunk 
