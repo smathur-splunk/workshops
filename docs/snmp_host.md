@@ -68,9 +68,10 @@ microk8s helm3 repo update
 ```
 
 5. Save the corresponding YAML file configuration for your environment into a file called `values.yaml`, replacing the values in all uppercase (**this is where you specify which agents to poll from**--look for `<SNMP_AGENT_IP>`):
-  
-- Splunk Observability: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml)
-- Splunk Enterprise/Cloud: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml)
+
+  - Splunk Observability: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml)
+
+  - Splunk Enterprise/Cloud: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml)
 
 6. Finally, run the command:
 `microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace`
