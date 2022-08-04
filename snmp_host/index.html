@@ -805,7 +805,7 @@ microk8s status --wait-ready
   --set<span class="o">=</span><span class="s2">&quot;splunkObservability.logsEnabled=false&quot;</span> <span class="se">\</span>
   splunk-otel-collector-chart/splunk-otel-collector
 </code></pre></div>
-For <strong>Splunk Enterprise/Cloud</strong>, run:
+For <strong>Splunk Enterprise/Cloud</strong>, you will need to generate a HEC token and create the indexes as described in the <a href="https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements">SC4SNMP Requirements</a>. Then run:
 <div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install sck <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;clusterName=&lt;CLUSTER_NAME&gt;&quot;</span> <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;splunkPlatform.endpoint=http://&lt;SPLUNK_ENTERPRISE_IP&gt;:8088/services/collector&quot;</span> <span class="se">\</span>
@@ -815,8 +815,7 @@ For <strong>Splunk Enterprise/Cloud</strong>, run:
   --set<span class="o">=</span><span class="s2">&quot;splunkPlatform.metricsIndex=em_metrics&quot;</span> <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;splunkPlatform.index=em_logs&quot;</span> <span class="se">\</span>
   splunk-otel-collector-chart/splunk-otel-collector
-</code></pre></div>
-*You will need to generate a HEC token and create the indexes as described in the <a href="https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements">SC4SNMP Requirements</a>.</p>
+</code></pre></div></p>
 </li>
 <li>
 <p>Run the commands:
