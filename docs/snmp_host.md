@@ -47,7 +47,7 @@ microk8s helm3 upgrade --install sck \
   --set="splunkObservability.logsEnabled=false" \
   splunk-otel-collector-chart/splunk-otel-collector
 ```
-For **Splunk Enterprise/Cloud**, you will need to generate a HEC token and create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements). Then run:
+For **Splunk Enterprise/Cloud**, you will need to create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements) and generate a HEC token pointing to those indexes. Then run:
 ```bash
 microk8s helm3 upgrade --install sck \
   --set="clusterName=<CLUSTER_NAME>" \
@@ -68,10 +68,14 @@ microk8s helm3 repo update
 
 5. Save the corresponding configuration for your environment, either the [Splunk Observability config](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml) or the [Splunk Enterprise/Cloud config](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml), into a file called `values.yaml`. Replace the values in all uppercase (**this is where you specify which agents to poll from**--look for `<SNMP_AGENT_IP>`).
 
-6. Finally, run the command:
-`microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace`
+6. Finally, run:
+```bash
+microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace
+```
 When making any further changes to `values.yaml`, run:
-`microk8s helm3 upgrade --install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace`
+```bash
+microk8s helm3 upgrade --install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace
+```
 
 7. To see the pods created, run `microk8s kubectl get pods -n sc4snmp`
 
@@ -79,9 +83,13 @@ When making any further changes to `values.yaml`, run:
 `microk8s kubectl logs -f snmp-splunk-connect-for-snmp-inventory-<INVENTORY_POD_NAME> -n sc4snmp`, replacing the pod name with the last part of the "inventory" pod name.
 You should see a line that says `New Record address='<SNMP_AGENT_IP>'`.
 
-9. And that's it! You should now see events/metrics in Splunk Enterprise/Cloud by searching:
-`index="netops" sourcetype="sc4snmp:event"`
-`| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"`
-And in Splunk Observability by going to Metric Finder and searching for `sc4snmp`.
+9. And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for `sc4snmp`. To see events in Splunk Enterprise/Cloud, search:
+```sql
+index="netops" sourcetype="sc4snmp:event"
+```
+And to see metrics in Splunk Enterprise/Cloud, search:
+```sql
+| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"
+```
 
 ![Custom SNMP Dashboard in Splunk Observability](images/snmp_dash.png)
