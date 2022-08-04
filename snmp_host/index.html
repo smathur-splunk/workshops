@@ -805,7 +805,7 @@ microk8s status --wait-ready
   --set<span class="o">=</span><span class="s2">&quot;splunkObservability.logsEnabled=false&quot;</span> <span class="se">\</span>
   splunk-otel-collector-chart/splunk-otel-collector
 </code></pre></div>
-For <strong>Splunk Enterprise/Cloud</strong>, you will need to generate a HEC token and create the indexes as described in the <a href="https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements">SC4SNMP Requirements</a>. Then run:
+For <strong>Splunk Enterprise/Cloud</strong>, you will need to create the indexes as described in the <a href="https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements">SC4SNMP Requirements</a> and generate a HEC token pointing to those indexes. Then run:
 <div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install sck <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;clusterName=&lt;CLUSTER_NAME&gt;&quot;</span> <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;splunkPlatform.endpoint=http://&lt;SPLUNK_ENTERPRISE_IP&gt;:8088/services/collector&quot;</span> <span class="se">\</span>
@@ -827,10 +827,12 @@ microk8s helm3 repo update
 <p>Save the corresponding configuration for your environment, either the <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml">Splunk Observability config</a> or the <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml">Splunk Enterprise/Cloud config</a>, into a file called <code>values.yaml</code>. Replace the values in all uppercase (<strong>this is where you specify which agents to poll from</strong>--look for <code>&lt;SNMP_AGENT_IP&gt;</code>).</p>
 </li>
 <li>
-<p>Finally, run the command:
-<code>microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace</code>
+<p>Finally, run:
+<div class="highlight"><pre><span></span><code>microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace<span class="o">=</span>sc4snmp --create-namespace
+</code></pre></div>
 When making any further changes to <code>values.yaml</code>, run:
-<code>microk8s helm3 upgrade --install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace</code></p>
+<div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace<span class="o">=</span>sc4snmp --create-namespace
+</code></pre></div></p>
 </li>
 <li>
 <p>To see the pods created, run <code>microk8s kubectl get pods -n sc4snmp</code></p>
@@ -841,10 +843,12 @@ When making any further changes to <code>values.yaml</code>, run:
 You should see a line that says <code>New Record address='&lt;SNMP_AGENT_IP&gt;'</code>.</p>
 </li>
 <li>
-<p>And that's it! You should now see events/metrics in Splunk Enterprise/Cloud by searching:
-<code>index="netops" sourcetype="sc4snmp:event"</code>
-<code>| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"</code>
-And in Splunk Observability by going to Metric Finder and searching for <code>sc4snmp</code>.</p>
+<p>And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for <code>sc4snmp</code>. To see events in Splunk Enterprise/Cloud, search:
+<div class="highlight"><pre><span></span><code><span class="k">index</span><span class="o">=</span><span class="ss">&quot;netops&quot;</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="ss">&quot;sc4snmp:event&quot;</span><span class="w"></span>
+</code></pre></div>
+And to see metrics in Splunk Enterprise/Cloud, search:
+<div class="highlight"><pre><span></span><code><span class="o">|</span><span class="w"> </span><span class="n">mpreview</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="ss">&quot;netmetrics&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="ss">&quot;sc4snmp:metric&quot;</span><span class="w"></span>
+</code></pre></div></p>
 </li>
 </ol>
 <p><img alt="Custom SNMP Dashboard in Splunk Observability" src="../images/snmp_dash.png" /></p>
