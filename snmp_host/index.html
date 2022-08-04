@@ -793,7 +793,19 @@ microk8s status --wait-ready
 <code>microk8s helm3 repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart</code></p>
 </li>
 <li>
-<p>For <strong>Splunk Enterprise/Cloud</strong>, run:
+<p>For <strong>Splunk Observability</strong>, run:
+<div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install sck <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;clusterName=&lt;CLUSTER_NAME&gt;&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.realm=&lt;REALM&gt;&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.accessToken=&lt;API_INGEST_TOKEN&gt;&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.ingestUrl=https://ingest.&lt;REALM&gt;.signalfx.com&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.apiUrl=https://api.&lt;REALM&gt;.signalfx.com&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.metricsEnabled=true&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.tracesEnabled=false&quot;</span> <span class="se">\</span>
+  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.logsEnabled=false&quot;</span> <span class="se">\</span>
+  splunk-otel-collector-chart/splunk-otel-collector
+</code></pre></div>
+For <strong>Splunk Enterprise/Cloud</strong>, run:
 <div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install sck <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;clusterName=&lt;CLUSTER_NAME&gt;&quot;</span> <span class="se">\</span>
   --set<span class="o">=</span><span class="s2">&quot;splunkPlatform.endpoint=http://&lt;SPLUNK_ENTERPRISE_IP&gt;:8088/services/collector&quot;</span> <span class="se">\</span>
@@ -806,20 +818,6 @@ microk8s status --wait-ready
 </code></pre></div>
 *You will need to generate a HEC token and create the indexes as described in the <a href="https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements">SC4SNMP Requirements</a>.</p>
 </li>
-</ol>
-<p>For <strong>Splunk Observability</strong>, run:
-<div class="highlight"><pre><span></span><code>microk8s helm3 upgrade --install sck <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;clusterName=&lt;CLUSTER_NAME&gt;&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.realm=&lt;REALM&gt;&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.accessToken=&lt;API_INGEST_TOKEN&gt;&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.ingestUrl=https://ingest.&lt;REALM&gt;.signalfx.com&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.apiUrl=https://api.&lt;REALM&gt;.signalfx.com&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.metricsEnabled=true&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.tracesEnabled=false&quot;</span> <span class="se">\</span>
-  --set<span class="o">=</span><span class="s2">&quot;splunkObservability.logsEnabled=false&quot;</span> <span class="se">\</span>
-  splunk-otel-collector-chart/splunk-otel-collector
-</code></pre></div></p>
-<ol>
 <li>
 <p>Run the commands:
 <div class="highlight"><pre><span></span><code>microk8s helm3 repo add splunk-connect-for-snmp https://splunk.github.io/splunk-connect-for-snmp
@@ -829,9 +827,11 @@ microk8s helm3 repo update
 <li>
 <p>Save the corresponding YAML file configuration for your environment into a file called <code>values.yaml</code>, replacing the values in all uppercase (<strong>this is where you specify which agents to poll from</strong>--look for <code>&lt;SNMP_AGENT_IP&gt;</code>):</p>
 </li>
-<li>Splunk Enterprise/Cloud: <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml">values.yaml</a></li>
 <li>
 <p>Splunk Observability: <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml">values.yaml</a></p>
+</li>
+<li>
+<p>Splunk Enterprise/Cloud: <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml">values.yaml</a></p>
 </li>
 <li>
 <p>Finally, run the command:
@@ -861,7 +861,7 @@ And in Splunk Observability by going to Metric Finder and searching for <code>sc
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 4, 2022</span>
       
     
   </small>
