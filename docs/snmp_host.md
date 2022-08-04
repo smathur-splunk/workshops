@@ -34,21 +34,7 @@ microk8s status --wait-ready
 2. Run the command
 `microk8s helm3 repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart`
 
-3. For **Splunk Enterprise/Cloud**, run:
-```bash
-microk8s helm3 upgrade --install sck \
-  --set="clusterName=<CLUSTER_NAME>" \
-  --set="splunkPlatform.endpoint=http://<SPLUNK_ENTERPRISE_IP>:8088/services/collector" \
-  --set="splunkPlatform.insecureSkipVerify=true" \
-  --set="splunkPlatform.token=<SPLUNK_HEC_TOKEN>" \
-  --set="splunkPlatform.metricsEnabled=true" \
-  --set="splunkPlatform.metricsIndex=em_metrics" \
-  --set="splunkPlatform.index=em_logs" \
-  splunk-otel-collector-chart/splunk-otel-collector
-```
-*You will need to generate a HEC token and create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements).
-
-For **Splunk Observability**, run:
+3. For **Splunk Observability**, run:
 ```bash
 microk8s helm3 upgrade --install sck \
   --set="clusterName=<CLUSTER_NAME>" \
@@ -61,6 +47,19 @@ microk8s helm3 upgrade --install sck \
   --set="splunkObservability.logsEnabled=false" \
   splunk-otel-collector-chart/splunk-otel-collector
 ```
+For **Splunk Enterprise/Cloud**, run:
+```bash
+microk8s helm3 upgrade --install sck \
+  --set="clusterName=<CLUSTER_NAME>" \
+  --set="splunkPlatform.endpoint=http://<SPLUNK_ENTERPRISE_IP>:8088/services/collector" \
+  --set="splunkPlatform.insecureSkipVerify=true" \
+  --set="splunkPlatform.token=<SPLUNK_HEC_TOKEN>" \
+  --set="splunkPlatform.metricsEnabled=true" \
+  --set="splunkPlatform.metricsIndex=em_metrics" \
+  --set="splunkPlatform.index=em_logs" \
+  splunk-otel-collector-chart/splunk-otel-collector
+```
+\*You will need to generate a HEC token and create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements).
 
 4. Run the commands:
 ```bash
@@ -69,8 +68,9 @@ microk8s helm3 repo update
 ```
 
 5. Save the corresponding YAML file configuration for your environment into a file called `values.yaml`, replacing the values in all uppercase (**this is where you specify which agents to poll from**--look for `<SNMP_AGENT_IP>`):
-- Splunk Enterprise/Cloud: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml)
+  
 - Splunk Observability: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_o11y_values.yaml)
+- Splunk Enterprise/Cloud: [values.yaml](https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/257b48c476cecb33685ba2641e9b510bf5bf7077/splunk_enterprise_values.yaml)
 
 6. Finally, run the command:
 `microk8s helm3 install snmp -f values.yaml splunk-connect-for-snmp/splunk-connect-for-snmp --namespace=sc4snmp --create-namespace`
