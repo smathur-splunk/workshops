@@ -47,7 +47,7 @@ microk8s helm3 upgrade --install sck \
   --set="splunkObservability.logsEnabled=false" \
   splunk-otel-collector-chart/splunk-otel-collector
 ```
-For **Splunk Enterprise/Cloud**, run:
+For **Splunk Enterprise/Cloud**, you will need to generate a HEC token and create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements). Then run:
 ```bash
 microk8s helm3 upgrade --install sck \
   --set="clusterName=<CLUSTER_NAME>" \
@@ -59,7 +59,6 @@ microk8s helm3 upgrade --install sck \
   --set="splunkPlatform.index=em_logs" \
   splunk-otel-collector-chart/splunk-otel-collector
 ```
-\*You will need to generate a HEC token and create the indexes as described in the [SC4SNMP Requirements](https://splunk.github.io/splunk-connect-for-snmp/main/gettingstarted/splunk-requirements).
 
 4. Run the commands:
 ```bash
