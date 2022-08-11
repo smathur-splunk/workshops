@@ -19,7 +19,7 @@
     
     
       
-        <title>Point Java App to OTel and View Data - Splunk Observability Workshops</title>
+        <title>Point Java App to OTel and Validate Data - Splunk Observability Workshops</title>
       
     
     
@@ -55,7 +55,7 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Point Java App to OTel and View Data">
+  <meta property="og:title" content="Splunk Observability Workshops - Point Java App to OTel and Validate Data">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
   <meta property="og:url" content="https://smathur-splunk.github.io/workshops/otel_java/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Point Java App to OTel and View Data
+              Point Java App to OTel and Validate Data
             
           </span>
         </div>
@@ -245,6 +245,22 @@
     <li class="md-tabs__item">
       <a href="../snmp_intro/" class="md-tabs__link">
         SNMP Insights
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../custom_intro/" class="md-tabs__link">
+        Custom Metrics & Dashboards
       </a>
     </li>
   
@@ -582,23 +598,15 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
-        
-          
-        
-          
-        
-          
         
           
         
@@ -609,12 +617,104 @@
       
       
         <label class="md-nav__link" for="__nav_4">
+          Custom Metrics & Dashboards
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Metrics & Dashboards" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Metrics & Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_metr/" class="md-nav__link">
+        Ingesting Custom Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_dash/" class="md-nav__link">
+        Building Custom Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
           OTel to Splunk Core and O11y
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="OTel to Splunk Core and O11y" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           OTel to Splunk Core and O11y
         </label>
@@ -690,12 +790,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Point Java App to OTel and View Data
+          Point Java App to OTel and Validate Data
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Point Java App to OTel and View Data
+        Point Java App to OTel and Validate Data
       </a>
       
         
@@ -727,7 +827,7 @@
       
         <li class="md-nav__item">
   <a href="#validate-data-in-splunk-observability-cloud" class="md-nav__link">
-    Validate data in Splunk Observability Cloud
+    Validate Data in Splunk Observability Cloud
   </a>
   
 </li>
@@ -775,11 +875,11 @@
                 
 
 
-  <h1>Point Java App to OTel and View Data</h1>
+  <h1>Point Java App to OTel and Validate Data</h1>
 
 <h3 id="add-java-auto-instrumentation-library">Add Java Auto-Instrumentation Library<a class="headerlink" href="#add-java-auto-instrumentation-library" title="Permanent link">&para;</a></h3>
 <ol>
-<li>On the host runnign your Java app: In the root directory of your Java app, download the auto-instrumentation library by running:
+<li>On the host running your Java app, go to the root directory of the app and download the auto-instrumentation library:
 <div class="highlight"><pre><span></span><code>curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/splunk-otel-javaagent.jar -o splunk-otel-javaagent.jar
 </code></pre></div></li>
 <li>
@@ -818,9 +918,11 @@ Metric search for validating search:
 <li>
 <p><a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Metrics/Visualize">Splunk Enterprise/Cloud docs: Visualize metrics in the Analytics Workspace</a></p>
 </li>
-<li><a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)</a></li>
+<li>
+<p><a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)</a></p>
+</li>
 </ol>
-<h3 id="validate-data-in-splunk-observability-cloud">Validate data in Splunk Observability Cloud<a class="headerlink" href="#validate-data-in-splunk-observability-cloud" title="Permanent link">&para;</a></h3>
+<h3 id="validate-data-in-splunk-observability-cloud">Validate Data in Splunk Observability Cloud<a class="headerlink" href="#validate-data-in-splunk-observability-cloud" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Login to Splunk Observability Cloud and check for <a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">JVM metrics</a> by searching <code>jvm</code> in Metric Finder. </p>
