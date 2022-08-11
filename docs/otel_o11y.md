@@ -1,3 +1,4 @@
+### Configure the OTel Collector
 14. In `/etc/otel/collector/gateway_config.yaml`, add a `splunk_hec/obs` exporter to point to Splunk Observability:
 ```yaml
 exporters:

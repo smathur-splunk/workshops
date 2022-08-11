@@ -96,12 +96,16 @@ nav:
         - SNMP Agent Setup (Sending Data): snmp_agent.md
         - SC4SNMP Setup (Receiving Data): snmp_host.md
         - Troubleshooting: snmp_ts.md
+    - Custom Metrics & Dashboards:
+        - Introduction: custom_intro.md
+        - Ingesting Custom Metrics: custom_metr.md
+        - Building Custom Dashboards: custom_dash.md
     - OTel to Splunk Core and O11y:
         - Introduction: otel_intro.md
         - Initial Setup: otel_init.md
         - Point OTel to Splunk Enterprise/Cloud: otel_core.md
         - Point OTel to Splunk Observability: otel_o11y.md
-        - Point Java App to OTel and View Data: otel_java.md
+        - Point Java App to OTel and Validate Data: otel_java.md
         - Resources: otel_res.md
 plugins:
   - git-revision-date-localized:

@@ -1,4 +1,4 @@
-# OTel Gateway Setup
+# OTel to Splunk Core and O11y
 
 Auto-instrument a Java app to send trace and metric data to both Splunk Enterprise/Cloud & Splunk Observability Cloud, via OTel running in gateway mode. 
 

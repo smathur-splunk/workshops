@@ -1,4 +1,5 @@
-4. Configure OTel Collector exporters: On your VM running OTel, open `/etc/otel/collector/gateway_config.yaml` for editing. Add to exporters, replacing `<SPLUNK_IP>`, `<SPLUNK_HEC_TOKEN>`, and `<SPLUNK_METRICS_HEC_TOKEN>` (use `http` or `https` depending on how your HEC endpoint is configured in Splunk Enterprise/Cloud):
+### Configure the OTel Collector
+4. Configure the necessary OTel exporters: On your VM running OTel, open `/etc/otel/collector/gateway_config.yaml` for editing. Add to exporters, replacing `<SPLUNK_IP>`, `<SPLUNK_HEC_TOKEN>`, and `<SPLUNK_METRICS_HEC_TOKEN>` (these are the token values copied earlier; use `http` or `https` depending on how your HEC endpoint is configured in Splunk Enterprise/Cloud):
 ```yaml
 exporters:
   splunk_hec:
@@ -12,7 +13,7 @@ exporters:
     source: otel
     sourcetype: otel_metrics
 ```
-5. Configure OTel Collector pipelines. In `/etc/otel/collector/gateway_config.yaml`, add the exporters we created to `service.pipelines`:
+5. Configure the OTel pipelines. In `/etc/otel/collector/gateway_config.yaml`, add the exporters we created to `service.pipelines`:
 ```yaml
 service:
   pipelines:
