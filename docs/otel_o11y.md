@@ -1,5 +1,3 @@
-## Configure Otel Collector to send data to Splunk Observability (part 2)
-### Configure Otel Collector
 14. In `/etc/otel/collector/gateway_config.yaml`, add a `splunk_hec/obs` exporter to point to Splunk Observability:
 ```yaml
 exporters:
@@ -30,5 +28,10 @@ SPLUNK_ACCESS_TOKEN=<ACCESS_TOKEN> SPLUNK_REALM=<REALM> ./otelcol_linux_amd64
 ```
 To get your access token see [Create and manage organization access tokens using Splunk Observability Cloud](https://docs.splunk.com/observability/admin/authentication-tokens/org-tokens.html).
 
-### Validate data in Splunk Observability Cloud
-17. Login to Splunk Observability Cloud and check for [JVM metrics](https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics) in Metric Finder. Check for traces in APM (on the service map and in the traces view), and also check for Code Profiling data in APM. If using a database, check DB Query Perfomance in APM.
+### Use cURL to Validate OTel Collector Gateway functioning correctly
+7. Again, you may want to run this cURL command to ensure the OTel gateway is running properly (port `4318` must be accessible on the VM):
+```bash
+curl -X POST http://<GATEWAY_IP>:4318/v1/traces
+   -H 'Content-Type: application/json'
+   -d '{"resourceSpans": [{"resource": {"attributes": [{"key": "service.name","value": {"stringValue": "curl-test-otel-pipeline"}}]},"instrumentationLibrarySpans": [{"spans": [{"traceId": "71699b6fe85982c7c8995ea3d9c95df2","spanId": "3c191d03fa8be065","name": "test-span","kind": 1,"droppedAttributesCount": 0,"events": [],"droppedEventsCount": 0,              "status": {"code": 1}}],"instrumentationLibrary": {"name": "local-curl-example"}}]}] }'
+```

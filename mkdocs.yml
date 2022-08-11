@@ -1,6 +1,6 @@
 site_name: Splunk Observability Workshops
 site_url: https://smathur-splunk.github.io/workshops/
-site_author: Sales Engineering GSS
+site_author: Siddharth Mathur
 site_description: >-
   This workshop is going to take you through the best-in-class observability platform
   for ingesting, monitoring, visualizing and analyzing metrics, traces and spans
@@ -99,8 +99,9 @@ nav:
     - OTel to Splunk Core and O11y:
         - Introduction: otel_intro.md
         - Initial Setup: otel_init.md
-        - Send data to Splunk Enterprise/Cloud: otel_core.md
-        - Send data to Splunk Observability: otel_o11y.md
+        - Point OTel to Splunk Enterprise/Cloud: otel_core.md
+        - Point OTel to Splunk Observability: otel_o11y.md
+        - Point Java App to OTel and View Data: otel_java.md
         - Resources: otel_res.md
 plugins:
   - git-revision-date-localized:

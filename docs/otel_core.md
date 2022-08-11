@@ -1,42 +1,44 @@
-## Configure App to send data to Splunk Enterprise (part 1)
-### Add Java Auto-Instrumentation Library
-8. In the root directory of your Java app, download the auto-instrumentation library by running:
-```bash
-curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/splunk-otel-javaagent.jar -o splunk-otel-javaagent.jar
+4. Configure OTel Collector exporters: On your VM running OTel, open `/etc/otel/collector/gateway_config.yaml` for editing. Add to exporters, replacing `<SPLUNK_IP>`, `<SPLUNK_HEC_TOKEN>`, and `<SPLUNK_METRICS_HEC_TOKEN>` (use `http` or `https` depending on how your HEC endpoint is configured in Splunk Enterprise/Cloud):
+```yaml
+exporters:
+  splunk_hec:
+    token: <SPLUNK_HEC_TOKEN>
+    endpoint: "http://<SPLUNK_IP>:8088/services/collector/raw"
+    source: otel
+    sourcetype: otel
+  splunk_hec/metrics:
+    token: <SPLUNK_METRICS_HEC_TOKEN>
+    endpoint: "http://<SPLUNK_IP>:8088/services/collector"
+    source: otel
+    sourcetype: otel_metrics
 ```
-9. Set the following environment variables (replace `<APP_NAME>`, `<ENV_NAME>`, and `<GATEWAY_IP>`:
-```bash
-export OTEL_SERVICE_NAME='<APP_NAME>'
-export OTEL_RESOURCE_ATTRIBUTES='deployment.environment=<ENV_NAME>'
-export OTEL_EXPORTER_OTLP_ENDPOINT='http://<GATEWAY_IP>:4317'
-```
-
-10. Finally, run your app with the `javaagent` tag added to specify the auto-instrumentation library:
-```bash
-java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled=true -Dsplunk.metrics.enabled=true -Dsplunk.metrics.endpoint='http://<GATEWAY_IP>:9943' \
--jar myapp.jar
-```
-If you are using the [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) app, run this command instead (from the app's root directory):
-```bash
-java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled=true -Dsplunk.metrics.enabled=true -Dsplunk.metrics.endpoint='http://<GATEWAY_IP>:9943' -jar target/spring-petclinic-*-SNAPSHOT.jar
-```
-
-### Validate data in Splunk Enterprise
-11. Trace search (in Splunk/SPL) for validating ingestion and search:
-```
-index = apm_poc_traces (last 15 minutes)
-```
-12. Metric search for validating ingestion:
-```
-| mcatalog values(metric_name) WHERE index=apm_poc_metrics
-```
-Metric search for validating search:
-```
-| mstats avg(_value) prestats=t WHERE index=apm_poc_metrics AND metric_name="runtime.jvm.memory.*" span=1m by metric_name | timechart avg(_value) as "Avg" span=1m by metric_name
+5. Configure OTel Collector pipelines. In `/etc/otel/collector/gateway_config.yaml`, add the exporters we created to `service.pipelines`:
+```yaml
+service:
+  pipelines:
+    traces:
+      exporters: [splunk_hec]
+    metrics:
+      exporters: [splunk_hec/metrics]
+    metrics/internal:
+      exporters: [splunk_hec/metrics]
+    logs:
+      exporters: [splunk_hec]
+    logs/profiling:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [splunk_hec]
 ```
 
-### Learn how to work with metric data
-See:
+6. Run the OTel Collector:
+```bash
+SPLUNK_ACCESS_TOKEN=0 SPLUNK_REALM=us0 ./otelcol_linux_amd64
+```
 
-- [Splunk Enterprise docs: Visualize metrics in the Analytics Workspace](https://docs.splunk.com/Documentation/Splunk/8.2.6/Metrics/Visualize)
-- [Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)](https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics)
+### Use cURL to Validate OTel Collector Gateway functioning correctly
+7. Run this cURL command to ensure the OTel gateway is running (port `4318` must be accessible on the VM):
+```bash
+curl -X POST http://<GATEWAY_IP>:4318/v1/traces
+   -H 'Content-Type: application/json'
+   -d '{"resourceSpans": [{"resource": {"attributes": [{"key": "service.name","value": {"stringValue": "curl-test-otel-pipeline"}}]},"instrumentationLibrarySpans": [{"spans": [{"traceId": "71699b6fe85982c7c8995ea3d9c95df2","spanId": "3c191d03fa8be065","name": "test-span","kind": 1,"droppedAttributesCount": 0,"events": [],"droppedEventsCount": 0,              "status": {"code": 1}}],"instrumentationLibrary": {"name": "local-curl-example"}}]}] }'
+```
