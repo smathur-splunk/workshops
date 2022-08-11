@@ -9,7 +9,7 @@
         <meta name="description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
       
       
-        <meta name="author" content="Sales Engineering GSS">
+        <meta name="author" content="Siddharth Mathur">
       
       
         <link rel="canonical" href="https://smathur-splunk.github.io/workshops/otel_init/">
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#splunk-enterprise-setup" class="md-skip">
+        <a href="#set-up-splunk-enterprise-indexes-and-hec-endpoints" class="md-skip">
           Skip to content
         </a>
       
@@ -604,6 +604,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4">
@@ -668,36 +670,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#splunk-enterprise-setup" class="md-nav__link">
-    Splunk Enterprise Setup
+  <a href="#set-up-splunk-enterprise-indexes-and-hec-endpoints" class="md-nav__link">
+    Set Up Splunk Enterprise Indexes and HEC Endpoints
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#opentelemetry-gateway-setup" class="md-nav__link">
-    OpenTelemetry Gateway Setup
+  <a href="#install-the-otel-collector-gateway" class="md-nav__link">
+    Install the OTel Collector Gateway
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validate-otel-collector-gateway-functioning-correctly" class="md-nav__link">
-    Validate Otel Collector Gateway functioning correctly
-  </a>
-  
-    <nav class="md-nav" aria-label="Validate Otel Collector Gateway functioning correctly">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#use-curl-for-validation-testing" class="md-nav__link">
-    Use cURL for Validation Testing
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -717,7 +699,7 @@
   
     <li class="md-nav__item">
       <a href="../otel_core/" class="md-nav__link">
-        Send data to Splunk Enterprise/Cloud
+        Point OTel to Splunk Enterprise/Cloud
       </a>
     </li>
   
@@ -731,7 +713,21 @@
   
     <li class="md-nav__item">
       <a href="../otel_o11y/" class="md-nav__link">
-        Send data to Splunk Observability
+        Point OTel to Splunk Observability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otel_java/" class="md-nav__link">
+        Point Java App to OTel and View Data
       </a>
     </li>
   
@@ -774,20 +770,30 @@
 
   <h1>Initial Setup</h1>
 
-<h3 id="splunk-enterprise-setup">Splunk Enterprise Setup<a class="headerlink" href="#splunk-enterprise-setup" title="Permanent link">&para;</a></h3>
+<h3 id="set-up-splunk-enterprise-indexes-and-hec-endpoints">Set Up Splunk Enterprise Indexes and HEC Endpoints<a class="headerlink" href="#set-up-splunk-enterprise-indexes-and-hec-endpoints" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create required indexes for HEC:</li>
-<li>Create an index for traces <code>apm_poc_traces</code>: See <a href="https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Setupmultipleindexes#Create_events_indexes">Create events indexes</a></li>
 <li>
-<p>Create an index for metrics <code>apm_poc_metrics</code>: See <a href="https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Setupmultipleindexes#Create_metrics_indexes">Create metrics indexes</a></p>
+<p>Create required indexes for HEC:</p>
 </li>
 <li>
-<p>Setup 2 Splunk HEC tokens, one for <code>apm_poc_traces</code> and one for <code>apm_poc_metrics</code>: See <a href="https://docs.splunk.com/Documentation/SplunkCloud/8.2.2202/Data/UsetheHTTPEventCollector#Configure_HTTP_Event_Collector_on_Splunk_Enterprise">Configure HTTP Event Collector on Splunk Enterprise</a> or <a href="https://docs.splunk.com/Documentation/SplunkCloud/8.2.2202/Data/UsetheHTTPEventCollector#Configure_HTTP_Event_Collector_on_Splunk_Cloud_Platform">Splunk Cloud Platform</a></p>
+<p>Create an index for traces <code>apm_traces</code>: See <a href="https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Setupmultipleindexes#Create_events_indexes">Create events indexes</a></p>
 </li>
+<li>
+<p>Create an index for metrics <code>apm_metrics</code>: See <a href="https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Setupmultipleindexes#Create_metrics_indexes">Create metrics indexes</a></p>
+</li>
+<li>
+<p>Setup 2 Splunk HEC tokens, one for <code>apm_traces</code> and one for <code>apm_metrics</code>. See <a href="https://docs.splunk.com/Documentation/SplunkCloud/8.2.2202/Data/UsetheHTTPEventCollector#Configure_HTTP_Event_Collector_on_Splunk_Enterprise">Configure HTTP Event Collector on Splunk Enterprise</a> or <a href="https://docs.splunk.com/Documentation/SplunkCloud/8.2.2202/Data/UsetheHTTPEventCollector#Configure_HTTP_Event_Collector_on_Splunk_Cloud_Platform">Splunk Cloud Platform</a>. Steps summarized below:</p>
+</li>
+<li>
+<p>Login to Splunk and go to <code>Settings</code> &gt; <code>Data inputs</code> (under "Data") &gt; <code>HTTP Event Collector</code>.</p>
+</li>
+<li>At the top-right, click <code>Global Settings</code> and set "All Tokens" to <code>Enabled</code>, and uncheck "Enable SSL" (if not using HTTPS). Ensure the "HTTP Port Number" is set to <code>8088</code>. Click <code>Save</code>.</li>
+<li>At the top-right, create <code>New Token</code>, and enter a Name. Click <code>Next</code>. Next to "Select Allowed Indexes", select <code>apm_traces</code>. Click <code>Review</code>, and then <code>Submit</code>. You should now see a "Token Value", which we'll need in the next section.</li>
+<li>To ingest metrics, create another HEC token and assign it to the <code>apm_metrics</code> index. Make sure to copy the "Token Value" here as well.</li>
 </ol>
-<h3 id="opentelemetry-gateway-setup">OpenTelemetry Gateway Setup<a class="headerlink" href="#opentelemetry-gateway-setup" title="Permanent link">&para;</a></h3>
+<h3 id="install-the-otel-collector-gateway">Install the OTel Collector Gateway<a class="headerlink" href="#install-the-otel-collector-gateway" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Install Otel Collector. If VM does not have internet access, download files separately and copy to VM.
+<li>On your Linux VM, install the OTel Collector. If the VM does not have internet access, download these files separately and manually copy them to the VM.
 <div class="highlight"><pre><span></span><code>sudo apt install wget
 wget https://github.com/signalfx/splunk-otel-collector/releases/download/v0.48.0/otelcol_linux_amd64
 chmod a+x otelcol_linux_amd64
@@ -796,51 +802,6 @@ sudo mkdir /etc/otel
 sudo mkdir /etc/otel/collector
 sudo mv gateway_config.yaml /etc/otel/collector/
 </code></pre></div></li>
-<li>Configure Otel Collector exporters: Open <code>/etc/otel/collector/gateway_config.yaml</code> for editing. Add to exporters, replacing <code>&lt;SPLUNK_IP&gt;</code>, <code>&lt;SPLUNK_HEC_TOKEN&gt;</code>, and <code>&lt;SPLUNK_METRICS_HEC_TOKEN&gt;</code> (use <code>http</code> or <code>https</code> depending on how your HEC endpoint is configured in Splunk Enterprise):
-<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">splunk_hec</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;SPLUNK_HEC_TOKEN&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://&lt;SPLUNK_IP&gt;:8088/services/collector/raw&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
-<span class="w">    </span><span class="nt">sourcetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
-<span class="w">  </span><span class="nt">splunk_hec/metrics</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;SPLUNK_METRICS_HEC_TOKEN&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://&lt;SPLUNK_IP&gt;:8088/services/collector&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
-<span class="w">    </span><span class="nt">sourcetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel_metrics</span><span class="w"></span>
-</code></pre></div></li>
-<li>
-<p>Configure Otel Collector pipelines. In <code>/etc/otel/collector/gateway_config.yaml</code>, add the exporters we created to <code>service.pipelines</code>:
-<div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">pipelines</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">traces</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">metrics</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec/metrics</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">metrics/internal</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec/metrics</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">logs</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">logs/profiling</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">receivers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">otlp</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">      </span><span class="nt">processors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">memory_limiter</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">batch</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Run the Otel Collector:
-<div class="highlight"><pre><span></span><code><span class="nv">SPLUNK_ACCESS_TOKEN</span><span class="o">=</span><span class="m">0</span> <span class="nv">SPLUNK_REALM</span><span class="o">=</span>us0 ./otelcol_linux_amd64
-</code></pre></div></p>
-</li>
-</ol>
-<h2 id="validate-otel-collector-gateway-functioning-correctly">Validate Otel Collector Gateway functioning correctly<a class="headerlink" href="#validate-otel-collector-gateway-functioning-correctly" title="Permanent link">&para;</a></h2>
-<h3 id="use-curl-for-validation-testing">Use cURL for Validation Testing<a class="headerlink" href="#use-curl-for-validation-testing" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Run this cURL command to test the gateway is running (port <code>4318</code> must be accessible on the VM):
-<div class="highlight"><pre><span></span><code>curl -X POST http://&lt;GATEWAY_IP&gt;:4318/v1/traces
-   -H <span class="s1">&#39;Content-Type: application/json&#39;</span>
-   -d <span class="s1">&#39;{&quot;resourceSpans&quot;: [{&quot;resource&quot;: {&quot;attributes&quot;: [{&quot;key&quot;: &quot;service.name&quot;,&quot;value&quot;: {&quot;stringValue&quot;: &quot;curl-test-otel-pipeline&quot;}}]},&quot;instrumentationLibrarySpans&quot;: [{&quot;spans&quot;: [{&quot;traceId&quot;: &quot;71699b6fe85982c7c8995ea3d9c95df2&quot;,&quot;spanId&quot;: &quot;3c191d03fa8be065&quot;,&quot;name&quot;: &quot;test-span&quot;,&quot;kind&quot;: 1,&quot;droppedAttributesCount&quot;: 0,&quot;events&quot;: [],&quot;droppedEventsCount&quot;: 0,              &quot;status&quot;: {&quot;code&quot;: 1}}],&quot;instrumentationLibrary&quot;: {&quot;name&quot;: &quot;local-curl-example&quot;}}]}] }&#39;</span>
-</code></pre></div></li>
 </ol>
 
   <hr>
@@ -848,7 +809,7 @@ sudo mv gateway_config.yaml /etc/otel/collector/
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
       
     
   </small>
@@ -889,13 +850,13 @@ sudo mv gateway_config.yaml /etc/otel/collector/
       
       
         
-        <a href="../otel_core/" class="md-footer__link md-footer__link--next" aria-label="Next: Send data to Splunk Enterprise/Cloud" rel="next">
+        <a href="../otel_core/" class="md-footer__link md-footer__link--next" aria-label="Next: Point OTel to Splunk Enterprise/Cloud" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Send data to Splunk Enterprise/Cloud
+              Point OTel to Splunk Enterprise/Cloud
             </div>
           </div>
           <div class="md-footer__button md-icon">

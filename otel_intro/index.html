@@ -9,7 +9,7 @@
         <meta name="description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
       
       
-        <meta name="author" content="Sales Engineering GSS">
+        <meta name="author" content="Siddharth Mathur">
       
       
         <link rel="canonical" href="https://smathur-splunk.github.io/workshops/otel_intro/">
@@ -604,6 +604,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4">
@@ -714,7 +716,7 @@
   
     <li class="md-nav__item">
       <a href="../otel_core/" class="md-nav__link">
-        Send data to Splunk Enterprise/Cloud
+        Point OTel to Splunk Enterprise/Cloud
       </a>
     </li>
   
@@ -728,7 +730,21 @@
   
     <li class="md-nav__item">
       <a href="../otel_o11y/" class="md-nav__link">
-        Send data to Splunk Observability
+        Point OTel to Splunk Observability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otel_java/" class="md-nav__link">
+        Point Java App to OTel and View Data
       </a>
     </li>
   
@@ -770,7 +786,9 @@
 
 
 <h1 id="otel-gateway-setup">OTel Gateway Setup<a class="headerlink" href="#otel-gateway-setup" title="Permanent link">&para;</a></h1>
-<p>PoC - Auto Instrumenting a Java App to send trace and metric data to Splunk Enterprise &amp; Observability Cloud</p>
+<p>Auto-instrument a Java app to send trace and metric data to both Splunk Enterprise/Cloud &amp; Splunk Observability Cloud, via OTel running in gateway mode. </p>
+<p>This was initially set up for a POC where the host running the Java app could not have the OTel collector installed, hence the setup seen in the architecture diagram below.</p>
+<p><img alt="Architecture diagram" src="../images/otel-to-splunk-core-and-o11y-arch.png" /></p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <h3 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
 <ul>
@@ -781,12 +799,8 @@
 </ul>
 <h3 id="networking-ports">Networking Ports<a class="headerlink" href="#networking-ports" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Splunk Cloud/Enterprise: </li>
-<li><code>8088</code> (HEC endpoint)</li>
-<li>VM for OTel Gateway: </li>
-<li><code>4317</code> (OpenTelemetry Protocol - OTLP - gRPC endpoints for logs)</li>
-<li><code>9943</code> (for app metrics)</li>
-<li><code>4318</code> (Used for cURL Validation Testing to ensure Otel Gateway is working properly)</li>
+<li>Splunk Cloud/Enterprise: <code>8088</code> (HEC endpoint)</li>
+<li>VM for OTel Gateway: <code>4317</code> (OTLP gRPC endpoint for logs), <code>4318</code> (OTLP HTTP endpoint for cURL), <code>9943</code> (for metrics)</li>
 </ul>
 
   <hr>
@@ -794,7 +808,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
       
     
   </small>

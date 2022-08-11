@@ -9,7 +9,7 @@
         <meta name="description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
       
       
-        <meta name="author" content="Sales Engineering GSS">
+        <meta name="author" content="Siddharth Mathur">
       
       
         <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_instr/">
@@ -607,6 +607,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4">
@@ -656,7 +658,7 @@
   
     <li class="md-nav__item">
       <a href="../otel_core/" class="md-nav__link">
-        Send data to Splunk Enterprise/Cloud
+        Point OTel to Splunk Enterprise/Cloud
       </a>
     </li>
   
@@ -670,7 +672,21 @@
   
     <li class="md-nav__item">
       <a href="../otel_o11y/" class="md-nav__link">
-        Send data to Splunk Observability
+        Point OTel to Splunk Observability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otel_java/" class="md-nav__link">
+        Point Java App to OTel and View Data
       </a>
     </li>
   
@@ -717,7 +733,7 @@
 <li>Navigate to <a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions">AWS Lambda</a> and take a moment to understand the functions in this app. There are 4 of them: 'watchlistUpdater', 'stockRanker', 'getFinancials', and 'buyStocks'. The architecture of these functions will become clear once you instrument them for APM.</li>
 <li>Navigate to the Splunk O11y 'Data Setup' page, and search for <code>lambda</code> (you may have to click <code>Extend search across all integrations</code>). Select <code>AWS Lambda (Serverless instrumentation)</code>, and click <code>Add Integration</code>.</li>
 <li>For 'Function name', enter the name of the first Lambda function you will instrument (e.g. <code>watchlistUpdater</code>). Select your Splunk access token (make sure it has the right permissions for APM), and enter a name for this app's environment (e.g. <code>lambda-app</code>). Click 'Next'. <strong>Make sure the environment name is the same for all your functions in this app.</strong></li>
-<li>On the 'Install Integration' page, select <code>Python</code>. Follow the steps on this page to add the Splunk OTel layer and set the environment variables. For the ARN, use <code>arn:aws:lambda:us-east-1:254067382080:layer:splunk-apm:51</code>. <img src="https://smathur-splunk.github.io/workshops/images/step11-1.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-2.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-3.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-4.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-5.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-6.png" style="width:50%"/></li>
+<li>On the 'Install Integration' page, select <code>Python</code>. Follow the steps on this page to add the Splunk OTel layer and set the environment variables. For the ARN, use <code>arn:aws:lambda:us-east-1:254067382080:layer:splunk-apm:54</code>. <img src="https://smathur-splunk.github.io/workshops/images/step11-1.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-2.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-3.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-4.png" style="width:50%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-5.png" style="width:80%"/> <img src="https://smathur-splunk.github.io/workshops/images/step11-6.png" style="width:50%"/></li>
 <li>Phew! That was a lot. Now repeat Step 11 for all 4 Lambda functions. (You do not need to go through the Splunk O11y GDI wizard again; simply make the changes necessary in AWS.)</li>
 </ol>
 
@@ -726,7 +742,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
       
     
   </small>

@@ -12,14 +12,14 @@
         <meta name="author" content="Siddharth Mathur">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/snmp_agent/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/otel_java/">
       
       <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>SNMP Agent Setup (Sending Data) - Splunk Observability Workshops</title>
+        <title>Point Java App to OTel and View Data - Splunk Observability Workshops</title>
       
     
     
@@ -55,9 +55,9 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - SNMP Agent Setup (Sending Data)">
+  <meta property="og:title" content="Splunk Observability Workshops - Point Java App to OTel and View Data">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/snmp_agent/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/otel_java/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -84,6 +84,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#add-java-auto-instrumentation-library" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -143,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SNMP Agent Setup (Sending Data)
+              Point Java App to OTel and View Data
             
           </span>
         </div>
@@ -232,15 +237,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../snmp_intro/" class="md-tabs__link md-tabs__link--active">
+      <a href="../snmp_intro/" class="md-tabs__link">
         SNMP Insights
       </a>
     </li>
@@ -250,13 +253,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../otel_intro/" class="md-tabs__link">
+      <a href="../otel_intro/" class="md-tabs__link md-tabs__link--active">
         OTel to Splunk Core and O11y
       </a>
     </li>
@@ -477,14 +482,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -529,19 +532,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../snmp_agent/" class="md-nav__link">
         SNMP Agent Setup (Sending Data)
       </a>
-      
     </li>
   
 
@@ -587,12 +582,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -683,11 +680,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../otel_java/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Point Java App to OTel and View Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Point Java App to OTel and View Data
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-java-auto-instrumentation-library" class="md-nav__link">
+    Add Java Auto-Instrumentation Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-data-in-splunk-enterprise" class="md-nav__link">
+    Validate Data in Splunk Enterprise
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-data-in-splunk-observability-cloud" class="md-nav__link">
+    Validate data in Splunk Observability Cloud
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -727,34 +775,67 @@
                 
 
 
-  <h1>SNMP Agent Setup (Sending Data)</h1>
+  <h1>Point Java App to OTel and View Data</h1>
 
+<h3 id="add-java-auto-instrumentation-library">Add Java Auto-Instrumentation Library<a class="headerlink" href="#add-java-auto-instrumentation-library" title="Permanent link">&para;</a></h3>
 <ol>
+<li>On the host runnign your Java app: In the root directory of your Java app, download the auto-instrumentation library by running:
+<div class="highlight"><pre><span></span><code>curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/splunk-otel-javaagent.jar -o splunk-otel-javaagent.jar
+</code></pre></div></li>
 <li>
-<p>Download snmpd
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install snmpd
-sudo nano /etc/snmp/snmpd.conf
+<p>Set the following environment variables (replace <code>&lt;APP_NAME&gt;</code>, <code>&lt;ENV_NAME&gt;</code>, and <code>&lt;GATEWAY_IP&gt;</code>):
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s1">&#39;&lt;APP_NAME&gt;&#39;</span>
+<span class="nb">export</span> <span class="nv">OTEL_RESOURCE_ATTRIBUTES</span><span class="o">=</span><span class="s1">&#39;deployment.environment=&lt;ENV_NAME&gt;&#39;</span>
+<span class="nb">export</span> <span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:4317&#39;</span>
 </code></pre></div></p>
 </li>
 <li>
-<p>Inside <code>snmpd.conf</code>, change the line <code>agentaddress  127.0.0.1,[::1]</code> to <code>agentAddress udp:161,udp6:[::1]:161</code> and on a new line, add <code>rocommunity public</code>. Save these changes to the file. See example <a href="https://gist.githubusercontent.com/smathur-splunk/4660aab9c9aed7bac8bc95c20ec6afb4/raw/10ac402b17da5603abf2b8b19a4582599cda0a23/snmpd.conf">here</a>.</p>
-</li>
-<li>
-<p>Restart snmpd and check the status
-<div class="highlight"><pre><span></span><code>sudo service snmpd restart
-sudo service snmpd status
+<p>Finally, run your app with the <code>javaagent</code> tag added to specify the auto-instrumentation library (<code>&lt;GATEWAY_IP&gt;</code> may be <code>localhost</code> if the OTel collector is running on the same VM):
+<div class="highlight"><pre><span></span><code>java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.endpoint<span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:9943&#39;</span> <span class="se">\</span>
+-jar myapp.jar
+</code></pre></div>
+If you are using the <a href="https://github.com/spring-projects/spring-petclinic">Spring PetClinic</a> app, run this command instead, from the app's root directory:
+<div class="highlight"><pre><span></span><code>java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.endpoint<span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:9943&#39;</span> -jar target/spring-petclinic-*-SNAPSHOT.jar
 </code></pre></div></p>
 </li>
 </ol>
-<p>At this point, the agent has been set up to send data to SC4SNMP. Now on to setting up SC4SNMP itself!</p>
+<h3 id="validate-data-in-splunk-enterprise">Validate Data in Splunk Enterprise<a class="headerlink" href="#validate-data-in-splunk-enterprise" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Trace search (in Splunk/SPL) for validating ingestion and search:
+<div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apm_traces</span><span class="w"> </span><span class="p">(</span><span class="k">last</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">minutes</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></li>
+<li>
+<p>Metric search for validating ingestion:
+<div class="highlight"><pre><span></span><code><span class="o">|</span><span class="w"> </span><span class="n">mcatalog</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="n">metric_name</span><span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="n">apm_metrics</span><span class="w"></span>
+</code></pre></div>
+Metric search for validating search:
+<div class="highlight"><pre><span></span><code><span class="o">|</span><span class="w"> </span><span class="n">mstats</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">_value</span><span class="p">)</span><span class="w"> </span><span class="n">prestats</span><span class="o">=</span><span class="n">t</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="n">apm_metrics</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">metric_name</span><span class="o">=</span><span class="ss">&quot;runtime.jvm.memory.*&quot;</span><span class="w"> </span><span class="n">span</span><span class="o">=</span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">metric_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">timechart</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">_value</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;Avg&quot;</span><span class="w"> </span><span class="n">span</span><span class="o">=</span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">metric_name</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Learn how to work with metric data in Splunk Enterprise/Cloud. See:</p>
+</li>
+<li>
+<p><a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Metrics/Visualize">Splunk Enterprise/Cloud docs: Visualize metrics in the Analytics Workspace</a></p>
+</li>
+<li><a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)</a></li>
+</ol>
+<h3 id="validate-data-in-splunk-observability-cloud">Validate data in Splunk Observability Cloud<a class="headerlink" href="#validate-data-in-splunk-observability-cloud" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Login to Splunk Observability Cloud and check for <a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">JVM metrics</a> by searching <code>jvm</code> in Metric Finder. </p>
+</li>
+<li>
+<p>Check for traces in APM (on the service map and in the traces view), and also check for Code Profiling data in APM. If using a database, check DB Query Perfomance in APM.</p>
+</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
       
     
   </small>
@@ -779,7 +860,7 @@ sudo service snmpd status
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../snmp_intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+        <a href="../otel_o11y/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Point OTel to Splunk Observability" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -788,20 +869,20 @@ sudo service snmpd status
               <span class="md-footer__direction">
                 Previous
               </span>
-              Introduction
+              Point OTel to Splunk Observability
             </div>
           </div>
         </a>
       
       
         
-        <a href="../snmp_host/" class="md-footer__link md-footer__link--next" aria-label="Next: SC4SNMP Setup (Receiving Data)" rel="next">
+        <a href="../otel_res/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              SC4SNMP Setup (Receiving Data)
+              Resources
             </div>
           </div>
           <div class="md-footer__button md-icon">

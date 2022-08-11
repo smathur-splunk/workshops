@@ -9,7 +9,7 @@
         <meta name="description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
       
       
-        <meta name="author" content="Sales Engineering GSS">
+        <meta name="author" content="Siddharth Mathur">
       
       
         <link rel="canonical" href="https://smathur-splunk.github.io/workshops/otel_core/">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Send data to Splunk Enterprise/Cloud - Splunk Observability Workshops</title>
+        <title>Point OTel to Splunk Enterprise/Cloud - Splunk Observability Workshops</title>
       
     
     
@@ -55,7 +55,7 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Send data to Splunk Enterprise/Cloud">
+  <meta property="og:title" content="Splunk Observability Workshops - Point OTel to Splunk Enterprise/Cloud">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
   <meta property="og:url" content="https://smathur-splunk.github.io/workshops/otel_core/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-app-to-send-data-to-splunk-enterprise-part-1" class="md-skip">
+        <a href="#use-curl-to-validate-otel-collector-gateway-functioning-correctly" class="md-skip">
           Skip to content
         </a>
       
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Send data to Splunk Enterprise/Cloud
+              Point OTel to Splunk Enterprise/Cloud
             
           </span>
         </div>
@@ -604,6 +604,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4">
@@ -660,12 +662,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Send data to Splunk Enterprise/Cloud
+          Point OTel to Splunk Enterprise/Cloud
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Send data to Splunk Enterprise/Cloud
+        Point OTel to Splunk Enterprise/Cloud
       </a>
       
         
@@ -682,36 +684,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-app-to-send-data-to-splunk-enterprise-part-1" class="md-nav__link">
-    Configure App to send data to Splunk Enterprise (part 1)
+  <a href="#use-curl-to-validate-otel-collector-gateway-functioning-correctly" class="md-nav__link">
+    Use cURL to Validate OTel Collector Gateway functioning correctly
   </a>
-  
-    <nav class="md-nav" aria-label="Configure App to send data to Splunk Enterprise (part 1)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#add-java-auto-instrumentation-library" class="md-nav__link">
-    Add Java Auto-Instrumentation Library
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#validate-data-in-splunk-enterprise" class="md-nav__link">
-    Validate data in Splunk Enterprise
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learn-how-to-work-with-metric-data" class="md-nav__link">
-    Learn how to work with metric data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -731,7 +706,21 @@
   
     <li class="md-nav__item">
       <a href="../otel_o11y/" class="md-nav__link">
-        Send data to Splunk Observability
+        Point OTel to Splunk Observability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otel_java/" class="md-nav__link">
+        Point Java App to OTel and View Data
       </a>
     </li>
   
@@ -772,56 +761,61 @@
                 
 
 
-  <h1>Send data to Splunk Enterprise/Cloud</h1>
+  <h1>Point OTel to Splunk Enterprise/Cloud</h1>
 
-<h2 id="configure-app-to-send-data-to-splunk-enterprise-part-1">Configure App to send data to Splunk Enterprise (part 1)<a class="headerlink" href="#configure-app-to-send-data-to-splunk-enterprise-part-1" title="Permanent link">&para;</a></h2>
-<h3 id="add-java-auto-instrumentation-library">Add Java Auto-Instrumentation Library<a class="headerlink" href="#add-java-auto-instrumentation-library" title="Permanent link">&para;</a></h3>
 <ol>
-<li>In the root directory of your Java app, download the auto-instrumentation library by running:
-<div class="highlight"><pre><span></span><code>curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/splunk-otel-javaagent.jar -o splunk-otel-javaagent.jar
+<li>Configure OTel Collector exporters: On your VM running OTel, open <code>/etc/otel/collector/gateway_config.yaml</code> for editing. Add to exporters, replacing <code>&lt;SPLUNK_IP&gt;</code>, <code>&lt;SPLUNK_HEC_TOKEN&gt;</code>, and <code>&lt;SPLUNK_METRICS_HEC_TOKEN&gt;</code> (use <code>http</code> or <code>https</code> depending on how your HEC endpoint is configured in Splunk Enterprise/Cloud):
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">splunk_hec</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;SPLUNK_HEC_TOKEN&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;SPLUNK_IP&gt;:8088/services/collector/raw&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
+<span class="w">    </span><span class="nt">sourcetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
+<span class="w">  </span><span class="nt">splunk_hec/metrics</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;SPLUNK_METRICS_HEC_TOKEN&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;SPLUNK_IP&gt;:8088/services/collector&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span><span class="w"></span>
+<span class="w">    </span><span class="nt">sourcetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel_metrics</span><span class="w"></span>
 </code></pre></div></li>
 <li>
-<p>Set the following environment variables (replace <code>&lt;APP_NAME&gt;</code>, <code>&lt;ENV_NAME&gt;</code>, and <code>&lt;GATEWAY_IP&gt;</code>:
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s1">&#39;&lt;APP_NAME&gt;&#39;</span>
-<span class="nb">export</span> <span class="nv">OTEL_RESOURCE_ATTRIBUTES</span><span class="o">=</span><span class="s1">&#39;deployment.environment=&lt;ENV_NAME&gt;&#39;</span>
-<span class="nb">export</span> <span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:4317&#39;</span>
+<p>Configure OTel Collector pipelines. In <code>/etc/otel/collector/gateway_config.yaml</code>, add the exporters we created to <code>service.pipelines</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pipelines</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">traces</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metrics</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec/metrics</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metrics/internal</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec/metrics</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">logs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">logs/profiling</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">receivers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">otlp</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">processors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">memory_limiter</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">batch</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">splunk_hec</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div></p>
 </li>
 <li>
-<p>Finally, run your app with the <code>javaagent</code> tag added to specify the auto-instrumentation library:
-<div class="highlight"><pre><span></span><code>java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.endpoint<span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:9943&#39;</span> <span class="se">\</span>
--jar myapp.jar
-</code></pre></div>
-If you are using the <a href="https://github.com/spring-projects/spring-petclinic">Spring PetClinic</a> app, run this command instead (from the app's root directory):
-<div class="highlight"><pre><span></span><code>java -javaagent:./splunk-otel-javaagent.jar -Dsplunk.profiler.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.enabled<span class="o">=</span><span class="nb">true</span> -Dsplunk.metrics.endpoint<span class="o">=</span><span class="s1">&#39;http://&lt;GATEWAY_IP&gt;:9943&#39;</span> -jar target/spring-petclinic-*-SNAPSHOT.jar
+<p>Run the OTel Collector:
+<div class="highlight"><pre><span></span><code><span class="nv">SPLUNK_ACCESS_TOKEN</span><span class="o">=</span><span class="m">0</span> <span class="nv">SPLUNK_REALM</span><span class="o">=</span>us0 ./otelcol_linux_amd64
 </code></pre></div></p>
 </li>
 </ol>
-<h3 id="validate-data-in-splunk-enterprise">Validate data in Splunk Enterprise<a class="headerlink" href="#validate-data-in-splunk-enterprise" title="Permanent link">&para;</a></h3>
+<h3 id="use-curl-to-validate-otel-collector-gateway-functioning-correctly">Use cURL to Validate OTel Collector Gateway functioning correctly<a class="headerlink" href="#use-curl-to-validate-otel-collector-gateway-functioning-correctly" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Trace search (in Splunk/SPL) for validating ingestion and search:
-<div class="highlight"><pre><span></span><code>index = apm_poc_traces (last 15 minutes)
-</code></pre></div></li>
-<li>Metric search for validating ingestion:
-<div class="highlight"><pre><span></span><code>| mcatalog values(metric_name) WHERE index=apm_poc_metrics
-</code></pre></div>
-Metric search for validating search:
-<div class="highlight"><pre><span></span><code>| mstats avg(_value) prestats=t WHERE index=apm_poc_metrics AND metric_name=&quot;runtime.jvm.memory.*&quot; span=1m by metric_name | timechart avg(_value) as &quot;Avg&quot; span=1m by metric_name
+<li>Run this cURL command to ensure the OTel gateway is running (port <code>4318</code> must be accessible on the VM):
+<div class="highlight"><pre><span></span><code>curl -X POST http://&lt;GATEWAY_IP&gt;:4318/v1/traces
+   -H <span class="s1">&#39;Content-Type: application/json&#39;</span>
+   -d <span class="s1">&#39;{&quot;resourceSpans&quot;: [{&quot;resource&quot;: {&quot;attributes&quot;: [{&quot;key&quot;: &quot;service.name&quot;,&quot;value&quot;: {&quot;stringValue&quot;: &quot;curl-test-otel-pipeline&quot;}}]},&quot;instrumentationLibrarySpans&quot;: [{&quot;spans&quot;: [{&quot;traceId&quot;: &quot;71699b6fe85982c7c8995ea3d9c95df2&quot;,&quot;spanId&quot;: &quot;3c191d03fa8be065&quot;,&quot;name&quot;: &quot;test-span&quot;,&quot;kind&quot;: 1,&quot;droppedAttributesCount&quot;: 0,&quot;events&quot;: [],&quot;droppedEventsCount&quot;: 0,              &quot;status&quot;: {&quot;code&quot;: 1}}],&quot;instrumentationLibrary&quot;: {&quot;name&quot;: &quot;local-curl-example&quot;}}]}] }&#39;</span>
 </code></pre></div></li>
 </ol>
-<h3 id="learn-how-to-work-with-metric-data">Learn how to work with metric data<a class="headerlink" href="#learn-how-to-work-with-metric-data" title="Permanent link">&para;</a></h3>
-<p>See:</p>
-<ul>
-<li><a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Metrics/Visualize">Splunk Enterprise docs: Visualize metrics in the Analytics Workspace</a></li>
-<li><a href="https://docs.splunk.com/Observability/gdi/get-data-in/application/java/configuration/java-otel-metrics-attributes.html#jvm-metrics">Metrics and attributes collected by the Splunk OTel Java agent (JVM metrics)</a></li>
-</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
       
     
   </small>
@@ -862,13 +856,13 @@ Metric search for validating search:
       
       
         
-        <a href="../otel_o11y/" class="md-footer__link md-footer__link--next" aria-label="Next: Send data to Splunk Observability" rel="next">
+        <a href="../otel_o11y/" class="md-footer__link md-footer__link--next" aria-label="Next: Point OTel to Splunk Observability" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Send data to Splunk Observability
+              Point OTel to Splunk Observability
             </div>
           </div>
           <div class="md-footer__button md-icon">
