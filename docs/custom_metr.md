@@ -7,10 +7,6 @@ Now that you've got an understanding of the different types of metrics, and the 
 
 2. Send in a custom metric using the following command. Specify whether you want it to be a `gauge`, `counter`, or `cumulative counter`. 
 
-- **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
-
-- **Optional:** Add any key-value pairs that you wish to have under `dimensions`, and specify the `timestamp`. You do not need to specify these.
-
 ```bash
 curl -X POST "https://ingest.{REALM}.signalfx.com/v2/datapoint" \
     -H "Content-Type: application/json" \
@@ -29,7 +25,11 @@ curl -X POST "https://ingest.{REALM}.signalfx.com/v2/datapoint" \
         }'
 ```
 
-3. Run the command, and you should see an output `"OK"`. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.
+3. **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
+
+4. **Optional:** Add any key-value pairs that you wish to have under `dimensions`, and specify the `timestamp`. You do not need to specify these.
+
+5. Run the command, and you should see an output `"OK"`. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.
 
 ### Source
 - [Sending custom datapoints](https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics)
@@ -43,49 +43,47 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 
 1. Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. Save and run this Python script, to verify that random numbers between 1 and 100 are being generated every 5 seconds.
 
-```python
-from random import *
-import time
-import requests
-import json
+	```python
+	from random import *
+	import time
+	import requests
+	import json
 
-while True:
-    random_number = randint(1, 100)
-    print(random_number)
-    time.sleep(5)
-```
+	while True:
+	    random_number = randint(1, 100)
+	    print(random_number)
+	    time.sleep(5)
+	```
 
 2. Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. Inside the `while` loop, add the code below to your Python script. (Make sure this code is **inside** the `while` loop, and indented one level.) 
 
-- Set `metrics_dimensions` equal to a dict of key-value pairs that you'd like to use as dimensions. As an example, you might set it equal to `{'rng':'python', 'script':'random_gen.py'}`
+	*Tip: you may want to move `time.sleep(5)` to the bottom of the `while` loop, after the `print` statement.*
 
-- Replace `METRIC_NAME` with the desired metric name (you may want to prefix this with `custom.` for easy searching). 
+	```python
+	    metrics_list = []
+	    metrics_dimensions = {'DIMENSION_1':'VALUE_1', 'DIMENSION_2':'VALUE_2'}
+	    metrics_list.append({'metric':'METRIC_NAME', 'value':random_number, 'timestamp':int(time.time()*1000), 'dimensions':metrics_dimensions})
 
-- Replace `<REALM>` and `SPLUNK_ACCESS_TOKEN` with your corresponding values.
+	    metrics_data = {'gauge':metrics_list}
+	    
+	    metrics_url = 'https://ingest.<REALM>.signalfx.com/v2/datapoint'
+	    metrics_headers = {'Content-Type':'application/json', 'X-SF-TOKEN':'SPLUNK_ACCESS_TOKEN'}
+	    send_metrics = requests.post(metrics_url, headers=metrics_headers, data=json.dumps(metrics_data))
 
-- Note that here we have a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send. 
+	    print(send_metrics, send_metrics.json())
+	```
+
+3. Set `metrics_dimensions` equal to a dict of key-value pairs that you'd like to use as dimensions. As an example, you might set it equal to `{'rng':'python', 'script':'random_gen.py'}`
+
+4. Replace `METRIC_NAME` with the desired metric name (you may want to prefix this with `custom.` for easy searching). 
+
+5. Replace `<REALM>` and `SPLUNK_ACCESS_TOKEN` with your corresponding values.
+
+6. The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py). Note that here we have a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send. 
 	- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
 	- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
 
-*Tip: you may want to move `time.sleep(5)` to the bottom of the `while` loop, after the `print` statement.*
-
-```python
-    metrics_list = []
-    metrics_dimensions = {'DIMENSION_1':'VALUE_1', 'DIMENSION_2':'VALUE_2'}
-    metrics_list.append({'metric':'METRIC_NAME', 'value':random_number, 'timestamp':int(time.time()*1000), 'dimensions':metrics_dimensions})
-
-    metrics_data = {'gauge':metrics_list}
-    
-    metrics_url = 'https://ingest.<REALM>.signalfx.com/v2/datapoint'
-    metrics_headers = {'Content-Type':'application/json', 'X-SF-TOKEN':'SPLUNK_ACCESS_TOKEN'}
-    send_metrics = requests.post(metrics_url, headers=metrics_headers, data=json.dumps(metrics_data))
-
-    print(send_metrics, send_metrics.json())
-```
-
-The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py).
-
-3. Finally, run the Python script, and you should see an output `<Response [200]> OK`. And that's it! You've got a custom metric automatically being generated by this script. Let's see how we can do this in Java.
+7. Finally, run the Python script, and you should see an output `<Response [200]> OK`. And that's it! You've got a custom metric automatically being generated by this script. Let's see how we can do this in Java.
 
 ### Java
 1. Download [this Java code]() that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability.
