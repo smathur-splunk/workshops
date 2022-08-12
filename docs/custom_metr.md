@@ -80,7 +80,9 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 5. Replace `<REALM>` and `SPLUNK_ACCESS_TOKEN` with your corresponding values.
 
 6. The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py).
-	Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send. 
+	
+	Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send.
+
 		- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
 		- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
 
