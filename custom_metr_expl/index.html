@@ -12,14 +12,14 @@
         <meta name="author" content="Siddharth Mathur">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/lambda_conc/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/custom_metr_expl/">
       
       <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Conclusion - Splunk Observability Workshops</title>
+        <title>Metrics Demystified (Heavy Reading) - Splunk Observability Workshops</title>
       
     
     
@@ -55,9 +55,9 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Conclusion">
+  <meta property="og:title" content="Splunk Observability Workshops - Metrics Demystified (Heavy Reading)">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/lambda_conc/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/custom_metr_expl/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -84,6 +84,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#whats-the-difference-between-a-gauge-and-a-counter" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -143,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conclusion
+              Metrics Demystified (Heavy Reading)
             
           </span>
         </div>
@@ -216,15 +221,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lambda_intro/" class="md-tabs__link md-tabs__link--active">
+      <a href="../lambda_intro/" class="md-tabs__link">
         AWS Lambda in Splunk APM
       </a>
     </li>
@@ -250,13 +253,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../custom_intro/" class="md-tabs__link">
+      <a href="../custom_intro/" class="md-tabs__link md-tabs__link--active">
         Custom Metrics & Dashboards
       </a>
     </li>
@@ -345,14 +350,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -459,19 +462,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lambda_conc/" class="md-nav__link">
         Conclusion
       </a>
-      
     </li>
   
 
@@ -603,12 +598,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -653,11 +650,116 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../custom_metr_expl/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Metrics Demystified (Heavy Reading)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Metrics Demystified (Heavy Reading)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-the-difference-between-a-gauge-and-a-counter" class="md-nav__link">
+    What's the difference between a gauge and a counter?
+  </a>
+  
+    <nav class="md-nav" aria-label="What's the difference between a gauge and a counter?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gauge-vs-counter" class="md-nav__link">
+    Gauge vs. Counter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter-vs-cumulative-counter" class="md-nav__link">
+    Counter vs. Cumulative Counter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metric-dimensions-custom-properties-and-tags" class="md-nav__link">
+    Metric Dimensions, Custom Properties, and Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Metric Dimensions, Custom Properties, and Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dimensions" class="md-nav__link">
+    Dimensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-properties" class="md-nav__link">
+    Custom Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    Tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources_1" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -843,26 +945,142 @@
                 
 
 
-  <h1>Conclusion</h1>
+  <h1>Metrics Demystified (Heavy Reading)</h1>
 
-<p>At this point, you've created a microservices app in AWS using a CloudFormation template, and instrumented it for Splunk APM. As you probably noticed, the process of instrumenting Lambda functions for APM is simple, but tedious. This is where CloudFormation can help. For this workshop, the process of creating the app was automated, but the instrumentation can be automated too.</p>
-<p>To see what the final result <em>should</em> look like if you did everything correctly (and how the instrumentation process can be automated), create a stack with <a href="https://github.com/smathur-splunk/lambda-apm-workshop/blob/main/AlpacaTraderWorkshop.template">this CloudFormation template</a> and run the 3 functions in the same order: 'watchlistUpdater', 'stockRanker', and 'buyStocks'.</p>
-<p>Alternatively, the final state can be deployed with the following AWS CLI Command, executed from the root of this project directory:
-<div class="highlight"><pre><span></span><code>aws cloudformation create-stack <span class="se">\</span>
---stack-name &lt;some-arbitrary-name&gt; <span class="se">\</span>
---template-body &lt;local-path-to-<span class="s1">&#39;AlpacaTraderWorkshop.template&#39;</span>&gt; <span class="se">\</span>
---region us-east-1 <span class="se">\</span>
---parameters <span class="nv">ParameterKey</span><span class="o">=</span>bucketName,ParameterValue<span class="o">=</span>&lt;some-arbitrary-s3-bucket-name&gt; <span class="se">\</span>
---capabilities CAPABILITY_NAMED_IAM <span class="se">\</span>
---role-arn &lt;the-cfn-serivce-account-role-arn&gt;
-</code></pre></div></p>
+<h2 id="whats-the-difference-between-a-gauge-and-a-counter">What's the difference between a gauge and a counter?<a class="headerlink" href="#whats-the-difference-between-a-gauge-and-a-counter" title="Permanent link">&para;</a></h2>
+<h3 id="gauge-vs-counter">Gauge vs. Counter<a class="headerlink" href="#gauge-vs-counter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Gauge</strong> = value of a measurement at a specific point in time<ul>
+<li>Examples: fan speed, CPU utilization, and memory usage</li>
+<li>One way to tell that a metric is a gauge is if it makes more sense to <strong>average</strong> the metric's values over time, rather than sum them.<ul>
+<li>In fact, this is what is happening behind the scenes. Observability Cloud applies the SignalFlow <code>average()</code> function to data points for gauge metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the <em>average</em> of 10 data points, as opposed to the sum. It wouldn't make sense to sum the CPU utilization, for example, or the resulting value might be &gt;100% and not reflective of the metric's true value.</li>
+</ul>
+</li>
+<li>Reporting frequency is most important for gauges, as higher frequency is typically associated with higher accuracy.</li>
+</ul>
+</li>
+<li><strong>Counter</strong> = number of new occurrences or items since the last measurement<ul>
+<li>Examples: number of requests handled, emails sent, and errors encountered</li>
+<li>One way to tell that a metric is a counter is if it makes more sense to <strong>sum</strong> the metric's values over time, rather than average them.<ul>
+<li>This is what is happening behind the scenes. Observability Cloud applies the SignalFlow <code>sum()</code> function to data points for counter metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the sum of 10 data points. It wouldn't make sense to average the count of errors, for example, or the resulting value would be lower than the true count of errors in any given timeframe.</li>
+</ul>
+</li>
+<li>Counters can only take integer values of zero or greater and are reset to zero at the conclusion of each reporting interval.</li>
+</ul>
+</li>
+</ul>
+<p>... But wait, there's more!</p>
+<h3 id="counter-vs-cumulative-counter">Counter vs. Cumulative Counter<a class="headerlink" href="#counter-vs-cumulative-counter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cumulative counter</strong> = total number of occurrences or items since the measurement began<ul>
+<li>Examples: number of successful jobs, number of logged-in users, and number of warnings</li>
+<li><em>Cumulative counter</em> metrics differ from <em>counter</em> metrics in the following ways:<ul>
+<li>Cumulative counters only reset to 0 when the monitored machine or application restarts or when the counter value reaches the maximum value representable (2 32 or 2 64 ).</li>
+<li>In most cases, you’re interested in how much the metric value changed between measurements.</li>
+<li>Observability Cloud applies the SignalFlow <code>delta()</code> function to data points for cumulative counter metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the change between the first data point received and the 10th data point received.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.splunk.com/Observability/metrics-and-metadata/metric-types.html">Identify metric types</a></li>
+<li><a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a></li>
+</ul>
+<h2 id="metric-dimensions-custom-properties-and-tags">Metric Dimensions, Custom Properties, and Tags<a class="headerlink" href="#metric-dimensions-custom-properties-and-tags" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">Metadata</th>
+<th>Created</th>
+<th>Format</th>
+<th>Used for?</th>
+<th>Group by?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Dimensions</td>
+<td>When Observability Cloud ingests data</td>
+<td>Key-value pair</td>
+<td>Metrics</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td align="center">Custom properties</td>
+<td>After ingest, through the user interface or REST API</td>
+<td>Key-value pair</td>
+<td>Metrics, dimensions, tags, charts, and detectors</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td align="center">Tags</td>
+<td>After ingest, through the user interface or REST API</td>
+<td>String</td>
+<td>Dimensions, charts, and detectors</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dimensions">Dimensions<a class="headerlink" href="#dimensions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dimensions</strong> = <em>immutable</em> key-value pairs sent in with metrics <strong>at the time of ingest</strong> to add context to the metrics<ul>
+<li>Examples: <code>"hostname":"server1"</code>, <code>"host_location":"Tokyo"</code></li>
+<li>A data point can have one or more dimensions. For example, a dimension can be a host or instance for infrastructure metrics, or it can be an application component or service tier for application metrics.</li>
+<li>This is what determines a metric time series (MTS), which is a collection of data points that have the same metric AND the same dimension key-value pairs.</li>
+<li><strong>When do I apply dimensions?</strong> When you need to define a unique metric time series (remember that each unique combination of dimensions counts as 1 MTS), or when you want to keep track of historical values for your metadata (e.g. adding a dimension for <code>version</code>).<ul>
+<li>You can define up to 36 dimensions per MTS. See full list of dimension criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#dimensions-criteria">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="custom-properties">Custom Properties<a class="headerlink" href="#custom-properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Custom properties</strong> = key-value pairs applied to metrics or dimensions <strong>after ingest</strong> to add context to the metrics or dimensions<ul>
+<li>When Splunk Observability Cloud assigns a different name to a dimension coming from an integration or monitor, the dimension becomes a custom property as it is assigned to the metric after ingest. <ul>
+<li>For example, the AWS EC2 integration sends the <code>instance-id</code> dimension, and Observability Cloud renames the dimension to <code>aws_instance_id</code>. This <em>renamed</em> dimension is now a <em>custom property</em>. See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metric-names.html">Guidance for metric and dimension names</a> for more.</li>
+</ul>
+</li>
+<li>You can also assign your own custom properties to dimensions of existing metrics. <ul>
+<li>For example, you can add the custom property <code>use: QA</code> to the host dimension of your metrics to indicate that the host that is sending the data is used for QA. The custom property <code>use: QA</code> then propagates to all MTS with that dimension value. </li>
+</ul>
+</li>
+<li>You can also add custom properties to charts and detectors. In this case, the custom properties identify some aspect of the chart or detector that you can query.</li>
+<li><strong>When do I apply custom properties?</strong> When you have metadata that provides additional context for your metrics, but you don’t need the metadata for the MTS to be uniquely identifiable (unlike dimensions, 1 MTS isn't determined by a unique combination of custom properties). Or, when you have metadata you know you want to make changes to in the future (dimensions are immutable).</li>
+<li><strong>How do I apply custom properties?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.<ul>
+<li>You can define up to 75 custom properties per dimension. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#custom-properties-criteria">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tags</strong> = labels or keywords (not key-value pairs) applied to metrics, dimensions, detectors, and other objects <strong>after ingest</strong><ul>
+<li>Use tags when you want to give the same searchable value to multiple dimensions/custom properties, or charts/detectors, for easy filtering.</li>
+<li>You can apply custom properties to tags. When you do this, anything that has that tag inherits the properties associated with the tag. For example, if you associate the <code>"tier:web"</code> custom property with the <code>"apps-team"</code> tag, Observability Cloud attaches the <code>"tier:web"</code> custom property to any metric or dimension that has the <code>"apps-team"</code> tag. </li>
+<li><strong>When do I apply tags?</strong> Use tags when there is a one-to-many relationship between the tag and the objects you are assigning it to (one tag can be applied to many different resources and is not a unique identifier).</li>
+<li><strong>How do I apply tags?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.<ul>
+<li>You can have up to 50 tags per dimension/custom property/chart/detector. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#tags-criteria">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sources_1">Sources<a class="headerlink" href="#sources_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a></li>
+<li><a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html">Dimensions, custom properties, and tags</a></li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2022</span>
       
     
   </small>
@@ -887,7 +1105,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../lambda_tags/" class="md-footer__link md-footer__link--prev" aria-label="Previous: [Optional] Custom Span Tags" rel="prev">
+        <a href="../custom_intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -896,20 +1114,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              [Optional] Custom Span Tags
+              Introduction
             </div>
           </div>
         </a>
       
       
         
-        <a href="../lambda_ts/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting" rel="next">
+        <a href="../custom_metr/" class="md-footer__link md-footer__link--next" aria-label="Next: Ingesting Custom Metrics" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Troubleshooting
+              Ingesting Custom Metrics
             </div>
           </div>
           <div class="md-footer__button md-icon">
