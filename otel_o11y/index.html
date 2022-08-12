@@ -915,10 +915,13 @@
 <li>
 <p>Run the Otel Collector, this time specifying your <code>SPLUNK_ACCESS_TOKEN</code> and <code>SPLUNK_REALM</code> for Splunk Observability Cloud:
 <div class="highlight"><pre><span></span><code><span class="nv">SPLUNK_ACCESS_TOKEN</span><span class="o">=</span>&lt;ACCESS_TOKEN&gt; <span class="nv">SPLUNK_REALM</span><span class="o">=</span>&lt;REALM&gt; ./otelcol_linux_amd64
-</code></pre></div>
-To get your access token see <a href="https://docs.splunk.com/observability/admin/authentication-tokens/org-tokens.html">Create and manage organization access tokens using Splunk Observability Cloud</a>.</p>
+</code></pre></div></p>
 </li>
 </ol>
+<p>If you would like to run the OTel Collector in agent mode, run:
+<div class="highlight"><pre><span></span><code><span class="nv">SPLUNK_ACCESS_TOKEN</span><span class="o">=</span>&lt;ACCESS_TOKEN&gt; <span class="nv">SPLUNK_REALM</span><span class="o">=</span>&lt;REALM&gt; ./otelcol_linux_amd64 --config<span class="o">=</span>/etc/otel/collector/agent_config.yaml
+</code></pre></div></p>
+<p>To get your access token see <a href="https://docs.splunk.com/observability/admin/authentication-tokens/org-tokens.html">Create and manage organization access tokens using Splunk Observability Cloud</a>.</p>
 <h3 id="use-curl-to-validate-otel-collector-gateway-functioning-correctly">Use cURL to Validate OTel Collector Gateway functioning correctly<a class="headerlink" href="#use-curl-to-validate-otel-collector-gateway-functioning-correctly" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Again, you may want to run this cURL command to ensure the OTel gateway is running properly (port <code>4318</code> must be accessible on the VM):
@@ -933,7 +936,7 @@ To get your access token see <a href="https://docs.splunk.com/observability/admi
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2022</span>
       
     
   </small>

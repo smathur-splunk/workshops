@@ -903,7 +903,7 @@
 </ol>
 <h3 id="install-the-otel-collector-gateway">Install the OTel Collector Gateway<a class="headerlink" href="#install-the-otel-collector-gateway" title="Permanent link">&para;</a></h3>
 <ol>
-<li>On your Linux VM, install the OTel Collector. If the VM does not have internet access, download these files separately and manually copy them to the VM.
+<li>On your Linux VM, install the OTel Collector. If the VM does not have internet access, download these files separately and manually copy them to the VM. <strong>Note</strong>: If you wish to run the OTel Collector in <em>agent</em> mode, simply replace <code>gateway</code> with <code>agent</code> in the commands below.
 <div class="highlight"><pre><span></span><code>sudo apt install wget
 wget https://github.com/signalfx/splunk-otel-collector/releases/download/v0.57.0/otelcol_linux_amd64
 chmod a+x otelcol_linux_amd64
@@ -919,7 +919,7 @@ sudo mv gateway_config.yaml /etc/otel/collector/
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2022</span>
       
     
   </small>
