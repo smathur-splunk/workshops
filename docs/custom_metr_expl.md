@@ -1,5 +1,11 @@
 ## What's the difference between a gauge and a counter?
 
+| Metric type        | Definition                                                       | Examples                                                                 | Default function |
+|:------------------:|------------------------------------------------------------------|--------------------------------------------------------------------------|------------------|
+| Gauge              | value of a measurement at a specific point in time               | fan speed, CPU utilization, memory usage                                 | `average()`      |
+| Counter            | number of new occurrences or items since the last measurement    | number of requests handled, emails sent, errors encountered              | `sum()`          |
+| Cumulative Counter | total number of occurrences or items since the measurement began | number of successful jobs, number of logged-in users, number of warnings | `delta()`        |
+
 ### Gauge vs. Counter
 - **Gauge** = value of a measurement at a specific point in time
 	- Examples: fan speed, CPU utilization, and memory usage
