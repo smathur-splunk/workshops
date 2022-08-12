@@ -7,23 +7,23 @@ Now that you've got an understanding of the different types of metrics, and the 
 
 2. Send in a custom metric using the following command. Specify whether you want it to be a `gauge`, `counter`, or `cumulative counter`. 
 
-```bash
-curl -X POST "https://ingest.{REALM}.signalfx.com/v2/datapoint" \
-    -H "Content-Type: application/json" \
-    -H "X-SF-Token: <value>" \
-    -d '{
-            "gauge": [
-                {
-                    "metric": "string",
-                    "value": 0,
-                    "dimensions": {
-                        "<property name>": "any"
-                    },
-                    "timestamp": 1557225030000
-                }
-            ]
-        }'
-```
+	```bash
+	curl -X POST "https://ingest.{REALM}.signalfx.com/v2/datapoint" \
+	    -H "Content-Type: application/json" \
+	    -H "X-SF-Token: <value>" \
+	    -d '{
+	            "gauge": [
+	                {
+	                    "metric": "string",
+	                    "value": 0,
+	                    "dimensions": {
+	                        "<property name>": "any"
+	                    },
+	                    "timestamp": 1557225030000
+	                }
+	            ]
+	        }'
+	```
 
 3. **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
 
@@ -55,7 +55,7 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 	    time.sleep(5)
 	```
 
-2. Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. Inside the `while` loop, add the code below to your Python script. (Make sure this code is **inside** the `while` loop, and indented one level.) 
+2. Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. **Inside** the `while` loop, add the code below to your Python script. (Make sure this code is indented one level.) 
 
 	*Tip: you may want to move `time.sleep(5)` to the bottom of the `while` loop, after the `print` statement.*
 
@@ -79,7 +79,7 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 
 5. Replace `<REALM>` and `SPLUNK_ACCESS_TOKEN` with your corresponding values.
 
-6. The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py). Note that here we have a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send. 
+6. The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py). Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send. 
 	- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
 	- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
 
