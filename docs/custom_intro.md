@@ -8,6 +8,7 @@ This workshop will give you a better understanding of how metrics work in Splunk
 		- To install `pip`, follow the steps [here](https://pip.pypa.io/en/stable/installation).
 		- To install `requests`, run `pip install requests`
 - Access to a Splunk Observability org
+	- You will need an **ingest** type access token (there should be a default that you can use)
 
 ## Key Assumptions
 

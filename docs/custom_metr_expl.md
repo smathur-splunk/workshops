@@ -2,9 +2,9 @@
 
 | Metric type        | Definition                                                       | Examples                                                                 | Default function |
 |:------------------:|------------------------------------------------------------------|--------------------------------------------------------------------------|------------------|
-| Gauge              | value of a measurement at a specific point in time               | fan speed, CPU utilization, memory usage                                 | `average()`      |
-| Counter            | number of new occurrences or items since the last measurement    | number of requests handled, emails sent, errors encountered              | `sum()`          |
-| Cumulative Counter | total number of occurrences or items since the measurement began | number of successful jobs, number of logged-in users, number of warnings | `delta()`        |
+| Gauge              | Value of a measurement at a specific point in time               | Fan speed, CPU utilization, memory usage                                 | `average()`      |
+| Counter            | Number of new occurrences or items since the last measurement    | Number of requests handled, emails sent, errors encountered              | `sum()`          |
+| Cumulative Counter | Total number of occurrences or items since the measurement began | Number of successful jobs, number of logged-in users, number of warnings | `delta()`        |
 
 ### Gauge vs. Counter
 - **Gauge** = value of a measurement at a specific point in time
