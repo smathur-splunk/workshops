@@ -83,8 +83,8 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 	
 	Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send.
 
-		- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
-		- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
+	- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
+	- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
 
 	The resulting JSON body would look like this:
 	```json
