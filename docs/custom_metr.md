@@ -27,11 +27,11 @@ Sources:
 
 ### Metric Dimensions, Custom Properties, and Tags
 
-| Metadata | Created | Format | Used for? | Group by? |
-| :-: | - | - | - | - | - |
-| Dimensions | When Observability Cloud ingests data | Key-value pair | Metrics | Yes |
-| Custom properties | After ingest, through the user interface or REST API | Key-value pair | Metrics, dimensions, tags, charts, and detectors | Yes |
-| Tags | After ingest, through the user interface or REST API | String | Dimensions, charts, and detectors | No |
+| Metadata          | Created                                              | Format         | Used for?                                        | Group by? |
+|:-----------------:|------------------------------------------------------|----------------|--------------------------------------------------|-----------|
+| Dimensions        | When Observability Cloud ingests data                | Key-value pair | Metrics                                          | Yes       |
+| Custom properties | After ingest, through the user interface or REST API | Key-value pair | Metrics, dimensions, tags, charts, and detectors | Yes       |
+| Tags              | After ingest, through the user interface or REST API | String         | Dimensions, charts, and detectors                | No        |
 
 - **Dimensions** = *immutable* key-value pairs sent in with metrics **at the time of ingest** to add context to the metrics
 	- Examples: `"hostname":"server1"`, `"host_location":"Tokyo"`
