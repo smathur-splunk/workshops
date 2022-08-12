@@ -1034,9 +1034,10 @@
 <li>
 <p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>.</p>
 <p>Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metrics that you would like to send.</p>
-<div class="highlight"><pre><span></span><code>- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
-- If you&#39;re only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it&#39;ll just have one item.
-</code></pre></div>
+<ul>
+<li>This way, multiple metrics can be sent in the same request (this applies to cURL too). </li>
+<li>If you're only sending one metric, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
+</ul>
 <p>The resulting JSON body would look like this:
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;gauge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
