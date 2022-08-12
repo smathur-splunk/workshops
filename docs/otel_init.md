@@ -9,7 +9,7 @@
 - To ingest metrics, create another HEC token and assign it to the `apm_metrics` index. Make sure to copy the "Token Value" here as well.
 
 ### Install the OTel Collector Gateway
-3. On your Linux VM, install the OTel Collector. If the VM does not have internet access, download these files separately and manually copy them to the VM.
+3. On your Linux VM, install the OTel Collector. If the VM does not have internet access, download these files separately and manually copy them to the VM. **Note**: If you wish to run the OTel Collector in *agent* mode, simply replace `gateway` with `agent` in the commands below.
 ```bash
 sudo apt install wget
 wget https://github.com/signalfx/splunk-otel-collector/releases/download/v0.57.0/otelcol_linux_amd64

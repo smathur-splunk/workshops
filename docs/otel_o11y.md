@@ -27,6 +27,12 @@ service:
 ```bash
 SPLUNK_ACCESS_TOKEN=<ACCESS_TOKEN> SPLUNK_REALM=<REALM> ./otelcol_linux_amd64
 ```
+
+If you would like to run the OTel Collector in agent mode, run:
+```bash
+SPLUNK_ACCESS_TOKEN=<ACCESS_TOKEN> SPLUNK_REALM=<REALM> ./otelcol_linux_amd64 --config=/etc/otel/collector/agent_config.yaml
+```
+
 To get your access token see [Create and manage organization access tokens using Splunk Observability Cloud](https://docs.splunk.com/observability/admin/authentication-tokens/org-tokens.html).
 
 ### Use cURL to Validate OTel Collector Gateway functioning correctly

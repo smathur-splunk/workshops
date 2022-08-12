@@ -36,6 +36,11 @@ service:
 SPLUNK_ACCESS_TOKEN=0 SPLUNK_REALM=us0 ./otelcol_linux_amd64
 ```
 
+If you would like to run the OTel Collector in agent mode, run:
+```bash
+SPLUNK_ACCESS_TOKEN=0 SPLUNK_REALM=us0 ./otelcol_linux_amd64 --config=/etc/otel/collector/agent_config.yaml
+```
+
 ### Use cURL to Validate OTel Collector Gateway functioning correctly
 7. Run this cURL command to ensure the OTel gateway is running (port `4318` must be accessible on the VM):
 ```bash
