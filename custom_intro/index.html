@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#under-construction" class="md-skip">
+        <a href="#requirements" class="md-skip">
           Skip to content
         </a>
       
@@ -644,8 +644,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Introduction
@@ -661,8 +659,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -888,18 +884,27 @@
                 
 
 
-<h1 id="under-construction">⚠️ Under Construction ⚠️<a class="headerlink" href="#under-construction" title="Permanent link">&para;</a></h1>
+  <h1>Introduction</h1>
+
+<p>This workshop will give you a better understanding of how metrics work in Splunk Observability. It will guide you through the process of creating custom metrics (using multiple methods) and building custom dashboards.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Terminal/Command line: for running cURL commands to send custom metrics</li>
-<li>Python 3 and/or Java: for generating data and sending custom metrics</li>
+<li>Python 3 and/or Java: for generating data and sending custom metrics<ul>
+<li>For Python, you will need to have <code>pip</code> and the <code>requests</code> library installed. <ul>
+<li>To install <code>pip</code>, follow the steps <a href="https://pip.pypa.io/en/stable/installation">here</a>.</li>
+<li>To install <code>requests</code>, run <code>pip install requests</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Access to a Splunk Observability org</li>
 </ul>
 <h2 id="key-assumptions">Key Assumptions<a class="headerlink" href="#key-assumptions" title="Permanent link">&para;</a></h2>
 <p>This workshop assumes that you have:</p>
 <ul>
-<li>Access to a terminal/command line</li>
-<li>Access to a Splunk Observability org</li>
-<li>Some familiarity with building charts and dashboards</li>
+<li>Some Python or Java experience</li>
+<li>Familiarity with building charts and dashboards</li>
 </ul>
 
   <hr>

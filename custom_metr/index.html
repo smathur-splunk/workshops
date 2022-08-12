@@ -720,11 +720,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#programmatic-ingestion-method" class="md-nav__link">
-    Programmatic Ingestion Method
+  <a href="#programmatic-ingestion-methods" class="md-nav__link">
+    Programmatic Ingestion Methods
   </a>
   
-    <nav class="md-nav" aria-label="Programmatic Ingestion Method">
+    <nav class="md-nav" aria-label="Programmatic Ingestion Methods">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -952,17 +952,92 @@
 <h2 id="curl-ingestion-method">cURL Ingestion Method<a class="headerlink" href="#curl-ingestion-method" title="Permanent link">&para;</a></h2>
 <p>Now that you've got an understanding of the different types of metrics, and the attributes you can apply to them, let's dive into actually creating and sending in some custom metrics!</p>
 <ol>
-<li>One way to send custom metrics is simply using a cURL command. To begin, identify your Splunk Observability Cloud realm and access token (must be an <strong>ingest</strong> token).</li>
+<li>
+<p>One way to send custom metrics is simply using a cURL command. To begin, identify your Splunk Observability Cloud realm and access token (must be an <strong>ingest</strong> token).</p>
+</li>
+<li>
+<p>Send in a custom metric using the following command. Specify whether you want it to be a <code>gauge</code>, <code>counter</code>, or <code>cumulative counter</code>. </p>
+</li>
+</ol>
+<p><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</p>
+<p><strong>Optional:</strong> Add any key-value pairs that you wish to have under <code>dimensions</code>, and specify the <code>timestamp</code>. You do not need to specify these.</p>
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="s2">&quot;https://ingest.{REALM}.signalfx.com/v2/datapoint&quot;</span> <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s2">&quot;X-SF-Token: &lt;value&gt;&quot;</span> <span class="se">\</span>
+    -d <span class="s1">&#39;{</span>
+<span class="s1">            &quot;gauge&quot;: [</span>
+<span class="s1">                {</span>
+<span class="s1">                    &quot;metric&quot;: &quot;string&quot;,</span>
+<span class="s1">                    &quot;value&quot;: 0,</span>
+<span class="s1">                    &quot;dimensions&quot;: {</span>
+<span class="s1">                        &quot;&lt;property name&gt;&quot;: &quot;any&quot;</span>
+<span class="s1">                    },</span>
+<span class="s1">                    &quot;timestamp&quot;: 1557225030000</span>
+<span class="s1">                }</span>
+<span class="s1">            ]</span>
+<span class="s1">        }&#39;</span>
+</code></pre></div>
+<ol>
+<li>You should see an output <code>"OK"</code>. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.</li>
 </ol>
 <h3 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics">Sending custom datapoints</a></li>
 <li><a href="https://dev.splunk.com/observability/docs/apibasics/api_list">Full endpoint summary of the Splunk Observability API</a></li>
 </ul>
-<h2 id="programmatic-ingestion-method">Programmatic Ingestion Method<a class="headerlink" href="#programmatic-ingestion-method" title="Permanent link">&para;</a></h2>
+<h2 id="programmatic-ingestion-methods">Programmatic Ingestion Methods<a class="headerlink" href="#programmatic-ingestion-methods" title="Permanent link">&para;</a></h2>
+<p>Similar to using a cURL command to send custom metrics, you can also add POST requests to your code to send relevant data from the code. Conceptually this is the same as using cURL, just with different syntax. Because Java and Python are common use cases, they are included here as examples.</p>
 <h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. Save and run this Python script, to verify that random numbers between 1 and 100 are being generated every 5 seconds.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">random_number</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random_number</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. Inside the <code>while</code> loop, add the boilerplate lines below to your Python script. (Make sure this code is <strong>inside</strong> the <code>while</code> loop, and indented one level.) </li>
+</ol>
+<p>Set <code>metrics_dimensions</code> equal to a dict of key-value pairs that you'd like to use as dimensions. As an example, you might set it equal to <code>{'rng':'python', 'script':'random_gen.py'}</code></p>
+<p>Replace <code>METRIC_NAME</code> with the desired metric name (you may want to prefix this with <code>custom.</code> for easy searching). Replace <code>&lt;REALM&gt;</code> and <code>SPLUNK_ACCESS_TOKEN</code> with your corresponding values.</p>
+<p>Note that here we have a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metrics that you would like to send. This way, multiple metrics can be sent at the same time. If you're only sending one metric, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</p>
+<p><em>Tip: you may want to move <code>time.sleep(5)</code> to the bottom of the <code>while</code> loop, after the <code>print</code> statements.</em></p>
+<div class="highlight"><pre><span></span><code>    <span class="n">metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">metrics_dimensions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DIMENSION_1&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_1&#39;</span><span class="p">,</span> <span class="s1">&#39;DIMENSION_2&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_2&#39;</span><span class="p">}</span>
+    <span class="n">metrics_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;METRIC_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">random_number</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">*</span><span class="mi">1000</span><span class="p">),</span> <span class="s1">&#39;dimensions&#39;</span><span class="p">:</span><span class="n">metrics_dimensions</span><span class="p">})</span>
+
+    <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gauge&#39;</span><span class="p">:</span><span class="n">metrics_list</span><span class="p">}</span>
+
+    <span class="n">metrics_url</span> <span class="o">=</span> <span class="s1">&#39;https://ingest.&lt;REALM&gt;.signalfx.com/v2/datapoint&#39;</span>
+    <span class="n">metrics_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;X-SF-TOKEN&#39;</span><span class="p">:</span><span class="s1">&#39;SPLUNK_ACCESS_TOKEN&#39;</span><span class="p">}</span>
+    <span class="n">send_metrics</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">metrics_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">metrics_headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">send_metrics</span><span class="p">,</span> <span class="n">send_metrics</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<p>The final Python script should look something like <a href="">this</a>.</p>
+<ol>
+<li>Finally, run the Python script, and you should see an output <code>&lt;Response [200]&gt; OK</code>. And that's it! You've got a custom metric automatically being generated by this script. Let's move on to see how we can do this in Java.</li>
+</ol>
 <h3 id="java">Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Download <a href="">this Java code</a> that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability.</p>
+</li>
+<li>
+<p>For the sake of avoiding redundancy, most of the Java script has already been written for you. Simply replace the realm and access token values, and you're good to go.</p>
+</li>
+<li>
+<p>Compile the Java code, and then run the program. You should see an output.</p>
+</li>
+</ol>
 <h2 id="viewing-custom-metrics-usage">Viewing Custom Metrics Usage<a class="headerlink" href="#viewing-custom-metrics-usage" title="Permanent link">&para;</a></h2>
+<p>Before we take a look at the metric data itself in Splunk Observability, let's take a look at how we can manage custom metrics usage, against our org license. There are a couple ways to do this.</p>
 <h3 id="usage-by-token">Usage by Token<a class="headerlink" href="#usage-by-token" title="Permanent link">&para;</a></h3>
 <h3 id="overall-usage">Overall Usage<a class="headerlink" href="#overall-usage" title="Permanent link">&para;</a></h3>
 

@@ -948,6 +948,36 @@
   <h1>Metrics Demystified (Heavy Reading)</h1>
 
 <h2 id="whats-the-difference-between-a-gauge-and-a-counter">What's the difference between a gauge and a counter?<a class="headerlink" href="#whats-the-difference-between-a-gauge-and-a-counter" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">Metric type</th>
+<th>Definition</th>
+<th>Examples</th>
+<th>Default function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Gauge</td>
+<td>value of a measurement at a specific point in time</td>
+<td>fan speed, CPU utilization, memory usage</td>
+<td><code>average()</code></td>
+</tr>
+<tr>
+<td align="center">Counter</td>
+<td>number of new occurrences or items since the last measurement</td>
+<td>number of requests handled, emails sent, errors encountered</td>
+<td><code>sum()</code></td>
+</tr>
+<tr>
+<td align="center">Cumulative Counter</td>
+<td>total number of occurrences or items since the measurement began</td>
+<td>number of successful jobs, number of logged-in users, number of warnings</td>
+<td><code>delta()</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="gauge-vs-counter">Gauge vs. Counter<a class="headerlink" href="#gauge-vs-counter" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Gauge</strong> = value of a measurement at a specific point in time<ul>
