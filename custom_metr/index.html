@@ -947,7 +947,7 @@
 <h2 id="metric-demystified">Metric Demystified<a class="headerlink" href="#metric-demystified" title="Permanent link">&para;</a></h2>
 <h3 id="whats-the-difference-between-a-gauge-and-a-counter">What's the difference between a gauge and a counter?<a class="headerlink" href="#whats-the-difference-between-a-gauge-and-a-counter" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Gauge metric</strong> = value of a measurement at a specific point in time<ul>
+<li><strong>Gauge</strong> = value of a measurement at a specific point in time<ul>
 <li>Examples: fan speed, CPU utilization, and memory usage</li>
 <li>One way to tell that a metric is a gauge is if it makes more sense to <strong>average</strong> the metric's values over time, rather than sum them.<ul>
 <li>In fact, this is what is happening behind the scenes. Observability Cloud applies the SignalFlow <code>average()</code> function to data points for gauge metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the <em>average</em> of 10 data points, as opposed to the sum. It wouldn't make sense to sum the CPU utilization, for example, or the resulting value might be &gt;100% and not reflective of the metric's true value.</li>
@@ -956,7 +956,7 @@
 <li>Reporting frequency is most important for gauges, as higher frequency is typically associated with higher accuracy.</li>
 </ul>
 </li>
-<li><strong>Counter metric</strong> = number of new occurrences or items since the last measurement<ul>
+<li><strong>Counter</strong> = number of new occurrences or items since the last measurement<ul>
 <li>Examples: number of requests handled, emails sent, and errors encountered</li>
 <li>One way to tell that a metric is a counter is if it makes more sense to <strong>sum</strong> the metric's values over time, rather than average them.<ul>
 <li>This is what is happening behind the scenes. Observability Cloud applies the SignalFlow <code>sum()</code> function to data points for counter metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the sum of 10 data points. It wouldn't make sense to average the count of errors, for example, or the resulting value would be lower than the true count of errors in any given timeframe.</li>
@@ -968,7 +968,7 @@
 </ul>
 <p>... But wait, there's more!</p>
 <ul>
-<li><strong>Cumulative counter metric</strong> = total number of occurrences or items since the measurement began<ul>
+<li><strong>Cumulative counter</strong> = total number of occurrences or items since the measurement began<ul>
 <li>Examples: number of successful jobs, number of logged-in users, and number of warnings</li>
 <li><em>Cumulative counter</em> metrics differ from <em>counter</em> metrics in the following ways:<ul>
 <li>Cumulative counters only reset to 0 when the monitored machine or application restarts or when the counter value reaches the maximum value representable (2 32 or 2 64 ).</li>
@@ -983,37 +983,57 @@
 - <a href="https://docs.splunk.com/Observability/metrics-and-metadata/metric-types.html">Identify metric types</a>
 - <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a></p>
 <h3 id="metric-dimensions-custom-properties-and-tags">Metric Dimensions, Custom Properties, and Tags<a class="headerlink" href="#metric-dimensions-custom-properties-and-tags" title="Permanent link">&para;</a></h3>
-<p>|Metadata|Created|Format|Used for?|Group by?|
-|:-:|-|-|-|-|-|
-|Dimensions|When Observability Cloud ingests data|Key-value pair|Metrics|Yes|
-|Custom properties|After ingest, through the user interface or REST API|Key-value pair|Metrics, dimensions, tags, charts, and detectors|Yes|
-|Tags|After ingest, through the user interface or REST API|String|Dimensions, charts, and detectors|No|</p>
-<p><strong>Dimensions</strong> = <em>immutable</em> key-value pairs sent in with metrics <strong>at the time of ingest</strong> to add context to the metrics
-    - Examples: <code>"hostname":"server1"</code>, <code>"host_location":"Tokyo"</code>
-    - A data point can have one or more dimensions. For example, a dimension can be a host or instance for infrastructure metrics, or it can be an application component or service tier for application metrics.
-    - This is what determines a metric time series (MTS), which is a collection of data points that have the same metric AND the same dimension key-value pairs.
-    - <strong>When do I apply dimensions?</strong> When you need to define a unique metric time series (remember that each unique combination of dimensions counts as 1 MTS), or when you want to keep track of historical values for your metadata (e.g. adding a dimension for <code>version</code>).
-    - You can define up to 36 dimensions per MTS. See full list of dimension criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#dimensions-criteria">here</a>.</p>
-<p><strong>Custom properties</strong> = key-value pairs applied to metrics or dimensions <strong>after ingest</strong> to add context to the metrics or dimensions
-    - Examples: 
-    - When Splunk Observability Cloud assigns a different name to a dimension coming from an integration or monitor, the dimension becomes a custom property as it is assigned to the metric after ingest. 
-        - For example, the AWS EC2 integration sends the <code>instance-id</code> dimension, and Observability Cloud renames the dimension to <code>aws_instance_id</code>. This <em>renamed</em> dimension is now a <em>custom property</em>. See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metric-names.html">Guidance for metric and dimension names</a> for more.
-    - You can also assign your own custom properties to dimensions of existing metrics. 
-        - For example, you can add the custom property <code>use: QA</code> to the host dimension of your metrics to indicate that the host that is sending the data is used for QA. The custom property <code>use: QA</code> then propagates to all MTS with that dimension value. 
-    - You can also add custom properties to charts and detectors. In this case, the custom properties identify some aspect of the chart or detector that you can query.
-    - <strong>When do I apply custom properties?</strong> When you have metadata that provides additional context for your metrics, but you don’t need the metadata for the MTS to be uniquely identifiable (unlike dimensions, 1 MTS isn't determined by a unique combination of custom properties). Or, when you have metadata you know you want to make changes to in the future (dimensions are immutable).
-    - <strong>How do I apply custom properties?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.
-    - You can define up to 75 custom properties per dimension. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#custom-properties-criteria">here</a>.</p>
-<p><strong>Tags</strong> = labels or keywords (not key-value pairs) applied to metrics, dimensions, detectors, and other objects <strong>after ingest</strong>
-    - Examples: 
-    - Use tags when you want to give the same searchable value to multiple dimensions/custom properties, or charts/detectors, for easy filtering.
-    - You can apply custom properties to tags. When you do this, anything that has that tag inherits the properties associated with the tag. For example, if you associate the <code>"tier:web"</code> custom property with the <code>"apps-team"</code> tag, Observability Cloud attaches the <code>"tier:web"</code> custom property to any metric or dimension that has the <code>"apps-team"</code> tag. 
-    - <strong>When do I apply tags?</strong> Use tags when there is a one-to-many relationship between the tag and the objects you are assigning it to (one tag can be applied to many different resources and is not a unique identifier).
-    - <strong>How do I apply tags?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.
-    - You can have up to 50 tags per dimension/custom property/chart/detector. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#tags-criteria">here</a>.</p>
-<p>Sources:
-- <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a>
-- <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html">Dimensions, custom properties, and tags</a></p>
+<p>| Metadata | Created | Format | Used for? | Group by? |
+| :-: | - | - | - | - | - |
+| Dimensions | When Observability Cloud ingests data | Key-value pair | Metrics | Yes |
+| Custom properties | After ingest, through the user interface or REST API | Key-value pair | Metrics, dimensions, tags, charts, and detectors | Yes |
+| Tags | After ingest, through the user interface or REST API | String | Dimensions, charts, and detectors | No |</p>
+<ul>
+<li>
+<p><strong>Dimensions</strong> = <em>immutable</em> key-value pairs sent in with metrics <strong>at the time of ingest</strong> to add context to the metrics</p>
+<ul>
+<li>Examples: <code>"hostname":"server1"</code>, <code>"host_location":"Tokyo"</code></li>
+<li>A data point can have one or more dimensions. For example, a dimension can be a host or instance for infrastructure metrics, or it can be an application component or service tier for application metrics.</li>
+<li>This is what determines a metric time series (MTS), which is a collection of data points that have the same metric AND the same dimension key-value pairs.</li>
+<li><strong>When do I apply dimensions?</strong> When you need to define a unique metric time series (remember that each unique combination of dimensions counts as 1 MTS), or when you want to keep track of historical values for your metadata (e.g. adding a dimension for <code>version</code>).</li>
+<li>You can define up to 36 dimensions per MTS. See full list of dimension criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#dimensions-criteria">here</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom properties</strong> = key-value pairs applied to metrics or dimensions <strong>after ingest</strong> to add context to the metrics or dimensions</p>
+<ul>
+<li>Examples: </li>
+<li>When Splunk Observability Cloud assigns a different name to a dimension coming from an integration or monitor, the dimension becomes a custom property as it is assigned to the metric after ingest. <ul>
+<li>For example, the AWS EC2 integration sends the <code>instance-id</code> dimension, and Observability Cloud renames the dimension to <code>aws_instance_id</code>. This <em>renamed</em> dimension is now a <em>custom property</em>. See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metric-names.html">Guidance for metric and dimension names</a> for more.</li>
+</ul>
+</li>
+<li>You can also assign your own custom properties to dimensions of existing metrics. <ul>
+<li>For example, you can add the custom property <code>use: QA</code> to the host dimension of your metrics to indicate that the host that is sending the data is used for QA. The custom property <code>use: QA</code> then propagates to all MTS with that dimension value. </li>
+</ul>
+</li>
+<li>You can also add custom properties to charts and detectors. In this case, the custom properties identify some aspect of the chart or detector that you can query.</li>
+<li><strong>When do I apply custom properties?</strong> When you have metadata that provides additional context for your metrics, but you don’t need the metadata for the MTS to be uniquely identifiable (unlike dimensions, 1 MTS isn't determined by a unique combination of custom properties). Or, when you have metadata you know you want to make changes to in the future (dimensions are immutable).</li>
+<li><strong>How do I apply custom properties?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.</li>
+<li>You can define up to 75 custom properties per dimension. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#custom-properties-criteria">here</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tags</strong> = labels or keywords (not key-value pairs) applied to metrics, dimensions, detectors, and other objects <strong>after ingest</strong></p>
+<ul>
+<li>Examples: </li>
+<li>Use tags when you want to give the same searchable value to multiple dimensions/custom properties, or charts/detectors, for easy filtering.</li>
+<li>You can apply custom properties to tags. When you do this, anything that has that tag inherits the properties associated with the tag. For example, if you associate the <code>"tier:web"</code> custom property with the <code>"apps-team"</code> tag, Observability Cloud attaches the <code>"tier:web"</code> custom property to any metric or dimension that has the <code>"apps-team"</code> tag. </li>
+<li><strong>When do I apply tags?</strong> Use tags when there is a one-to-many relationship between the tag and the objects you are assigning it to (one tag can be applied to many different resources and is not a unique identifier).</li>
+<li><strong>How do I apply tags?</strong> See <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata">Search and edit metadata using the Metadata Catalog</a>.</li>
+<li>You can have up to 50 tags per dimension/custom property/chart/detector. See full list of custom properties criteria <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#tags-criteria">here</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Sources:</p>
+<ul>
+<li><a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a></li>
+<li><a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html">Dimensions, custom properties, and tags</a></li>
+</ul>
 <h2 id="curl-ingestion-method">cURL Ingestion Method<a class="headerlink" href="#curl-ingestion-method" title="Permanent link">&para;</a></h2>
 <h2 id="programmatic-ingestion-method">Programmatic Ingestion Method<a class="headerlink" href="#programmatic-ingestion-method" title="Permanent link">&para;</a></h2>
 <h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
