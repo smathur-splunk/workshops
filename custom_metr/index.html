@@ -983,11 +983,40 @@
 - <a href="https://docs.splunk.com/Observability/metrics-and-metadata/metric-types.html">Identify metric types</a>
 - <a href="https://docs.splunk.com/observability/metrics-and-metadata/metrics.html">Metrics, data points, and metric time series</a></p>
 <h3 id="metric-dimensions-custom-properties-and-tags">Metric Dimensions, Custom Properties, and Tags<a class="headerlink" href="#metric-dimensions-custom-properties-and-tags" title="Permanent link">&para;</a></h3>
-<p>| Metadata | Created | Format | Used for? | Group by? |
-| :-: | - | - | - | - | - |
-| Dimensions | When Observability Cloud ingests data | Key-value pair | Metrics | Yes |
-| Custom properties | After ingest, through the user interface or REST API | Key-value pair | Metrics, dimensions, tags, charts, and detectors | Yes |
-| Tags | After ingest, through the user interface or REST API | String | Dimensions, charts, and detectors | No |</p>
+<table>
+<thead>
+<tr>
+<th align="center">Metadata</th>
+<th>Created</th>
+<th>Format</th>
+<th>Used for?</th>
+<th>Group by?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Dimensions</td>
+<td>When Observability Cloud ingests data</td>
+<td>Key-value pair</td>
+<td>Metrics</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td align="center">Custom properties</td>
+<td>After ingest, through the user interface or REST API</td>
+<td>Key-value pair</td>
+<td>Metrics, dimensions, tags, charts, and detectors</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td align="center">Tags</td>
+<td>After ingest, through the user interface or REST API</td>
+<td>String</td>
+<td>Dimensions, charts, and detectors</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p><strong>Dimensions</strong> = <em>immutable</em> key-value pairs sent in with metrics <strong>at the time of ingest</strong> to add context to the metrics</p>
