@@ -957,8 +957,6 @@
 </li>
 <li>
 <p>Send in a custom metric using the following command. Specify whether you want it to be a <code>gauge</code>, <code>counter</code>, or <code>cumulative counter</code>. </p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>curl -X POST <span class="s2">&quot;https://ingest.{REALM}.signalfx.com/v2/datapoint&quot;</span> <span class="se">\</span>
     -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
     -H <span class="s2">&quot;X-SF-Token: &lt;value&gt;&quot;</span> <span class="se">\</span>
@@ -975,7 +973,7 @@
 <span class="s1">            ]</span>
 <span class="s1">        }&#39;</span>
 </code></pre></div>
-<ol>
+</li>
 <li>
 <p><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</p>
 </li>
@@ -1009,7 +1007,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. Inside the <code>while</code> loop, add the code below to your Python script. (Make sure this code is <strong>inside</strong> the <code>while</code> loop, and indented one level.) </p>
+<p>Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. <strong>Inside</strong> the <code>while</code> loop, add the code below to your Python script. (Make sure this code is indented one level.) </p>
 <p><em>Tip: you may want to move <code>time.sleep(5)</code> to the bottom of the <code>while</code> loop, after the <code>print</code> statement.</em></p>
 <div class="highlight"><pre><span></span><code>    <span class="n">metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">metrics_dimensions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DIMENSION_1&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_1&#39;</span><span class="p">,</span> <span class="s1">&#39;DIMENSION_2&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_2&#39;</span><span class="p">}</span>
@@ -1034,7 +1032,7 @@
 <p>Replace <code>&lt;REALM&gt;</code> and <code>SPLUNK_ACCESS_TOKEN</code> with your corresponding values.</p>
 </li>
 <li>
-<p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>. Note that here we have a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metrics that you would like to send. </p>
+<p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>. Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metrics that you would like to send. </p>
 <ul>
 <li>This way, multiple metrics can be sent in the same request (this applies to cURL too). </li>
 <li>If you're only sending one metric, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
