@@ -3,8 +3,8 @@
 20. Under line 2, add a new line and write `from opentelemetry import trace`.  Under line 6, add **with proper indentation** 
 ```python
 customizedSpan = trace.get_current_span()
-customizedSpan.set_attribute("symbol", ticker);
-customizedSpan.set_attribute("finnhub.token", "brqivm7rh5rc4v2pmq8g");
+customizedSpan.set_attribute("symbol", ticker)
+customizedSpan.set_attribute("finnhub.token", "brqivm7rh5rc4v2pmq8g")
 ```
 The final result should look like this:
 ```python
@@ -16,8 +16,8 @@ def lambda_handler(event, context):
     ticker = event['symbol']
     
     customizedSpan = trace.get_current_span()
-    customizedSpan.set_attribute("symbol", ticker);
-    customizedSpan.set_attribute("finnhub.token", "brqivm7rh5rc4v2pmq8g");
+    customizedSpan.set_attribute("symbol", ticker)
+    customizedSpan.set_attribute("finnhub.token", "brqivm7rh5rc4v2pmq8g")
 ```
 Source: [Instrument your application code to add tags to spans](https://docs.splunk.com/Observability/apm/span-tags/add-context-trace-span.html#instrument-your-application-code-to-add-tags-to-spans)
 
