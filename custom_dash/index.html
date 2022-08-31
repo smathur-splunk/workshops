@@ -979,16 +979,52 @@
 <h1 id="under-construction">⚠️ Under Construction ⚠️<a class="headerlink" href="#under-construction" title="Permanent link">&para;</a></h1>
 <h2 id="finding-custom-metrics">Finding Custom Metrics<a class="headerlink" href="#finding-custom-metrics" title="Permanent link">&para;</a></h2>
 <h3 id="query-metrics-api-method">Query Metrics (API method)<a class="headerlink" href="#query-metrics-api-method" title="Permanent link">&para;</a></h3>
-<p><a href="https://dev.splunk.com/observability/reference/api/metrics_metadata/latest">API Reference docs</a> </p>
-<p>You may refer to the following HTTP GET endpoints when doing this task:</p>
-<ul>
-<li>Query metric: <code>https://api.&lt;realm&gt;.signaflx.com/v2/metric/&lt;metricname&gt;</code></li>
-<li>Query dimension:value <code>https://api.&lt;realm&gt;.signaflx.com/v2/dimension?query=&lt;dim&gt;:&lt;val&gt;</code></li>
-<li>Check if property exists: <code>https://api.&lt;realm&gt;.signaflx.com/v2/dimension?query=_exists_:&lt;prop&gt;</code></li>
-</ul>
-<p>NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to <a href="https://www.w3schools.com/tags/ref_urlencode.ASP">this guide</a>. For example: <code>Zeus, Inc.</code> is encoded as <code>Zeus%2C%20Inc%2E</code>.</p>
+<ol>
+<li>
+<p>Review the table below for a quick guide on querying metrics and metric metadata via the API (<a href="https://dev.splunk.com/observability/reference/api/metrics_metadata/latest">API Reference docs</a>)</p>
+<table>
+<thead>
+<tr>
+<th>Query metric</th>
+<th><code>https://api.&lt;realm&gt;.signaflx.com/v2/metric/&lt;metricname&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query <code>dimension:value</code> pair</td>
+<td><code>https://api.&lt;realm&gt;.signaflx.com/v2/dimension?query=&lt;dim&gt;:&lt;val&gt;</code></td>
+</tr>
+<tr>
+<td>Check if property exists</td>
+<td><code>https://api.&lt;realm&gt;.signaflx.com/v2/dimension?query=_exists_:&lt;prop&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to <a href="https://www.w3schools.com/tags/ref_urlencode.ASP">this guide</a>. For example: <code>Acme, Inc.</code> is encoded as <code>Acme%2C%20Inc%2E</code>.</em></p>
+</li>
+<li>
+<p>As an example, try querying the custom metric that you created in the previous section.</p>
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="s2">&quot;https://api.&lt;realm&gt;.signaflx.com/v2/metric/&lt;metricname&gt;&quot;</span> <span class="se">\</span>
+    -H <span class="s2">&quot;X-SF-Token: &lt;value&gt;&quot;</span>
+</code></pre></div>
+</li>
+</ol>
 <h3 id="metric-finder-ui-method">Metric Finder (UI method)<a class="headerlink" href="#metric-finder-ui-method" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>The other way to find metrics (custom or otherwise) in Splunk Observability is using the Metric Finder. From the left sidebar, navigate to Metric Finder. You can view metrics across your various integrations here, and also search for custom metrics.</p>
+<p><img alt="Metric Finder" src="../images/custom_finder.png" /></p>
+</li>
+<li>
+<p>With the resulting metrics, you can inspect the related properties. Clicking on the metric name will open up a chart for the metric, which you can use to start building out some custom dashboards and alerts.</p>
+<p><img alt="Metric Finder search results" src="../images/custom_search.png" /></p>
+</li>
+</ol>
 <h2 id="customizing-charts">Customizing Charts<a class="headerlink" href="#customizing-charts" title="Permanent link">&para;</a></h2>
+<ol>
+<li>In Metric Finder, search for and click on the custom metric that you generated in the <a href="https://smathur-splunk.github.io/workshops/custom_metr">previous section</a>. This will open up a chart that we can modify and add to a custom dashboard.</li>
+</ol>
+<p><img alt="Custom metric default chart" src="../images/custom_chart.png" /></p>
 <h3 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h3>
 <h3 id="analytic-functions">Analytic Functions<a class="headerlink" href="#analytic-functions" title="Permanent link">&para;</a></h3>
 <h3 id="rollups">Rollups<a class="headerlink" href="#rollups" title="Permanent link">&para;</a></h3>

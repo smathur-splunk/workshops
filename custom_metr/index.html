@@ -716,11 +716,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#programmatic-ingestion-methods" class="md-nav__link">
-    Programmatic Ingestion Methods
+  <a href="#programmatic-ingestion-method" class="md-nav__link">
+    Programmatic Ingestion Method
   </a>
   
-    <nav class="md-nav" aria-label="Programmatic Ingestion Methods">
+    <nav class="md-nav" aria-label="Programmatic Ingestion Method">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -965,7 +965,7 @@
 </code></pre></div>
 <ul>
 <li><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</li>
-<li><strong>Optional:</strong> You may add key-value pairs under <code>dimensions</code> and/or specify the <code>timestamp</code> (milliseconds since epoch), but you do not <em>need</em> to specify these.</li>
+<li><strong>Optional:</strong> You may add key-value pairs under <code>dimensions</code> and/or specify the <code>timestamp</code> (milliseconds since epoch), but you do not <em>need</em> to specify these. For this workshop, it is recommended that you <em>remove</em> the timestamp (it will automatically be generated).</li>
 </ul>
 </li>
 <li>
@@ -977,7 +977,7 @@
 <li><a href="https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics">Sending custom datapoints</a></li>
 <li><a href="https://dev.splunk.com/observability/docs/apibasics/api_list">Full endpoint summary of the Splunk Observability API</a></li>
 </ul>
-<h2 id="programmatic-ingestion-methods">Programmatic Ingestion Methods<a class="headerlink" href="#programmatic-ingestion-methods" title="Permanent link">&para;</a></h2>
+<h2 id="programmatic-ingestion-method">Programmatic Ingestion Method<a class="headerlink" href="#programmatic-ingestion-method" title="Permanent link">&para;</a></h2>
 <p>Similar to using a cURL command to send custom metrics, you can also add POST requests to your code to send relevant data from the code. Conceptually this is the same as using cURL, just with different syntax. Because Python is a common and fairly straightforward use case, it's included here as an example.</p>
 <h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <ol>
