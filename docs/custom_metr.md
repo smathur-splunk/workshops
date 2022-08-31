@@ -24,11 +24,10 @@ Now that you've got an understanding of the different types of metrics, and the 
 	        }'
 	```
 
-3. **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
+	- **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
+	- **Optional:** You may add key-value pairs under `dimensions` and/or specify the `timestamp`, but you do not *need* to specify these.
 
-4. **Optional:** Add any key-value pairs that you wish to have under `dimensions`, and specify the `timestamp`. You do not need to specify these.
-
-5. Run the command, and you should see an output `"OK"`. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.
+3. Run the command, and you should see an output `"OK"`. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.
 
 ### Sources
 - [Sending custom datapoints](https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics)
@@ -40,7 +39,7 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 
 ### Python
 
-1. Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. Save and run this Python script, to verify that random numbers between 1 and 100 are being generated every 5 seconds.
+1. Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. As an example, save and run this Python script, which will generate random numbers between 1 and 100, every 5 seconds.
 
 	```python
 	from random import *
@@ -54,7 +53,7 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 	    time.sleep(5)
 	```
 
-2. Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. **Inside** the `while` loop, add the code below to your Python script. (Make sure this code is indented one level.) 
+2. Next, modify the script to create a POST request, which will send the random numbers generated as values of a metric. **Inside** the `while` loop from above, add the code below to your Python script. (Make sure this code is indented **one** level, just as it's pasted here.) 
 
 	*Tip: you may want to move `time.sleep(5)` to the bottom of the `while` loop, after the `print` statement.*
 
@@ -80,10 +79,10 @@ Similar to using a cURL command to send custom metrics, you can also add POST re
 
 6. The final Python script should look something like [this](https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py).
 	
-	Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metrics that you would like to send.
+	Note that in the code there is a dict called `metrics_data`, which has a key of `gauge` (this is where you specify the metric type), and a value of a list `metrics_list`. That list should contain all the gauge metric data points that you would like to send, with each metric data point represented as a dict. That dict contains the metric name, value, timestamp, and dimensions.
 
-	- This way, multiple metrics can be sent in the same request (this applies to cURL too). 
-	- If you're only sending one metric, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
+	- This way, multiple metrics/data points can be sent in the same request (this applies to cURL too). 
+	- If you're only sending one metric data point, the value for `gauge` (or any other metric type) *still* needs to be a list, it'll just have one item.
 
 	The resulting JSON body would look like this:
 	```json
