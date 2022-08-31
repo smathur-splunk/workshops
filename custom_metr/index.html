@@ -970,12 +970,10 @@
 <span class="s1">            ]</span>
 <span class="s1">        }&#39;</span>
 </code></pre></div>
-</li>
-<li>
-<p><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</p>
-</li>
-<li>
-<p><strong>Optional:</strong> Add any key-value pairs that you wish to have under <code>dimensions</code>, and specify the <code>timestamp</code>. You do not need to specify these.</p>
+<ul>
+<li><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</li>
+<li><strong>Optional:</strong> You may add key-value pairs under <code>dimensions</code> and/or specify the <code>timestamp</code>, but you do not <em>need</em> to specify these.</li>
+</ul>
 </li>
 <li>
 <p>Run the command, and you should see an output <code>"OK"</code>. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.</p>
@@ -991,7 +989,7 @@
 <h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. Save and run this Python script, to verify that random numbers between 1 and 100 are being generated every 5 seconds.</p>
+<p>Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. As an example, save and run this Python script, which will generate random numbers between 1 and 100, every 5 seconds.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -1004,7 +1002,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Next, modify the script to create a POST request, which will send the random numbers being generated as values of a metric. <strong>Inside</strong> the <code>while</code> loop, add the code below to your Python script. (Make sure this code is indented one level.) </p>
+<p>Next, modify the script to create a POST request, which will send the random numbers generated as values of a metric. <strong>Inside</strong> the <code>while</code> loop from above, add the code below to your Python script. (Make sure this code is indented <strong>one</strong> level, just as it's pasted here.) </p>
 <p><em>Tip: you may want to move <code>time.sleep(5)</code> to the bottom of the <code>while</code> loop, after the <code>print</code> statement.</em></p>
 <div class="highlight"><pre><span></span><code>    <span class="n">metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">metrics_dimensions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DIMENSION_1&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_1&#39;</span><span class="p">,</span> <span class="s1">&#39;DIMENSION_2&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_2&#39;</span><span class="p">}</span>
@@ -1030,10 +1028,10 @@
 </li>
 <li>
 <p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>.</p>
-<p>Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metrics that you would like to send.</p>
+<p>Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metric data points that you would like to send, with each metric data point represented as a dict. That dict contains the metric name, value, timestamp, and dimensions.</p>
 <ul>
-<li>This way, multiple metrics can be sent in the same request (this applies to cURL too). </li>
-<li>If you're only sending one metric, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
+<li>This way, multiple metrics/data points can be sent in the same request (this applies to cURL too). </li>
+<li>If you're only sending one metric data point, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
 </ul>
 <p>The resulting JSON body would look like this:
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
