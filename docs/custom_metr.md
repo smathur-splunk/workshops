@@ -25,7 +25,7 @@ Now that you've got an understanding of the different types of metrics, and the 
 	```
 
 	- **Required:** Set the `{REALM}` and access token (`X-SF-Token`). Replace `string` with the name of the metric, and set the `value` for the metric. Replace `gauge` if you'd like to create a different kind of metric, but this is a required field.
-	- **Optional:** You may add key-value pairs under `dimensions` and/or specify the `timestamp` (milliseconds since epoch), but you do not *need* to specify these.
+	- **Optional:** You may add key-value pairs under `dimensions` and/or specify the `timestamp` (milliseconds since epoch), but you do not *need* to specify these. For this workshop, it is recommended that you *remove* the timestamp (it will automatically be generated).
 
 3. Run the command, and you should see an output `"OK"`. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.
 
@@ -33,7 +33,7 @@ Now that you've got an understanding of the different types of metrics, and the 
 - [Sending custom datapoints](https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics)
 - [Full endpoint summary of the Splunk Observability API](https://dev.splunk.com/observability/docs/apibasics/api_list)
 
-## Programmatic Ingestion Methods
+## Programmatic Ingestion Method
 
 Similar to using a cURL command to send custom metrics, you can also add POST requests to your code to send relevant data from the code. Conceptually this is the same as using cURL, just with different syntax. Because Python is a common and fairly straightforward use case, it's included here as an example.
 
