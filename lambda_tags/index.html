@@ -885,8 +885,8 @@
 <li>
 <p>Under line 2, add a new line and write <code>from opentelemetry import trace</code>.  Under line 6, add <strong>with proper indentation</strong> 
 <div class="highlight"><pre><span></span><code><span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
-<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
-<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
+<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">)</span>
+<span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">)</span>
 </code></pre></div>
 The final result should look like this:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
@@ -897,8 +897,8 @@ The final result should look like this:
     <span class="n">ticker</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span>
 
     <span class="n">customizedSpan</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_current_span</span><span class="p">()</span>
-    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">);</span>
-    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">);</span>
+    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="n">ticker</span><span class="p">)</span>
+    <span class="n">customizedSpan</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;finnhub.token&quot;</span><span class="p">,</span> <span class="s2">&quot;brqivm7rh5rc4v2pmq8g&quot;</span><span class="p">)</span>
 </code></pre></div>
 Source: <a href="https://docs.splunk.com/Observability/apm/span-tags/add-context-trace-span.html#instrument-your-application-code-to-add-tags-to-spans">Instrument your application code to add tags to spans</a></p>
 </li>
@@ -912,7 +912,7 @@ Source: <a href="https://docs.splunk.com/Observability/apm/span-tags/add-context
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 31, 2022</span>
       
     
   </small>

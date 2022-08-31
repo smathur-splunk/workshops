@@ -2,112 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://smathur-splunk.github.io/workshops/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_dash/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_intro/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_metr/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_metr_expl/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_app/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_conc/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_gen/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_instr/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_intro/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_tags/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/lambda_ts/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_core/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_init/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_intro/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_java/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_o11y/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/otel_res/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/snmp_agent/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/snmp_host/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/snmp_intro/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://smathur-splunk.github.io/workshops/snmp_ts/</loc>
-         <lastmod>2022-08-12</lastmod>
+         <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
