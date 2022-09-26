@@ -5,7 +5,6 @@
 1. Review the table below for a quick guide on querying metrics and metric metadata via the API ([API Reference docs](https://dev.splunk.com/observability/reference/api/metrics_metadata/latest))
  
 	| Query metric                 | `https://api.<realm>.signaflx.com/v2/metric/<metricname>`             |
-	|------------------------------|-----------------------------------------------------------------------|
 	| Query `dimension:value` pair | `https://api.<realm>.signaflx.com/v2/dimension?query=<dim>:<val>`     |
 	| Check if property exists     | `https://api.<realm>.signaflx.com/v2/dimension?query=_exists_:<prop>` |
 
@@ -34,6 +33,12 @@
 
 ![Custom metric default chart](images/custom_chart.png)
 
+### Chart Types
+
+1. Next, we'll explore each type of visualization (and the respective customization options) with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
+
+	- Line chart
+
 ### Filters
 
 ### Analytic Functions
@@ -48,3 +53,5 @@
 ### Text Notes (Markdown, HTML)
 
 ## Dashboard Permissions
+
+Part of the strategy you may have with your dashboards is to align them to certain teams or audiences, so setting the right read/write permissions is key.

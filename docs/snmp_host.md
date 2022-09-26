@@ -83,13 +83,17 @@ microk8s helm3 upgrade --install snmp -f values.yaml splunk-connect-for-snmp/spl
 `microk8s kubectl logs -f snmp-splunk-connect-for-snmp-inventory-<INVENTORY_POD_NAME> -n sc4snmp`, replacing the pod name with the last part of the "inventory" pod name.
 You should see a line that says `New Record address='<SNMP_AGENT_IP>'`.
 
-9. And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for `sc4snmp`. To see events in Splunk Enterprise/Cloud, search:
-```sql
-index="netops" sourcetype="sc4snmp:event"
-```
-And to see metrics in Splunk Enterprise/Cloud, search:
-```sql
-| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"
-```
+9. And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for `sc4snmp`. 
+
+	![Metric Finder SC4SNMP](images/snmp_finder.png)
+
+	To see events in Splunk Enterprise/Cloud, search:
+	```sql
+	index="netops" sourcetype="sc4snmp:event"
+	```
+	And to see metrics in Splunk Enterprise/Cloud, search:
+	```sql
+	| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"
+	```
 
 ![Custom SNMP Dashboard in Splunk Observability](images/snmp_dash.png)
