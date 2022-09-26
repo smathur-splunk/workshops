@@ -6,9 +6,9 @@
  
 	| Query | URL |
 	|---|---|
-	| Query metric | https://api.<realm>.signaflx.com/v2/metric/<metricname> |
-	| Query `dimension:value` pair | https://api.<realm>.signaflx.com/v2/dimension?query=<dim>:<val> |
-	| Check if property exists | https://api.<realm>.signaflx.com/v2/dimension?query=_exists_:<prop> |
+	| Query metric | `https://api.<realm>.signaflx.com/v2/metric/<metricname>` |
+	| Query `dimension:value` pair | `https://api.<realm>.signaflx.com/v2/dimension?query=<dim>:<val>` |
+	| Check if property exists | `https://api.<realm>.signaflx.com/v2/dimension?query=_exists_:<prop>` |
 
 	*NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to [this guide](https://www.w3schools.com/tags/ref_urlencode.ASP). For example: `Acme, Inc.` is encoded as `Acme%2C%20Inc%2E`.*
 
