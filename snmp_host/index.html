@@ -975,7 +975,9 @@ When making any further changes to <code>values.yaml</code>, run:
 You should see a line that says <code>New Record address='&lt;SNMP_AGENT_IP&gt;'</code>.</p>
 </li>
 <li>
-<p>And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for <code>sc4snmp</code>. To see events in Splunk Enterprise/Cloud, search:
+<p>And that's it! You should now see metrics in Splunk Observability by going to Metric Finder and searching for <code>sc4snmp</code>. </p>
+<p><img alt="Metric Finder SC4SNMP" src="../images/snmp_finder.png" /></p>
+<p>To see events in Splunk Enterprise/Cloud, search:
 <div class="highlight"><pre><span></span><code><span class="k">index</span><span class="o">=</span><span class="ss">&quot;netops&quot;</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="ss">&quot;sc4snmp:event&quot;</span><span class="w"></span>
 </code></pre></div>
 And to see metrics in Splunk Enterprise/Cloud, search:
@@ -990,7 +992,7 @@ And to see metrics in Splunk Enterprise/Cloud, search:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 4, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 26, 2022</span>
       
     
   </small>
