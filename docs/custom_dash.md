@@ -6,22 +6,23 @@
  
 	| Query | URL |
 	|---|---|
-	| Query metric | `https://api.<realm>.signaflx.com/v2/metric/<metricname>` |
-	| Query `dimension:value` pair | `https://api.<realm>.signaflx.com/v2/dimension?query=<dim>:<val>` |
-	| Check if property exists | `https://api.<realm>.signaflx.com/v2/dimension?query=_exists_:<prop>` |
+	| Query metric | `https://api.<realm>.signalfx.com/v2/metric?query=name:<metricname>` |
+	| Query `dimension:value` pair | `https://api.<realm>.signalfx.com/v2/dimension?query=<dim>:<val>` |
+	| Check if property exists | `https://api.<realm>.signalfx.com/v2/dimension?query=_exists_:<prop>` |
 
-	*NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to [this guide](https://www.w3schools.com/tags/ref_urlencode.ASP). For example: `Acme, Inc.` is encoded as `Acme%2C%20Inc%2E`.*
+	*NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to [this guide](https://www.w3schools.com/tags/ref_urlencode.ASP). For example: `Buttercup, Inc.` is encoded as `Buttercup%2C%20Inc%2E`.*
 
 2. As an example, try querying the custom metric that you created in the previous section.
 
 	```bash
-	curl -X POST "https://api.<realm>.signaflx.com/v2/metric/<metricname>" \
-	    -H "X-SF-Token: <value>"
+	curl -X GET "https://api.<realm>.signalfx.com/v2/metric?query=name:<metricname>" \
+	    -H "Content-Type: application/json" \
+	    -H "X-SF-TOKEN: <value>"
 	```
 
 ### Metric Finder (UI method)
 
-1. The other way to find metrics (custom or otherwise) in Splunk Observability is using the Metric Finder. From the left sidebar, navigate to Metric Finder. You can view metrics across your various integrations here, and also search for custom metrics.
+1. The other way to find metrics in Splunk Observability is using the Metric Finder. From the left sidebar, navigate to Metric Finder. You can view metrics across your various integrations here, and also search for custom metrics.
 
 	![Metric Finder](images/custom_finder.png)
 
@@ -37,21 +38,34 @@
 
 ### Chart Types
 
-1. Next, we'll explore each type of visualization (and the respective customization options) with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
+1. Next, we'll explore each type of visualization with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
 
-	- Line chart
+	- Line/area/column chart
 
-	- Area chart
-
-	- Column chart
+		<p float="left">
+			<img src="images/custom_line.png" width="100" />
+			<img src="images/custom_area.png" width="100" /> 
+			<img src="images/custom_column.png" width="100" />
+		</p>
 
 	- Histogram
 
+		![Histogram chart](images/custom_histogram.png)
+
 	- List
+
+		![List view](images/custom_listview.png)
 
 	- Single value
 
+		![Single value](images/custom_singlevalue.png)
+
 	- Heatmap
+
+		<p float="left">
+			<img src="images/custom_heatmap.png" width="100" />
+			<img src="images/custom_demoheatmap.png" width="100" />
+		</p>
 
 	- Event feed
 
