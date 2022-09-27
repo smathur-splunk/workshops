@@ -98,10 +98,6 @@
 		|---|---|
 		| ![Heatmap](images/custom_heatmap.png) | ![Demo heatmap](images/custom_demoheatmap.png) |
 
-	- Text
-
-		Splunk Observability supports creating "text" panels that support both Markdown and HTML. These panels also allow for adding images, which should be converted to base64. Text panels can be useful for dividing a dashboard into sections, making it easier to read.
-
 	- Table
 
 		Raw data can also be displayed along with its dimensions in the form of a data table. Precision and refresh rate can be customized.
@@ -121,8 +117,33 @@
 ## Customizing Dashboards
 ### Dashboard Variables
 
+To allow for easy filtering, dropdowns for individual dimensions can be added to the top of a dashboard. 
+
+![Dashboard variables configuration](images/custom_dashvars.png)
+
+1. To begin, click the 3 dots at the top-right of the dashboard, and select "Dashboard Variables".
+
+2. Set "Property" to the dimension that you want your dropdown to filter on. Use the "Alias" field to set a more user-friendly name for this dimension that'll appear on the dashboard.
+
+3. Optionally set a default value (* allowed), specify if a value for this dropdown is required, and add any suggested values.
+
+4. You can choose if this filter should apply to ALL charts, or if it should only apply to panels that have this dimension. For example, if you have charts pertaining to EC2 and Lambda, and want to add a dropdown only pertaining to EC2, it's best to only apply this filter to charts with the filtered dimension, otherwise your Lambda charts will show no data.
+
+5. Hit save, and you should now see a dropdown has been added to your dashboard for easy filtering!
+
 ### Text Notes (Markdown, HTML)
+
+Splunk Observability supports creating "text" panels that support both Markdown and HTML. These panels allow for adding images, which should be converted to base64. Text panels can be useful for dividing a dashboard into sections, making it easier to read.
+
+Here's a sample dashboard that uses text notes with images to organize its panels:
+![Sample dashboard with images](images/custom_execdash.png)
 
 ## Dashboard Permissions
 
 Part of the strategy you may have with your dashboards is to align them to certain teams or audiences, so setting the right read/write permissions is key.
+
+Permissions can be set individually for each dashboard, or simply inherit permissions from the overarching dashboard group. 
+![Dashboard permissions](images/custom_dashpermissions.png)
+
+Read/write access can be specified for each user.
+![Dashboard permissions](images/custom_dashpermissionsgranular.png)
