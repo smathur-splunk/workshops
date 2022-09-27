@@ -42,11 +42,9 @@
 
 	- Line/area/column chart
 
-		<p float="left">
-			<img src="https://smathur-splunk.github.io/workshops/images/custom_line.png" width="100" />
-			<img src="https://smathur-splunk.github.io/workshops/images/custom_area.png" width="100" /> 
-			<img src="https://smathur-splunk.github.io/workshops/images/custom_column.png" width="100" />
-		</p>
+		| Line chart | Area chart | Column chart |
+		|---|---|---|
+		| ![Line chart](images/custom_line.png) | ![Area chart](images/custom_area.png) | ![Column chart](images/custom_column.png) |
 
 	- Histogram
 
@@ -62,10 +60,9 @@
 
 	- Heatmap
 
-		<p float="left">
-			<img src="https://smathur-splunk.github.io/workshops/images/custom_heatmap.png" width="100" />
-			<img src="https://smathur-splunk.github.io/workshops/images/custom_demoheatmap.png" width="100" />
-		</p>
+		| Heatmap | Heatmap (demo data) |
+		|---|---|
+		| ![Heatmap](images/custom_heatmap.png) | ![Demo heatmap](images/custom_demoheatmap.png) |
 
 	- Event feed
 
