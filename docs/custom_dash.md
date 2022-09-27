@@ -38,9 +38,16 @@
 
 ### Chart Types
 
-1. Next, we'll explore each type of visualization with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
+2. Next, we'll explore each type of visualization with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
 
 	- Line/area/column chart
+
+		These 3 charts are similar in nature and display MTS values over time. 
+
+		- Chart options:
+			- Area and column charts can be stacked.
+			- Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
+			- For the Y-axis, the label, min/max, units, and precision can be configured.
 
 		| Line chart | Area chart | Column chart |
 		|---|---|---|
@@ -48,27 +55,60 @@
 
 	- Histogram
 
+		Histograms will display MTS in a single color. 
+
+		- Chart options:
+			- For the Y-axis, the label, min/max, units, and precision can be configured.
+
 		![Histogram chart](images/custom_histogram.png)
 
 	- List
+
+		Lists are useful for looking at the latest values of multiple MTS. 
+
+		- Chart options:
+			- Color by value to indicate severity. 
+			- Refresh rate, sorting, and precision
+			- Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
+			- A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.
 
 		![List view](images/custom_listview.png)
 
 	- Single value
 
+		The single value display behaves similarly to the list view. 
+
+		- Chart options:
+			- Color by scale
+			- Precision, refresh rate
+			- Secondary visualizations (sparkline, radial/linear scale)
+
 		![Single value](images/custom_singlevalue.png)
 
 	- Heatmap
 
-		| Heatmap | Heatmap (demo data) |
+		Heatmaps can be used to quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.
+
+		- Chart options:
+			- Refresh rate
+			- Sorting, grouping by dimensions
+			- Color by fixed or automatic scale
+
+		| Heatmap (custom metric) | Heatmap (demo data) |
 		|---|---|
 		| ![Heatmap](images/custom_heatmap.png) | ![Demo heatmap](images/custom_demoheatmap.png) |
 
-	- Event feed
-
 	- Text
 
+		Splunk Observability supports creating "text" panels that support both Markdown and HTML. These panels also allow for adding images, which should be converted to base64. Text panels can be useful for dividing a dashboard into sections, making it easier to read.
+
 	- Table
+
+		Raw data can also be displayed along with its dimensions in the form of a data table. Precision and refresh rate can be customized.
+
+		![Data table](images/custom_datatable.png)
+
+3. After reviewing the various chart types and opening up your custom metric in a chart, select a chart type of your choice. Explore the "Chart Options" tab and customize the chart to your liking.
 
 ### Filters
 
