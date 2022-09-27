@@ -43,9 +43,9 @@
 	- Line/area/column chart
 
 		<p float="left">
-			<img src="images/custom_line.png" width="100" />
-			<img src="images/custom_area.png" width="100" /> 
-			<img src="images/custom_column.png" width="100" />
+			<img src="https://smathur-splunk.github.io/workshops/images/custom_line.png" width="100" />
+			<img src="https://smathur-splunk.github.io/workshops/images/custom_area.png" width="100" /> 
+			<img src="https://smathur-splunk.github.io/workshops/images/custom_column.png" width="100" />
 		</p>
 
 	- Histogram
@@ -63,8 +63,8 @@
 	- Heatmap
 
 		<p float="left">
-			<img src="images/custom_heatmap.png" width="100" />
-			<img src="images/custom_demoheatmap.png" width="100" />
+			<img src="https://smathur-splunk.github.io/workshops/images/custom_heatmap.png" width="100" />
+			<img src="https://smathur-splunk.github.io/workshops/images/custom_demoheatmap.png" width="100" />
 		</p>
 
 	- Event feed
