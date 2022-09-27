@@ -1135,10 +1135,6 @@
 </table>
 </li>
 <li>
-<p>Text</p>
-<p>Splunk Observability supports creating "text" panels that support both Markdown and HTML. These panels also allow for adding images, which should be converted to base64. Text panels can be useful for dividing a dashboard into sections, making it easier to read.</p>
-</li>
-<li>
 <p>Table</p>
 <p>Raw data can also be displayed along with its dimensions in the form of a data table. Precision and refresh rate can be customized.</p>
 <p><img alt="Data table" src="../images/custom_datatable.png" /></p>
@@ -1155,9 +1151,35 @@
 <h3 id="signalflow">SignalFlow<a class="headerlink" href="#signalflow" title="Permanent link">&para;</a></h3>
 <h2 id="customizing-dashboards">Customizing Dashboards<a class="headerlink" href="#customizing-dashboards" title="Permanent link">&para;</a></h2>
 <h3 id="dashboard-variables">Dashboard Variables<a class="headerlink" href="#dashboard-variables" title="Permanent link">&para;</a></h3>
+<p>To allow for easy filtering, dropdowns for individual dimensions can be added to the top of a dashboard. </p>
+<p><img alt="Dashboard variables configuration" src="../images/custom_dashvars.png" /></p>
+<ol>
+<li>
+<p>To begin, click the 3 dots at the top-right of the dashboard, and select "Dashboard Variables".</p>
+</li>
+<li>
+<p>Set "Property" to the dimension that you want your dropdown to filter on. Use the "Alias" field to set a more user-friendly name for this dimension that'll appear on the dashboard.</p>
+</li>
+<li>
+<p>Optionally set a default value (* allowed), specify if a value for this dropdown is required, and add any suggested values.</p>
+</li>
+<li>
+<p>You can choose if this filter should apply to ALL charts, or if it should only apply to panels that have this dimension. For example, if you have charts pertaining to EC2 and Lambda, and want to add a dropdown only pertaining to EC2, it's best to only apply this filter to charts with the filtered dimension, otherwise your Lambda charts will show no data.</p>
+</li>
+<li>
+<p>Hit save, and you should now see a dropdown has been added to your dashboard for easy filtering!</p>
+</li>
+</ol>
 <h3 id="text-notes-markdown-html">Text Notes (Markdown, HTML)<a class="headerlink" href="#text-notes-markdown-html" title="Permanent link">&para;</a></h3>
+<p>Splunk Observability supports creating "text" panels that support both Markdown and HTML. These panels allow for adding images, which should be converted to base64. Text panels can be useful for dividing a dashboard into sections, making it easier to read.</p>
+<p>Here's a sample dashboard that uses text notes with images to organize its panels:
+<img alt="Sample dashboard with images" src="../images/custom_execdash.png" /></p>
 <h2 id="dashboard-permissions">Dashboard Permissions<a class="headerlink" href="#dashboard-permissions" title="Permanent link">&para;</a></h2>
 <p>Part of the strategy you may have with your dashboards is to align them to certain teams or audiences, so setting the right read/write permissions is key.</p>
+<p>Permissions can be set individually for each dashboard, or simply inherit permissions from the overarching dashboard group. 
+<img alt="Dashboard permissions" src="../images/custom_dashpermissions.png" /></p>
+<p>Read/write access can be specified for each user.
+<img alt="Dashboard permissions" src="../images/custom_dashpermissionsgranular.png" /></p>
 
   <hr>
 <div class="md-source-file">
