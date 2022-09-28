@@ -957,12 +957,71 @@
 
 <h2 id="chart-types">Chart Types<a class="headerlink" href="#chart-types" title="Permanent link">&para;</a></h2>
 <ol>
-<li>In Metric Finder, search for and click on the custom metric that you generated in the <a href="https://smathur-splunk.github.io/workshops/custom_metr">previous section</a>. This will open up a chart that we can modify and add to a custom dashboard.</li>
-</ol>
-<p><img alt="Custom metric default chart" src="../images/custom_chart.png" /></p>
-<ol>
+<li>
+<p>In Metric Finder, search for and click on the custom metric that you generated in the <a href="https://smathur-splunk.github.io/workshops/custom_metr">previous section</a>. This will open up a chart that we can modify and add to a custom dashboard.</p>
+</li>
 <li>
 <p>Next, we'll explore each type of visualization with this custom metric. Source: <a href="https://docs.splunk.com/observability/data-visualization/charts/chart-types.html">Chart types in Splunk Observability Cloud</a></p>
+<table>
+<thead>
+<tr>
+<th>Chart Type</th>
+<th>Description</th>
+<th>Chart Options</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Line chart</td>
+<td>Displays MTS values over time</td>
+<td>- Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured</td>
+<td><img alt="Line chart" src="../images/custom_line.png" /></td>
+</tr>
+<tr>
+<td>Area chart</td>
+<td>Displays MTS values over time</td>
+<td>- Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured</td>
+<td><img alt="Area chart" src="../images/custom_area.png" /></td>
+</tr>
+<tr>
+<td>Column chart</td>
+<td>Displays MTS values over time</td>
+<td>- Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured</td>
+<td><img alt="Column chart" src="../images/custom_column.png" /></td>
+</tr>
+<tr>
+<td>Histogram</td>
+<td>Displays MTS in a single color</td>
+<td>- The Y-axis label, min/max, units, and precision can be configured</td>
+<td><img alt="Histogram chart" src="../images/custom_histogram.png" /></td>
+</tr>
+<tr>
+<td>List</td>
+<td>Useful for looking at the latest values of multiple MTS</td>
+<td>- Color by value to indicate severity - Refresh rate, sorting, and precision - Dimensions listed next to each value can be shown or hidden as needed - Secondary visualizations (sparkline, radial/linear scale)</td>
+<td><img alt="List view" src="../images/custom_listview.png" /></td>
+</tr>
+<tr>
+<td>Single value</td>
+<td>Behaves similarly to list view</td>
+<td>- Color by scale - Precision, refresh rate - Secondary visualizations (sparkline, radial/linear scale)</td>
+<td><img alt="Single value" src="../images/custom_singlevalue.png" /></td>
+</tr>
+<tr>
+<td>Heatmap</td>
+<td>Quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.</td>
+<td>- Refresh rate - Sorting, grouping by dimensions - Color by fixed or automatic scale</td>
+<td><img alt="Demo heatmap" src="../images/custom_demoheatmap.png" /></td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Raw data can be displayed along with its dimensions in the form of a data table</td>
+<td>- Precision and refresh rate can be customized</td>
+<td><img alt="Data table" src="../images/custom_datatable.png" /></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>Line/area/column chart</p>
