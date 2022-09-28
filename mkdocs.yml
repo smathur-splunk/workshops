@@ -101,6 +101,7 @@ nav:
         - Metrics Demystified: custom_metr_expl.md
         - Ingesting Custom Metrics: custom_metr.md
         - Building Custom Dashboards: custom_dash.md
+        - Learn More: custom_learn.md
     - OTel to Splunk Core and O11y:
         - Introduction: otel_intro.md
         - Initial Setup: otel_init.md

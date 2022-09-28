@@ -156,9 +156,7 @@ Now that we've set some filters for our chart, there are various analytics funct
 
 Rollups determine how data is presented when datapoints are coming in at a higher resolution than what the chart shows. For example, if 2 datapoints come in every 10 seconds, and the resolution of the chart is set to 10 seconds, the 2 datapoints will need to be combined *somehow* into 1 datapoint to match the chart's resolution.
 
-How those datapoints are combined can depend on the type of metric (guage, counter, cumulative counter). Refer to the table [here](https://smathur-splunk.github.io/workshops/custom_metr_expl/#whats-the-difference-between-a-gauge-and-a-counter) (see the "Default function" column) for a quick look at what rollups align to what type of metric by default.
-
-Official documentation on rollups can be found [here](https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html) and [here](https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies).
+How those datapoints are combined can depend on the type of metric (guage, counter, cumulative counter). Refer to the table [here](https://smathur-splunk.github.io/workshops/custom_metr_expl/#whats-the-difference-between-a-gauge-and-a-counter) (see the "Default function" column) for a quick look at what rollups align to what type of metric by default. Official documentation on rollups can be found [here](https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html) and [here](https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies).
 
 This rollup is usually automatically determined, but you may want to manually specify which rollup to use for your chart.
 

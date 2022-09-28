@@ -65,7 +65,7 @@
 	- You can apply custom properties to tags. When you do this, anything that has that tag inherits the properties associated with the tag. For example, if you associate the `"tier:web"` custom property with the `"apps-team"` tag, Observability Cloud attaches the `"tier:web"` custom property to any metric or dimension that has the `"apps-team"` tag. 
 	- **When do I apply tags?** Use tags when there is a one-to-many relationship between the tag and the objects you are assigning it to (one tag can be applied to many different resources and is not a unique identifier).
 	- **How do I apply tags?** See [Search and edit metadata using the Metadata Catalog](https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata).
-		- You can have up to 50 tags per dimension/custom property/chart/detector. See full list of custom properties criteria [here](https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#tags-criteria).
+		- You can have up to 50 tags per dimension/custom property/chart/detector. See full list of tags criteria [here](https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#tags-criteria).
 
 ### Sources
 - [Metrics, data points, and metric time series](https://docs.splunk.com/observability/metrics-and-metadata/metrics.html)
