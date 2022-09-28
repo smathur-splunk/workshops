@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://smathur-splunk.github.io/workshops/custom_learn/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_metr/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
