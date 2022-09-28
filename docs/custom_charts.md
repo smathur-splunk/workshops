@@ -2,9 +2,18 @@
 
 1. In Metric Finder, search for and click on the custom metric that you generated in the [previous section](https://smathur-splunk.github.io/workshops/custom_metr). This will open up a chart that we can modify and add to a custom dashboard.
 
-![Custom metric default chart](images/custom_chart.png)
-
 2. Next, we'll explore each type of visualization with this custom metric. Source: [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
+
+	| Chart Type | Description | Chart Options | Example |
+	|---|---|---|---|
+	| Line chart | Displays MTS values over time | - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Line chart](images/custom_line.png) |
+	| Area chart | Displays MTS values over time | - Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Area chart](images/custom_area.png) |
+	| Column chart | Displays MTS values over time | - Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Column chart](images/custom_column.png) |
+	| Histogram | Displays MTS in a single color | - The Y-axis label, min/max, units, and precision can be configured | ![Histogram chart](images/custom_histogram.png) |
+	| List | Useful for looking at the latest values of multiple MTS | - Color by value to indicate severity - Refresh rate, sorting, and precision - Dimensions listed next to each value can be shown or hidden as needed - Secondary visualizations (sparkline, radial/linear scale) | ![List view](images/custom_listview.png) |
+	| Single value | Behaves similarly to list view | - Color by scale - Precision, refresh rate - Secondary visualizations (sparkline, radial/linear scale) | ![Single value](images/custom_singlevalue.png) |
+	| Heatmap | Quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc. | - Refresh rate - Sorting, grouping by dimensions - Color by fixed or automatic scale | ![Demo heatmap](images/custom_demoheatmap.png) |
+	| Table | Raw data can be displayed along with its dimensions in the form of a data table | - Precision and refresh rate can be customized | ![Data table](images/custom_datatable.png) |
 
 	- Line/area/column chart
 
