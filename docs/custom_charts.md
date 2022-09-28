@@ -6,83 +6,14 @@
 
 	| Chart Type | Description | Chart Options | Example |
 	|---|---|---|---|
-	| Line chart | Displays MTS values over time | - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Line chart](images/custom_line.png) |
-	| Area chart | Displays MTS values over time | - Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Area chart](images/custom_area.png) |
-	| Column chart | Displays MTS values over time | - Multiple MTS can be stacked or overlayed - Color legend can be displayed (useful when there are multiple MTS) - The Y-axis label, min/max, units, and precision can be configured | ![Column chart](images/custom_column.png) |
-	| Histogram | Displays MTS in a single color | - The Y-axis label, min/max, units, and precision can be configured | ![Histogram chart](images/custom_histogram.png) |
-	| List | Useful for looking at the latest values of multiple MTS | - Color by value to indicate severity - Refresh rate, sorting, and precision - Dimensions listed next to each value can be shown or hidden as needed - Secondary visualizations (sparkline, radial/linear scale) | ![List view](images/custom_listview.png) |
-	| Single value | Behaves similarly to list view | - Color by scale - Precision, refresh rate - Secondary visualizations (sparkline, radial/linear scale) | ![Single value](images/custom_singlevalue.png) |
-	| Heatmap | Quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc. | - Refresh rate - Sorting, grouping by dimensions - Color by fixed or automatic scale | ![Demo heatmap](images/custom_demoheatmap.png) |
-	| Table | Raw data can be displayed along with its dimensions in the form of a data table | - Precision and refresh rate can be customized | ![Data table](images/custom_datatable.png) |
-
-	- Line/area/column chart
-
-		These 3 charts are similar in nature and display MTS values over time. 
-
-		Chart options:
-
-		- Area and column charts can be stacked.
-		- Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
-		- For the Y-axis, the label, min/max, units, and precision can be configured.
-
-		| Line chart | Area chart | Column chart |
-		|---|---|---|
-		| ![Line chart](images/custom_line.png) | ![Area chart](images/custom_area.png) | ![Column chart](images/custom_column.png) |
-
-	- Histogram
-
-		Histograms will display MTS in a single color. 
-
-		Chart options:
-
-		- For the Y-axis, the label, min/max, units, and precision can be configured.
-
-		![Histogram chart](images/custom_histogram.png)
-
-	- List
-
-		Lists are useful for looking at the latest values of multiple MTS. 
-
-		Chart options:
-
-		- Color by value to indicate severity. 
-		- Refresh rate, sorting, and precision
-		- Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
-		- A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.
-
-		![List view](images/custom_listview.png)
-
-	- Single value
-
-		The single value display behaves similarly to the list view. 
-
-		Chart options:
-
-		- Color by scale
-		- Precision, refresh rate
-		- Secondary visualizations (sparkline, radial/linear scale)
-
-		![Single value](images/custom_singlevalue.png)
-
-	- Heatmap
-
-		Heatmaps can be used to quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.
-
-		Chart options:
-		
-		- Refresh rate
-		- Sorting, grouping by dimensions
-		- Color by fixed or automatic scale
-
-		| Heatmap (custom metric) | Heatmap (demo data) |
-		|---|---|
-		| ![Heatmap](images/custom_heatmap.png) | ![Demo heatmap](images/custom_demoheatmap.png) |
-
-	- Table
-
-		Raw data can also be displayed along with its dimensions in the form of a data table. Precision and refresh rate can be customized.
-
-		![Data table](images/custom_datatable.png)
+	| Line chart | Displays MTS values over time | <ul> <li>Color legend can be displayed (useful when there are multiple MTS)</li> <li>The Y-axis label, min/max, units, and precision can be configured</li> </ul> | ![Line chart](images/custom_line.png) |
+	| Area chart | Displays MTS values over time | <ul> <li>Multiple MTS can be stacked or overlayed</li> <li>Color legend can be displayed (useful when there are multiple MTS)</li> <li>The Y-axis label, min/max, units, and precision can be configured</li> </ul> | ![Area chart](images/custom_area.png) |
+	| Column chart | Displays MTS values over time | <ul> <li>Multiple MTS can be stacked or overlayed</li> <li>Color legend can be displayed (useful when there are multiple MTS)</li> <li>The Y-axis label, min/max, units, and precision can be configured</li> </ul> | ![Column chart](images/custom_column.png) |
+	| Histogram | Displays MTS in a single color | <ul> <li>The Y-axis label, min/max, units, and precision can be configured</li> </ul> | ![Histogram chart](images/custom_histogram.png) |
+	| List | Useful for looking at the latest values of multiple MTS | <ul> <li>Color by value to indicate severity</li> <li>Refresh rate, sorting, and precision</li> <li>Dimensions listed next to each value can be shown or hidden as needed</li> <li>Secondary visualizations (sparkline, radial/linear scale)</li> </ul> | ![List view](images/custom_listview.png) |
+	| Single value | Behaves similarly to list view | <ul> <li>Color by value to indicate severity</li> <li>Refresh rate, precision</li> <li>Secondary visualizations (sparkline, radial/linear scale)</li> </ul> | ![Single value](images/custom_singlevalue.png) |
+	| Heatmap | Quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc. | <ul> <li>Refresh rate</li> <li>Sorting, grouping by dimensions</li> <li>Color by fixed or automatic scale</li> </ul> | ![Demo heatmap](images/custom_demoheatmap.png) |
+	| Table | Raw data can be displayed along with its dimensions in the form of a data table | <ul> <li>Precision and refresh rate can be customized</li> </ul> | ![Data table](images/custom_datatable.png) |
 
 3. After reviewing the various chart types and opening up your custom metric in a chart, select a chart type of your choice. Explore the "Chart Options" tab and customize the chart to your liking.
 

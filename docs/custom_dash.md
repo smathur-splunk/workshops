@@ -51,7 +51,7 @@ Splunk Observability supports both [global data links](https://docs.splunk.com/O
 
 	![Data links configuration](images/custom_datalinks.png)
 
-8. You can now click on a dashboard, click the 3 dots next to your dimension values, and click your data link to go to the custom URL that you set.
+8. You can now click on a chart, click the 3 dots next to your dimension values, and click your data link to go to the custom URL that you set.
 
 	![Data link example](images/custom_datalinkmenu.png)
 
