@@ -12,17 +12,16 @@ Check out these resources to deepen your knowledge on Splunk Observability.
 
 - [Identify metric types](https://docs.splunk.com/Observability/metrics-and-metadata/metric-types.html)
 - [Metrics, data points, and metric time series](https://docs.splunk.com/observability/metrics-and-metadata/metrics.html)
-- [Dimension criteria](https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html#dimensions-criteria)
+- [Dimensions, custom properties, and tags](https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html)
 - [Guidance for metric and dimension names](https://docs.splunk.com/observability/metrics-and-metadata/metric-names.html)
 - [Search and edit metadata using the Metadata Catalog](https://docs.splunk.com/observability/metrics-and-metadata/metrics-finder-metadata-catalog.html#search-edit-metadata)
-- [Dimensions, custom properties, and tags](https://docs.splunk.com/observability/metrics-and-metadata/metrics-dimensions-mts.html)
 - [Sending custom datapoints](https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics)
 - [Full endpoint summary of the Splunk Observability API](https://dev.splunk.com/observability/docs/apibasics/api_list)
-
-
-### Visualizing Custom Metrics
-
 - [Metrics and metric metadata API](https://dev.splunk.com/observability/reference/api/metrics_metadata/latest)
+
+
+### Creating Custom Dashboards
+
 - [Chart types in Splunk Observability Cloud](https://docs.splunk.com/observability/data-visualization/charts/chart-types.html)
 - [Analytics functions reference for Splunk Observability Cloud](https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html)
 - [Rollups](https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html)
