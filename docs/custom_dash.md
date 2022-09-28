@@ -44,9 +44,9 @@
 		These 3 charts are similar in nature and display MTS values over time. 
 
 		Chart options:
-			- Area and column charts can be stacked.
-			- Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
-			- For the Y-axis, the label, min/max, units, and precision can be configured.
+		- Area and column charts can be stacked.
+		- Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
+		- For the Y-axis, the label, min/max, units, and precision can be configured.
 
 		| Line chart | Area chart | Column chart |
 		|---|---|---|
@@ -57,7 +57,7 @@
 		Histograms will display MTS in a single color. 
 
 		Chart options:
-			- For the Y-axis, the label, min/max, units, and precision can be configured.
+		- For the Y-axis, the label, min/max, units, and precision can be configured.
 
 		![Histogram chart](images/custom_histogram.png)
 
@@ -66,10 +66,10 @@
 		Lists are useful for looking at the latest values of multiple MTS. 
 
 		Chart options:
-			- Color by value to indicate severity. 
-			- Refresh rate, sorting, and precision
-			- Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
-			- A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.
+		- Color by value to indicate severity. 
+		- Refresh rate, sorting, and precision
+		- Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
+		- A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.
 
 		![List view](images/custom_listview.png)
 
@@ -78,9 +78,9 @@
 		The single value display behaves similarly to the list view. 
 
 		Chart options:
-			- Color by scale
-			- Precision, refresh rate
-			- Secondary visualizations (sparkline, radial/linear scale)
+		- Color by scale
+		- Precision, refresh rate
+		- Secondary visualizations (sparkline, radial/linear scale)
 
 		![Single value](images/custom_singlevalue.png)
 
@@ -89,9 +89,9 @@
 		Heatmaps can be used to quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.
 
 		Chart options:
-			- Refresh rate
-			- Sorting, grouping by dimensions
-			- Color by fixed or automatic scale
+		- Refresh rate
+		- Sorting, grouping by dimensions
+		- Color by fixed or automatic scale
 
 		| Heatmap (custom metric) | Heatmap (demo data) |
 		|---|---|
@@ -115,15 +115,15 @@ In the previous section [Ingesting Custom Metrics](https://smathur-splunk.github
 
 2. You may also want to filter on a dimension such as `group`.
 
-### Analytic Functions
+### Analytics Functions
 
-Now that we've set some filters for our chart, there are various analytic functions we can apply, in order to make sense of multiple MTs that may be coming in. For this section to be relevant, you may want to tweak your filters such that you see multiple MTS.
+Now that we've set some filters for our chart, there are various analytics functions we can apply, in order to make sense of multiple MTS that may be coming in. For this section to be relevant, you may want to tweak your filters such that you see multiple MTS.
 
-1. Under the F(x) column, click "Add Analytics". Explore the various analytic functions that are available.
+1. Under the F(x) column, click "Add Analytics". Explore the various analytics functions that are available.
 
-	![Analytic functions in Splunk Observability](images/custom_analyticfunctions.png)
+	![Analytics functions in Splunk Observability](images/custom_analyticfunctions.png)
 
-2. Select "Mean" as your analytic function. You'll be asked to pick between "Aggregation" and "Transformation". Many of the analytic functions allow you to choose between these two options, which will affect how metric data is presented:
+2. Select `Mean` as your analytics function. You'll be asked to pick between `Aggregation` and `Transformation`. Many of the analytics functions allow you to choose between these two options, which will affect how metric data is presented:
 
 	- Aggregation
 
@@ -131,21 +131,21 @@ Now that we've set some filters for our chart, there are various analytic functi
 
 	- Transformation
 
-		- When "Transformation" is selected, a time window will need to be specified. 
+		- When `Transformation` is selected, a time window will need to be specified. 
 		- For this time window, you can choose between a **moving window** or a **calendar window**.
 			- If a **calendar window** is specified, the chart will perform the selected function (mean, min, max, etc.) for each cycle, and use that as datapoints for the chart.
-				- For example, if "Mean:Transformation" is selected with a monthly cycle length calendar window, the chart will display 1 point for the mean value of each month.
+				- For example, if `Mean:Transformation` is selected with a `Month` cycle length calendar window, the chart will display 1 point for the mean value of each month.
 
 				![Calendar window transformation](images/custom_calendarwindow.png)
 
 			- If a **moving window** is specified, the chart will show what the moving function (mean, min, max, etc.) value is, looking back the specified amount of time.
-				- For example, if "Mean:Transformation" is selected with a moving window of 1 hour, then for every datapoint coming in, the mean over the last 1 hour will be calculated and displayed instead of the raw datapoint itself. 
+				- For example, if `Mean:Transformation` is selected with a moving window of `1 Hour`, then for every datapoint coming in, the mean over the last 1 hour will be calculated and displayed instead of the raw datapoint itself. 
 
 				![Moving window transformation](images/custom_movingwindow.png)
 
-	For more details on aggregation vs transformation, and analytic functions in general, see [Functions reference for Splunk Observability Cloud](https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html).
+	For more details on aggregation vs transformation, and analytics functions in general, see [Functions reference for Splunk Observability Cloud](https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html).
 
-3. Select "Mean:Aggregation", and group the resulting data by a dimension or custom property if you wish.
+3. Select `Mean:Aggregation`, and group the resulting data by a dimension or custom property if you wish.
 
 ### Rollups
 
@@ -205,7 +205,9 @@ Here's a sample dashboard that uses text notes with images to organize its panel
 Part of the strategy you may have with your dashboards is to align them to certain teams or audiences, so setting the right read/write permissions is key.
 
 Permissions can be set individually for each dashboard, or simply inherit permissions from the overarching dashboard group. 
+
 ![Dashboard permissions](images/custom_dashpermissions.png)
 
 Read/write access can be specified for each user.
+
 ![Dashboard permissions](images/custom_dashpermissionsgranular.png)
