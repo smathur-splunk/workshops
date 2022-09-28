@@ -1,4 +1,3 @@
-# ⚠️ Under Construction ⚠️
 ## Finding Custom Metrics
 ### Query Metrics (API method)
 
