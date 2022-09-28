@@ -759,8 +759,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analytic-functions" class="md-nav__link">
-    Analytic Functions
+  <a href="#analytics-functions" class="md-nav__link">
+    Analytics Functions
   </a>
   
 </li>
@@ -1043,9 +1043,9 @@
 <p>Line/area/column chart</p>
 <p>These 3 charts are similar in nature and display MTS values over time. </p>
 <p>Chart options:
-    - Area and column charts can be stacked.
-    - Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
-    - For the Y-axis, the label, min/max, units, and precision can be configured.</p>
+- Area and column charts can be stacked.
+- Color legend can be displayed for all 3 charts (useful when there are multiple MTS).
+- For the Y-axis, the label, min/max, units, and precision can be configured.</p>
 <table>
 <thead>
 <tr>
@@ -1067,35 +1067,35 @@
 <p>Histogram</p>
 <p>Histograms will display MTS in a single color. </p>
 <p>Chart options:
-    - For the Y-axis, the label, min/max, units, and precision can be configured.</p>
+- For the Y-axis, the label, min/max, units, and precision can be configured.</p>
 <p><img alt="Histogram chart" src="../images/custom_histogram.png" /></p>
 </li>
 <li>
 <p>List</p>
 <p>Lists are useful for looking at the latest values of multiple MTS. </p>
 <p>Chart options:
-    - Color by value to indicate severity. 
-    - Refresh rate, sorting, and precision
-    - Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
-    - A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.</p>
+- Color by value to indicate severity. 
+- Refresh rate, sorting, and precision
+- Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)
+- A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.</p>
 <p><img alt="List view" src="../images/custom_listview.png" /></p>
 </li>
 <li>
 <p>Single value</p>
 <p>The single value display behaves similarly to the list view. </p>
 <p>Chart options:
-    - Color by scale
-    - Precision, refresh rate
-    - Secondary visualizations (sparkline, radial/linear scale)</p>
+- Color by scale
+- Precision, refresh rate
+- Secondary visualizations (sparkline, radial/linear scale)</p>
 <p><img alt="Single value" src="../images/custom_singlevalue.png" /></p>
 </li>
 <li>
 <p>Heatmap</p>
 <p>Heatmaps can be used to quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.</p>
 <p>Chart options:
-    - Refresh rate
-    - Sorting, grouping by dimensions
-    - Color by fixed or automatic scale</p>
+- Refresh rate
+- Sorting, grouping by dimensions
+- Color by fixed or automatic scale</p>
 <table>
 <thead>
 <tr>
@@ -1133,15 +1133,15 @@
 <p>You may also want to filter on a dimension such as <code>group</code>.</p>
 </li>
 </ol>
-<h3 id="analytic-functions">Analytic Functions<a class="headerlink" href="#analytic-functions" title="Permanent link">&para;</a></h3>
-<p>Now that we've set some filters for our chart, there are various analytic functions we can apply, in order to make sense of multiple MTs that may be coming in. For this section to be relevant, you may want to tweak your filters such that you see multiple MTS.</p>
+<h3 id="analytics-functions">Analytics Functions<a class="headerlink" href="#analytics-functions" title="Permanent link">&para;</a></h3>
+<p>Now that we've set some filters for our chart, there are various analytics functions we can apply, in order to make sense of multiple MTS that may be coming in. For this section to be relevant, you may want to tweak your filters such that you see multiple MTS.</p>
 <ol>
 <li>
-<p>Under the F(x) column, click "Add Analytics". Explore the various analytic functions that are available.</p>
-<p><img alt="Analytic functions in Splunk Observability" src="../images/custom_analyticfunctions.png" /></p>
+<p>Under the F(x) column, click "Add Analytics". Explore the various analytics functions that are available.</p>
+<p><img alt="Analytics functions in Splunk Observability" src="../images/custom_analyticfunctions.png" /></p>
 </li>
 <li>
-<p>Select "Mean" as your analytic function. You'll be asked to pick between "Aggregation" and "Transformation". Many of the analytic functions allow you to choose between these two options, which will affect how metric data is presented:</p>
+<p>Select <code>Mean</code> as your analytics function. You'll be asked to pick between <code>Aggregation</code> and <code>Transformation</code>. Many of the analytics functions allow you to choose between these two options, which will affect how metric data is presented:</p>
 <ul>
 <li>
 <p>Aggregation</p>
@@ -1152,21 +1152,21 @@
 <li>
 <p>Transformation</p>
 <ul>
-<li>When "Transformation" is selected, a time window will need to be specified. </li>
+<li>When <code>Transformation</code> is selected, a time window will need to be specified. </li>
 <li>
 <p>For this time window, you can choose between a <strong>moving window</strong> or a <strong>calendar window</strong>.</p>
 <ul>
 <li>
 <p>If a <strong>calendar window</strong> is specified, the chart will perform the selected function (mean, min, max, etc.) for each cycle, and use that as datapoints for the chart.</p>
 <ul>
-<li>For example, if "Mean:Transformation" is selected with a monthly cycle length calendar window, the chart will display 1 point for the mean value of each month.</li>
+<li>For example, if <code>Mean:Transformation</code> is selected with a <code>Month</code> cycle length calendar window, the chart will display 1 point for the mean value of each month.</li>
 </ul>
 <p><img alt="Calendar window transformation" src="../images/custom_calendarwindow.png" /></p>
 </li>
 <li>
 <p>If a <strong>moving window</strong> is specified, the chart will show what the moving function (mean, min, max, etc.) value is, looking back the specified amount of time.</p>
 <ul>
-<li>For example, if "Mean:Transformation" is selected with a moving window of 1 hour, then for every datapoint coming in, the mean over the last 1 hour will be calculated and displayed instead of the raw datapoint itself. </li>
+<li>For example, if <code>Mean:Transformation</code> is selected with a moving window of <code>1 Hour</code>, then for every datapoint coming in, the mean over the last 1 hour will be calculated and displayed instead of the raw datapoint itself. </li>
 </ul>
 <p><img alt="Moving window transformation" src="../images/custom_movingwindow.png" /></p>
 </li>
@@ -1175,10 +1175,10 @@
 </ul>
 </li>
 </ul>
-<p>For more details on aggregation vs transformation, and analytic functions in general, see <a href="https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html">Functions reference for Splunk Observability Cloud</a>.</p>
+<p>For more details on aggregation vs transformation, and analytics functions in general, see <a href="https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html">Functions reference for Splunk Observability Cloud</a>.</p>
 </li>
 <li>
-<p>Select "Mean:Aggregation", and group the resulting data by a dimension or custom property if you wish.</p>
+<p>Select <code>Mean:Aggregation</code>, and group the resulting data by a dimension or custom property if you wish.</p>
 </li>
 </ol>
 <h3 id="rollups">Rollups<a class="headerlink" href="#rollups" title="Permanent link">&para;</a></h3>
@@ -1235,10 +1235,10 @@
 <img alt="Sample dashboard with images" src="../images/custom_execdash.png" /></p>
 <h2 id="dashboard-permissions">Dashboard Permissions<a class="headerlink" href="#dashboard-permissions" title="Permanent link">&para;</a></h2>
 <p>Part of the strategy you may have with your dashboards is to align them to certain teams or audiences, so setting the right read/write permissions is key.</p>
-<p>Permissions can be set individually for each dashboard, or simply inherit permissions from the overarching dashboard group. 
-<img alt="Dashboard permissions" src="../images/custom_dashpermissions.png" /></p>
-<p>Read/write access can be specified for each user.
-<img alt="Dashboard permissions" src="../images/custom_dashpermissionsgranular.png" /></p>
+<p>Permissions can be set individually for each dashboard, or simply inherit permissions from the overarching dashboard group. </p>
+<p><img alt="Dashboard permissions" src="../images/custom_dashpermissions.png" /></p>
+<p>Read/write access can be specified for each user.</p>
+<p><img alt="Dashboard permissions" src="../images/custom_dashpermissionsgranular.png" /></p>
 
   <hr>
 <div class="md-source-file">
