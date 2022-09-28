@@ -28,3 +28,5 @@ Check out these resources to deepen your knowledge on Splunk Observability.
 - [Rollups](https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html)
 - [Rollups and retention](https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies)
 - [SignalFlow functions list](https://dev.splunk.com/observability/docs/signalflow/function_method_list)
+- [Data links](https://docs.splunk.com/Observability/data-visualization/navigate-with-data-links.html)
+- [Global data links](https://docs.splunk.com/Observability/admin/link-metadata-to-content.html)
