@@ -158,6 +158,8 @@ Rollups determine how data is presented when datapoints are coming in at a highe
 
 How those datapoints are combined can depend on the type of metric (guage, counter, cumulative counter). Refer to the table [here](https://smathur-splunk.github.io/workshops/custom_metr_expl/#whats-the-difference-between-a-gauge-and-a-counter) (see the "Default function" column) for a quick look at what rollups align to what type of metric by default.
 
+Official documentation on rollups can be found [here](https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html) and [here](https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies).
+
 This rollup is usually automatically determined, but you may want to manually specify which rollup to use for your chart.
 
 1. Under Plot Editor, on the far right side of your plot, click the gear icon to configure the plot.
