@@ -12,14 +12,14 @@
         <meta name="author" content="Siddharth Mathur">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/custom_metr/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/custom_find/">
       
       <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Ingesting Custom Metrics - Splunk Observability Workshops</title>
+        <title>Finding Custom Metrics - Splunk Observability Workshops</title>
       
     
     
@@ -55,9 +55,9 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Ingesting Custom Metrics">
+  <meta property="og:title" content="Splunk Observability Workshops - Finding Custom Metrics">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/custom_metr/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/custom_find/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#curl-ingestion-method" class="md-skip">
+        <a href="#query-metrics-api-method" class="md-skip">
           Skip to content
         </a>
       
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ingesting Custom Metrics
+              Finding Custom Metrics
             
           </span>
         </div>
@@ -670,6 +670,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../custom_metr/" class="md-nav__link">
+        Ingesting Custom Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -680,12 +694,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Ingesting Custom Metrics
+          Finding Custom Metrics
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Ingesting Custom Metrics
+        Finding Custom Metrics
       </a>
       
         
@@ -702,76 +716,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#curl-ingestion-method" class="md-nav__link">
-    cURL Ingestion Method
-  </a>
-  
-    <nav class="md-nav" aria-label="cURL Ingestion Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sources" class="md-nav__link">
-    Sources
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#programmatic-ingestion-method" class="md-nav__link">
-    Programmatic Ingestion Method
-  </a>
-  
-    <nav class="md-nav" aria-label="Programmatic Ingestion Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    Python
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-custom-properties-and-tags" class="md-nav__link">
-    Setting Custom Properties and Tags
+  <a href="#query-metrics-api-method" class="md-nav__link">
+    Query Metrics (API method)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#viewing-custom-metrics-usage" class="md-nav__link">
-    Viewing Custom Metrics Usage
+  <a href="#metric-finder-ui-method" class="md-nav__link">
+    Metric Finder (UI method)
   </a>
-  
-    <nav class="md-nav" aria-label="Viewing Custom Metrics Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usage-by-token" class="md-nav__link">
-    Usage by Token
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overall-usage" class="md-nav__link">
-    Overall Usage
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -779,20 +733,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../custom_find/" class="md-nav__link">
-        Finding Custom Metrics
-      </a>
     </li>
   
 
@@ -992,155 +932,53 @@
                 
 
 
-  <h1>Ingesting Custom Metrics</h1>
+  <h1>Finding Custom Metrics</h1>
 
-<h2 id="curl-ingestion-method">cURL Ingestion Method<a class="headerlink" href="#curl-ingestion-method" title="Permanent link">&para;</a></h2>
-<p>Now that you've got an understanding of the different types of metrics, and the attributes you can apply to them, let's dive into actually creating and sending in some custom metrics!</p>
+<h2 id="query-metrics-api-method">Query Metrics (API method)<a class="headerlink" href="#query-metrics-api-method" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>One way to send custom metrics is simply using cURL. To begin, identify your Splunk Observability Cloud realm and access token (must be an <strong>ingest</strong> token).</p>
+<p>Review the table below for a quick guide on querying metrics and metric metadata via the API (<a href="https://dev.splunk.com/observability/reference/api/metrics_metadata/latest">API Reference docs</a>)</p>
+<table>
+<thead>
+<tr>
+<th>Query</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query metric</td>
+<td><code>https://api.&lt;realm&gt;.signalfx.com/v2/metric?query=name:&lt;metricname&gt;</code></td>
+</tr>
+<tr>
+<td>Query <code>dimension:value</code> pair</td>
+<td><code>https://api.&lt;realm&gt;.signalfx.com/v2/dimension?query=&lt;dim&gt;:&lt;val&gt;</code></td>
+</tr>
+<tr>
+<td>Check if property exists</td>
+<td><code>https://api.&lt;realm&gt;.signalfx.com/v2/dimension?query=_exists_:&lt;prop&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: The arguments that are passed in the cURL statement must be URL encoded. To find the correct URL encoding for the customer name, refer to <a href="https://www.w3schools.com/tags/ref_urlencode.ASP">this guide</a>. For example: <code>Buttercup, Inc.</code> is encoded as <code>Buttercup%2C%20Inc%2E</code>.</em></p>
 </li>
 <li>
-<p>Send in a custom metric using the following command. Specify whether you want it to be a <code>gauge</code>, <code>counter</code>, or <code>cumulative counter</code>. </p>
-<div class="highlight"><pre><span></span><code>curl -X POST <span class="s2">&quot;https://ingest.{REALM}.signalfx.com/v2/datapoint&quot;</span> <span class="se">\</span>
+<p>As an example, try querying the custom metric that you created in the previous section.</p>
+<div class="highlight"><pre><span></span><code>curl -X GET <span class="s2">&quot;https://api.&lt;realm&gt;.signalfx.com/v2/metric?query=name:&lt;metricname&gt;&quot;</span> <span class="se">\</span>
     -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
-    -H <span class="s2">&quot;X-SF-Token: &lt;value&gt;&quot;</span> <span class="se">\</span>
-    -d <span class="s1">&#39;{</span>
-<span class="s1">            &quot;gauge&quot;: [</span>
-<span class="s1">                {</span>
-<span class="s1">                    &quot;metric&quot;: &quot;string&quot;,</span>
-<span class="s1">                    &quot;value&quot;: 0,</span>
-<span class="s1">                    &quot;dimensions&quot;: {</span>
-<span class="s1">                        &quot;&lt;property name&gt;&quot;: &quot;any&quot;</span>
-<span class="s1">                    },</span>
-<span class="s1">                    &quot;timestamp&quot;: 1557225030000</span>
-<span class="s1">                }</span>
-<span class="s1">            ]</span>
-<span class="s1">        }&#39;</span>
-</code></pre></div>
-<ul>
-<li><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</li>
-<li><strong>Optional:</strong> You may add key-value pairs under <code>dimensions</code> and/or specify the <code>timestamp</code> (milliseconds since epoch), but you do not <em>need</em> to specify these. For this workshop, it is recommended that you <em>remove</em> the timestamp (it will automatically be generated).</li>
-</ul>
-</li>
-<li>
-<p>Run the command, and you should see an output <code>"OK"</code>. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.</p>
-</li>
-</ol>
-<h3 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics">Sending custom datapoints</a></li>
-<li><a href="https://dev.splunk.com/observability/docs/apibasics/api_list">Full endpoint summary of the Splunk Observability API</a></li>
-</ul>
-<h2 id="programmatic-ingestion-method">Programmatic Ingestion Method<a class="headerlink" href="#programmatic-ingestion-method" title="Permanent link">&para;</a></h2>
-<p>Similar to using a cURL command to send custom metrics, you can also add POST requests to your code to send relevant data from the code. Conceptually this is the same as using cURL, just with different syntax. Because Python is a common and fairly straightforward use case, it's included here as an example.</p>
-<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. As an example, save and run this Python script, which will generate random numbers between 1 and 100, every 5 seconds.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">random_number</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">random_number</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    -H <span class="s2">&quot;X-SF-TOKEN: &lt;value&gt;&quot;</span>
 </code></pre></div>
 </li>
-<li>
-<p>Next, modify the script to create a POST request, which will send the random numbers generated as values of a metric. <strong>Inside</strong> the <code>while</code> loop from above, add the code below to your Python script. (Make sure this code is indented <strong>one</strong> level, just as it's pasted here.) </p>
-<p><em>Tip: you may want to move <code>time.sleep(5)</code> to the bottom of the <code>while</code> loop, after the <code>print</code> statement.</em></p>
-<div class="highlight"><pre><span></span><code>    <span class="n">metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">metrics_dimensions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DIMENSION_1&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_1&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">random_number</span><span class="o">%</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
-    <span class="n">metrics_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;METRIC_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">random_number</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">*</span><span class="mi">1000</span><span class="p">),</span> <span class="s1">&#39;dimensions&#39;</span><span class="p">:</span><span class="n">metrics_dimensions</span><span class="p">})</span>
-
-    <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gauge&#39;</span><span class="p">:</span><span class="n">metrics_list</span><span class="p">}</span>
-
-    <span class="n">metrics_url</span> <span class="o">=</span> <span class="s1">&#39;https://ingest.&lt;REALM&gt;.signalfx.com/v2/datapoint&#39;</span>
-    <span class="n">metrics_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;X-SF-TOKEN&#39;</span><span class="p">:</span><span class="s1">&#39;SPLUNK_ACCESS_TOKEN&#39;</span><span class="p">}</span>
-    <span class="n">send_metrics</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">metrics_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">metrics_headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">))</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">send_metrics</span><span class="p">,</span> <span class="n">send_metrics</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre></div>
-</li>
-<li>
-<p>Set <code>metrics_dimensions</code> equal to a dict of key-value pairs that you'd like to use as dimensions. As an example, you might set it equal to <code>{'rng':'python', 'group':str(random_number%4+1)}</code> (This will create 4 MTS because there will be 4 unique values of the <code>group</code> dimension.)</p>
-</li>
-<li>
-<p>Replace <code>METRIC_NAME</code> with the desired metric name (you may want to prefix this with <code>custom.</code> for easy searching). </p>
-</li>
-<li>
-<p>Replace <code>&lt;REALM&gt;</code> and <code>SPLUNK_ACCESS_TOKEN</code> with your corresponding values.</p>
-</li>
-<li>
-<p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>.</p>
-<p>Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metric data points that you would like to send, with each metric data point represented as a dict. That dict contains the metric name, value, timestamp, and dimensions.</p>
-<ul>
-<li>This way, multiple metrics/data points can be sent in the same request (this applies to cURL too). </li>
-<li>If you're only sending one metric data point, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
-</ul>
-<p>The resulting JSON body would look like this:
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;gauge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;metric&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;custom.random_number&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1660339711614</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;dimensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;rng&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random_gen.py&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Finally, run the Python script, and you should see an output <code>&lt;Response [200]&gt; OK</code>. And that's it! You've got a custom metric automatically being generated by this script.</p>
-</li>
 </ol>
-<h2 id="setting-custom-properties-and-tags">Setting Custom Properties and Tags<a class="headerlink" href="#setting-custom-properties-and-tags" title="Permanent link">&para;</a></h2>
-<p>For easier filtering and organizing of metric data, you can set custom properties and tags for your metrics <strong>after</strong> ingest (see <a href="https://smathur-splunk.github.io/workshops/custom_metr_expl/#metric-dimensions-custom-properties-and-tags">Metric Dimensions, Custom Properties, and Tags</a>).</p>
+<h2 id="metric-finder-ui-method">Metric Finder (UI method)<a class="headerlink" href="#metric-finder-ui-method" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>From the left sidebar, navigate to Settings &gt; Metric Metadata (listed under "Data Configuration"). Search for a dimension, e.g. <code>group</code>, pertaining to your custom metric. From the results in the dropdown, select "group - Property".</p>
-<p><img alt="Metric Metadata settings" src="../images/custom_metricmetadata.png" /></p>
+<p>The other way to find metrics in Splunk Observability is using the Metric Finder. From the left sidebar, navigate to Metric Finder. You can view metrics across your various integrations here, and also search for custom metrics.</p>
+<p><img alt="Metric Finder" src="../images/custom_finder.png" /></p>
 </li>
 <li>
-<p>From the "group" metadata page, select a value (e.g. 1, 2, 3, or 4) under Values. On the resulting page, you can set custom properties and tags, which can be used later on for easier filtering. Under Properties, click "Add new property", specify a property name (e.g. <code>group_category</code>), and specify a property value (e.g. <code>A</code> or <code>B</code>).</p>
-</li>
-<li>
-<p>Under Tags, click "Add new tag", and enter a tag name such as <code>odd_number</code> or <code>even_number</code>.</p>
-</li>
-<li>
-<p>Repeat steps 2 and 3 for all the values of "group" (groups 1, 2, 3, and 4). You can now use these custom properties and tags to filter on data when creating charts and dashboards.</p>
-<p><img alt="Property metadata settings" src="../images/custom_propertymetadata.png" /></p>
-</li>
-</ol>
-<h2 id="viewing-custom-metrics-usage">Viewing Custom Metrics Usage<a class="headerlink" href="#viewing-custom-metrics-usage" title="Permanent link">&para;</a></h2>
-<p>Before we take a look at our custom metrics in Splunk Observability, let's see how we can manage custom metrics usage, against our org license. There are a couple ways to do this. <em>Required: Admin-level access to your org in Splunk Observability.</em></p>
-<h3 id="usage-by-token">Usage by Token<a class="headerlink" href="#usage-by-token" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>From the left sidebar, go into Settings &gt; Access Tokens (4th from the top). </p>
-<p><img alt="Access tokens in Splunk Observability" src="../images/custom_access.png" /></p>
-</li>
-<li>
-<p>Expand a token that you want to see the usage for, and you'll see a table and a chart (you may have to select "Custom Metrics" in the dropdown above it) showing the number of custom metrics that you have ingested.</p>
-<p><img alt="Usage by token" src="../images/custom_token.png" /></p>
-</li>
-</ol>
-<h3 id="overall-usage">Overall Usage<a class="headerlink" href="#overall-usage" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>From the left sidebar, go into Settings &gt; Subscription Usage. The Infrastructure Monitoring tab should be selected at the top. On the Usage Trends chart, select "Custom Metrics" in the Usage Metric dropdown.</p>
-<p><img alt="Subscription Usage" src="../images/custom_usage.png" /></p>
-</li>
-<li>
-<p>This is where you can also see the list of custom metrics that you have ingested. On the same page, click Usage Reports &gt; select the Usage Breakdown tab at the top &gt; Download Custom Metric Report.</p>
-<p><img alt="Download Custom Metric Report" src="../images/custom_report.png" /></p>
+<p>With the resulting metrics, you can inspect the related properties. Clicking on the metric name will open up a chart for the metric, which you can use to start building out some custom dashboards and alerts.</p>
+<p><img alt="Metric Finder search results" src="../images/custom_search.png" /></p>
 </li>
 </ol>
 
@@ -1174,7 +1012,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../custom_metr_expl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Metrics Demystified" rel="prev">
+        <a href="../custom_metr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ingesting Custom Metrics" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1183,20 +1021,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Metrics Demystified
+              Ingesting Custom Metrics
             </div>
           </div>
         </a>
       
       
         
-        <a href="../custom_find/" class="md-footer__link md-footer__link--next" aria-label="Next: Finding Custom Metrics" rel="next">
+        <a href="../custom_charts/" class="md-footer__link md-footer__link--next" aria-label="Next: Creating Charts" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Finding Custom Metrics
+              Creating Charts
             </div>
           </div>
           <div class="md-footer__button md-icon">

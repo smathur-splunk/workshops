@@ -6,7 +6,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://smathur-splunk.github.io/workshops/custom_charts/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://smathur-splunk.github.io/workshops/custom_dash/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://smathur-splunk.github.io/workshops/custom_find/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

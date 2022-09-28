@@ -12,14 +12,14 @@
         <meta name="author" content="Siddharth Mathur">
       
       
-        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/custom_metr/">
+        <link rel="canonical" href="https://smathur-splunk.github.io/workshops/custom_charts/">
       
       <link rel="icon" href="../images/logo.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Ingesting Custom Metrics - Splunk Observability Workshops</title>
+        <title>Creating Charts - Splunk Observability Workshops</title>
       
     
     
@@ -55,9 +55,9 @@
     
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Splunk Observability Workshops - Ingesting Custom Metrics">
+  <meta property="og:title" content="Splunk Observability Workshops - Creating Charts">
   <meta property="og:description" content="This workshop is going to take you through the best-in-class observability platform for ingesting, monitoring, visualizing and analyzing metrics, traces and spans">
-  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/custom_metr/">
+  <meta property="og:url" content="https://smathur-splunk.github.io/workshops/custom_charts/">
   <meta property="og:image" content="https://smathur-splunk.github.io/workshops/images/snmp_dash.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1080">
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#curl-ingestion-method" class="md-skip">
+        <a href="#chart-types" class="md-skip">
           Skip to content
         </a>
       
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ingesting Custom Metrics
+              Creating Charts
             
           </span>
         </div>
@@ -670,115 +670,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Ingesting Custom Metrics
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../custom_metr/" class="md-nav__link">
         Ingesting Custom Metrics
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#curl-ingestion-method" class="md-nav__link">
-    cURL Ingestion Method
-  </a>
-  
-    <nav class="md-nav" aria-label="cURL Ingestion Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sources" class="md-nav__link">
-    Sources
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#programmatic-ingestion-method" class="md-nav__link">
-    Programmatic Ingestion Method
-  </a>
-  
-    <nav class="md-nav" aria-label="Programmatic Ingestion Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    Python
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-custom-properties-and-tags" class="md-nav__link">
-    Setting Custom Properties and Tags
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#viewing-custom-metrics-usage" class="md-nav__link">
-    Viewing Custom Metrics Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Viewing Custom Metrics Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usage-by-token" class="md-nav__link">
-    Usage by Token
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overall-usage" class="md-nav__link">
-    Overall Usage
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -802,11 +698,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../custom_charts/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Creating Charts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Creating Charts
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chart-types" class="md-nav__link">
+    Chart Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics-functions" class="md-nav__link">
+    Analytics Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollups" class="md-nav__link">
+    Rollups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signalflow" class="md-nav__link">
+    SignalFlow
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -992,156 +953,197 @@
                 
 
 
-  <h1>Ingesting Custom Metrics</h1>
+  <h1>Creating Charts</h1>
 
-<h2 id="curl-ingestion-method">cURL Ingestion Method<a class="headerlink" href="#curl-ingestion-method" title="Permanent link">&para;</a></h2>
-<p>Now that you've got an understanding of the different types of metrics, and the attributes you can apply to them, let's dive into actually creating and sending in some custom metrics!</p>
+<h2 id="chart-types">Chart Types<a class="headerlink" href="#chart-types" title="Permanent link">&para;</a></h2>
+<ol>
+<li>In Metric Finder, search for and click on the custom metric that you generated in the <a href="https://smathur-splunk.github.io/workshops/custom_metr">previous section</a>. This will open up a chart that we can modify and add to a custom dashboard.</li>
+</ol>
+<p><img alt="Custom metric default chart" src="../images/custom_chart.png" /></p>
 <ol>
 <li>
-<p>One way to send custom metrics is simply using cURL. To begin, identify your Splunk Observability Cloud realm and access token (must be an <strong>ingest</strong> token).</p>
+<p>Next, we'll explore each type of visualization with this custom metric. Source: <a href="https://docs.splunk.com/observability/data-visualization/charts/chart-types.html">Chart types in Splunk Observability Cloud</a></p>
+<ul>
+<li>
+<p>Line/area/column chart</p>
+<p>These 3 charts are similar in nature and display MTS values over time. </p>
+<p>Chart options:</p>
+<ul>
+<li>Area and column charts can be stacked.</li>
+<li>Color legend can be displayed for all 3 charts (useful when there are multiple MTS).</li>
+<li>For the Y-axis, the label, min/max, units, and precision can be configured.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Line chart</th>
+<th>Area chart</th>
+<th>Column chart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Line chart" src="../images/custom_line.png" /></td>
+<td><img alt="Area chart" src="../images/custom_area.png" /></td>
+<td><img alt="Column chart" src="../images/custom_column.png" /></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Send in a custom metric using the following command. Specify whether you want it to be a <code>gauge</code>, <code>counter</code>, or <code>cumulative counter</code>. </p>
-<div class="highlight"><pre><span></span><code>curl -X POST <span class="s2">&quot;https://ingest.{REALM}.signalfx.com/v2/datapoint&quot;</span> <span class="se">\</span>
-    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
-    -H <span class="s2">&quot;X-SF-Token: &lt;value&gt;&quot;</span> <span class="se">\</span>
-    -d <span class="s1">&#39;{</span>
-<span class="s1">            &quot;gauge&quot;: [</span>
-<span class="s1">                {</span>
-<span class="s1">                    &quot;metric&quot;: &quot;string&quot;,</span>
-<span class="s1">                    &quot;value&quot;: 0,</span>
-<span class="s1">                    &quot;dimensions&quot;: {</span>
-<span class="s1">                        &quot;&lt;property name&gt;&quot;: &quot;any&quot;</span>
-<span class="s1">                    },</span>
-<span class="s1">                    &quot;timestamp&quot;: 1557225030000</span>
-<span class="s1">                }</span>
-<span class="s1">            ]</span>
-<span class="s1">        }&#39;</span>
-</code></pre></div>
+<p>Histogram</p>
+<p>Histograms will display MTS in a single color. </p>
+<p>Chart options:</p>
 <ul>
-<li><strong>Required:</strong> Set the <code>{REALM}</code> and access token (<code>X-SF-Token</code>). Replace <code>string</code> with the name of the metric, and set the <code>value</code> for the metric. Replace <code>gauge</code> if you'd like to create a different kind of metric, but this is a required field.</li>
-<li><strong>Optional:</strong> You may add key-value pairs under <code>dimensions</code> and/or specify the <code>timestamp</code> (milliseconds since epoch), but you do not <em>need</em> to specify these. For this workshop, it is recommended that you <em>remove</em> the timestamp (it will automatically be generated).</li>
+<li>For the Y-axis, the label, min/max, units, and precision can be configured.</li>
+</ul>
+<p><img alt="Histogram chart" src="../images/custom_histogram.png" /></p>
+</li>
+<li>
+<p>List</p>
+<p>Lists are useful for looking at the latest values of multiple MTS. </p>
+<p>Chart options:</p>
+<ul>
+<li>Color by value to indicate severity. </li>
+<li>Refresh rate, sorting, and precision</li>
+<li>Dimensions listed next to each value can be shown or hidden as needed (e.g. host name, environment, service name, etc.)</li>
+<li>A secondary visualization can be enabled to display a sparkline with historical values, or a radial or linear scale for severity.</li>
+</ul>
+<p><img alt="List view" src="../images/custom_listview.png" /></p>
+</li>
+<li>
+<p>Single value</p>
+<p>The single value display behaves similarly to the list view. </p>
+<p>Chart options:</p>
+<ul>
+<li>Color by scale</li>
+<li>Precision, refresh rate</li>
+<li>Secondary visualizations (sparkline, radial/linear scale)</li>
+</ul>
+<p><img alt="Single value" src="../images/custom_singlevalue.png" /></p>
+</li>
+<li>
+<p>Heatmap</p>
+<p>Heatmaps can be used to quickly identify severity across a number of MTS representing individual instances, services, hosts, functions, etc.</p>
+<p>Chart options:</p>
+<ul>
+<li>Refresh rate</li>
+<li>Sorting, grouping by dimensions</li>
+<li>Color by fixed or automatic scale</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Heatmap (custom metric)</th>
+<th>Heatmap (demo data)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Heatmap" src="../images/custom_heatmap.png" /></td>
+<td><img alt="Demo heatmap" src="../images/custom_demoheatmap.png" /></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Table</p>
+<p>Raw data can also be displayed along with its dimensions in the form of a data table. Precision and refresh rate can be customized.</p>
+<p><img alt="Data table" src="../images/custom_datatable.png" /></p>
+</li>
 </ul>
 </li>
 <li>
-<p>Run the command, and you should see an output <code>"OK"</code>. Congrats, you've just sent in a custom metric! Let's see how we can automate this and potentially leverage it in application code.</p>
+<p>After reviewing the various chart types and opening up your custom metric in a chart, select a chart type of your choice. Explore the "Chart Options" tab and customize the chart to your liking.</p>
 </li>
 </ol>
-<h3 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h3>
+<h2 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h2>
+<p>In the previous section <a href="https://smathur-splunk.github.io/workshops/custom_metr/#setting-custom-properties-and-tags">Ingesting Custom Metrics</a>, you set some custom properties and tags after ingesting custom metric data. Now that we're building a chart, we can use those, in addition to the properties defined at ingest, to filter on our chart.</p>
+<ol>
+<li>
+<p>In the chart builder, next to your custom metric name, click "Add Filter" and search for a custom property name (not value) or tag that you've created. If filtering by custom property, also specify the value of the property that you want to filter on (* supported).</p>
+<p><img alt="Filtering on custom properties and tags" src="../images/custom_filterpropertytag.png" /></p>
+</li>
+<li>
+<p>You may also want to filter on a dimension such as <code>group</code>.</p>
+</li>
+</ol>
+<h2 id="analytics-functions">Analytics Functions<a class="headerlink" href="#analytics-functions" title="Permanent link">&para;</a></h2>
+<p>Now that we've set some filters for our chart, there are various analytics functions we can apply, in order to make sense of multiple MTS that may be coming in. For this section to be relevant, you may want to tweak your filters such that you see multiple MTS.</p>
+<ol>
+<li>
+<p>Under the F(x) column, click "Add Analytics". Explore the various analytics functions that are available.</p>
+<p><img alt="Analytics functions in Splunk Observability" src="../images/custom_analyticfunctions.png" /></p>
+</li>
+<li>
+<p>Select <code>Mean</code> as your analytics function. You'll be asked to pick between <code>Aggregation</code> and <code>Transformation</code>. Many of the analytics functions allow you to choose between these two options, which will affect how metric data is presented:</p>
 <ul>
-<li><a href="https://dev.splunk.com/observability/reference/api/ingest_data/latest#endpoint-send-metrics">Sending custom datapoints</a></li>
-<li><a href="https://dev.splunk.com/observability/docs/apibasics/api_list">Full endpoint summary of the Splunk Observability API</a></li>
-</ul>
-<h2 id="programmatic-ingestion-method">Programmatic Ingestion Method<a class="headerlink" href="#programmatic-ingestion-method" title="Permanent link">&para;</a></h2>
-<p>Similar to using a cURL command to send custom metrics, you can also add POST requests to your code to send relevant data from the code. Conceptually this is the same as using cURL, just with different syntax. Because Python is a common and fairly straightforward use case, it's included here as an example.</p>
-<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
-<ol>
 <li>
-<p>Create a Python script that generates custom data at a specified time interval. We will modify this code to send custom metrics to Splunk Observability. As an example, save and run this Python script, which will generate random numbers between 1 and 100, every 5 seconds.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">random_number</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">random_number</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Next, modify the script to create a POST request, which will send the random numbers generated as values of a metric. <strong>Inside</strong> the <code>while</code> loop from above, add the code below to your Python script. (Make sure this code is indented <strong>one</strong> level, just as it's pasted here.) </p>
-<p><em>Tip: you may want to move <code>time.sleep(5)</code> to the bottom of the <code>while</code> loop, after the <code>print</code> statement.</em></p>
-<div class="highlight"><pre><span></span><code>    <span class="n">metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">metrics_dimensions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DIMENSION_1&#39;</span><span class="p">:</span><span class="s1">&#39;VALUE_1&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">random_number</span><span class="o">%</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
-    <span class="n">metrics_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="s1">&#39;METRIC_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">random_number</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">*</span><span class="mi">1000</span><span class="p">),</span> <span class="s1">&#39;dimensions&#39;</span><span class="p">:</span><span class="n">metrics_dimensions</span><span class="p">})</span>
-
-    <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gauge&#39;</span><span class="p">:</span><span class="n">metrics_list</span><span class="p">}</span>
-
-    <span class="n">metrics_url</span> <span class="o">=</span> <span class="s1">&#39;https://ingest.&lt;REALM&gt;.signalfx.com/v2/datapoint&#39;</span>
-    <span class="n">metrics_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;X-SF-TOKEN&#39;</span><span class="p">:</span><span class="s1">&#39;SPLUNK_ACCESS_TOKEN&#39;</span><span class="p">}</span>
-    <span class="n">send_metrics</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">metrics_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">metrics_headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">))</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">send_metrics</span><span class="p">,</span> <span class="n">send_metrics</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre></div>
-</li>
-<li>
-<p>Set <code>metrics_dimensions</code> equal to a dict of key-value pairs that you'd like to use as dimensions. As an example, you might set it equal to <code>{'rng':'python', 'group':str(random_number%4+1)}</code> (This will create 4 MTS because there will be 4 unique values of the <code>group</code> dimension.)</p>
-</li>
-<li>
-<p>Replace <code>METRIC_NAME</code> with the desired metric name (you may want to prefix this with <code>custom.</code> for easy searching). </p>
-</li>
-<li>
-<p>Replace <code>&lt;REALM&gt;</code> and <code>SPLUNK_ACCESS_TOKEN</code> with your corresponding values.</p>
-</li>
-<li>
-<p>The final Python script should look something like <a href="https://gist.github.com/smathur-splunk/2f9681884bde5ccb2ca6b30120e65956#file-random_gen-py">this</a>.</p>
-<p>Note that in the code there is a dict called <code>metrics_data</code>, which has a key of <code>gauge</code> (this is where you specify the metric type), and a value of a list <code>metrics_list</code>. That list should contain all the gauge metric data points that you would like to send, with each metric data point represented as a dict. That dict contains the metric name, value, timestamp, and dimensions.</p>
+<p>Aggregation</p>
 <ul>
-<li>This way, multiple metrics/data points can be sent in the same request (this applies to cURL too). </li>
-<li>If you're only sending one metric data point, the value for <code>gauge</code> (or any other metric type) <em>still</em> needs to be a list, it'll just have one item.</li>
+<li>This will perform a typical mean/min/max/etc. calculation, where for each point in time, the mean/min/max/etc. across all MTS is calculated and displayed.</li>
 </ul>
-<p>The resulting JSON body would look like this:
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;gauge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;metric&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;custom.random_number&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1660339711614</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;dimensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;rng&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random_gen.py&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
 </li>
 <li>
-<p>Finally, run the Python script, and you should see an output <code>&lt;Response [200]&gt; OK</code>. And that's it! You've got a custom metric automatically being generated by this script.</p>
+<p>Transformation</p>
+<ul>
+<li>When <code>Transformation</code> is selected, a time window will need to be specified. </li>
+<li>
+<p>For this time window, you can choose between a <strong>moving window</strong> or a <strong>calendar window</strong>.</p>
+<ul>
+<li>
+<p>If a <strong>calendar window</strong> is specified, the chart will perform the selected function (mean, min, max, etc.) for each cycle, and use that as datapoints for the chart.</p>
+<ul>
+<li>For example, if <code>Mean:Transformation</code> is selected with a <code>Month</code> cycle length calendar window, the chart will display 1 point for the mean value of each month.</li>
+</ul>
+<p><img alt="Calendar window transformation" src="../images/custom_calendarwindow.png" /></p>
+</li>
+<li>
+<p>If a <strong>moving window</strong> is specified, the chart will show what the moving function (mean, min, max, etc.) value is, looking back the specified amount of time.</p>
+<ul>
+<li>For example, if <code>Mean:Transformation</code> is selected with a moving window of <code>1 Hour</code>, then for every datapoint coming in, the mean over the last 1 hour will be calculated and displayed instead of the raw datapoint itself. </li>
+</ul>
+<p><img alt="Moving window transformation" src="../images/custom_movingwindow.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For more details on aggregation vs transformation, and analytics functions in general, see <a href="https://docs.splunk.com/Observability/data-visualization/charts/chart-analytics-reference.html">Functions reference for Splunk Observability Cloud</a>.</p>
+</li>
+<li>
+<p>Select <code>Mean:Aggregation</code>, and group the resulting data by a dimension or custom property if you wish.</p>
 </li>
 </ol>
-<h2 id="setting-custom-properties-and-tags">Setting Custom Properties and Tags<a class="headerlink" href="#setting-custom-properties-and-tags" title="Permanent link">&para;</a></h2>
-<p>For easier filtering and organizing of metric data, you can set custom properties and tags for your metrics <strong>after</strong> ingest (see <a href="https://smathur-splunk.github.io/workshops/custom_metr_expl/#metric-dimensions-custom-properties-and-tags">Metric Dimensions, Custom Properties, and Tags</a>).</p>
+<h2 id="rollups">Rollups<a class="headerlink" href="#rollups" title="Permanent link">&para;</a></h2>
+<p>Rollups determine how data is presented when datapoints are coming in at a higher resolution than what the chart shows. For example, if 2 datapoints come in every 10 seconds, and the resolution of the chart is set to 10 seconds, the 2 datapoints will need to be combined <em>somehow</em> into 1 datapoint to match the chart's resolution.</p>
+<p>How those datapoints are combined can depend on the type of metric (guage, counter, cumulative counter). Refer to the table <a href="https://smathur-splunk.github.io/workshops/custom_metr_expl/#whats-the-difference-between-a-gauge-and-a-counter">here</a> (see the "Default function" column) for a quick look at what rollups align to what type of metric by default. Official documentation on rollups can be found <a href="https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html">here</a> and <a href="https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies">here</a>.</p>
+<p>This rollup is usually automatically determined, but you may want to manually specify which rollup to use for your chart.</p>
 <ol>
 <li>
-<p>From the left sidebar, navigate to Settings &gt; Metric Metadata (listed under "Data Configuration"). Search for a dimension, e.g. <code>group</code>, pertaining to your custom metric. From the results in the dropdown, select "group - Property".</p>
-<p><img alt="Metric Metadata settings" src="../images/custom_metricmetadata.png" /></p>
+<p>Under Plot Editor, on the far right side of your plot, click the gear icon to configure the plot.</p>
 </li>
 <li>
-<p>From the "group" metadata page, select a value (e.g. 1, 2, 3, or 4) under Values. On the resulting page, you can set custom properties and tags, which can be used later on for easier filtering. Under Properties, click "Add new property", specify a property name (e.g. <code>group_category</code>), and specify a property value (e.g. <code>A</code> or <code>B</code>).</p>
+<p>Under Advanced Options, you'll see that the Rollup dropdown was set to <code>Auto (Average)</code>, assuming you sent in a gauge metric (since that's the default function for gauges). Select the Rollup dropdown and set it to <code>Sum</code>. </p>
+<p><img alt="Rollup settings" src="../images/custom_rollup.png" /></p>
 </li>
 <li>
-<p>Under Tags, click "Add new tag", and enter a tag name such as <code>odd_number</code> or <code>even_number</code>.</p>
+<p>You should see that the chart values are higher now, since data is coming in at 5s, the chart has a resolution of 10s, and thus it's combining 2 datapoints into 1 by summing them.</p>
 </li>
 <li>
-<p>Repeat steps 2 and 3 for all the values of "group" (groups 1, 2, 3, and 4). You can now use these custom properties and tags to filter on data when creating charts and dashboards.</p>
-<p><img alt="Property metadata settings" src="../images/custom_propertymetadata.png" /></p>
+<p>Note that under the plot configuration settings, you can also specify:</p>
+<ul>
+<li>The extrapolation policy that should be used to fill in any gaps (null, zero, or latest value)</li>
+<li>Max extrpolations: how many times the above extrapolation should be done, before it no longer applies</li>
+<li>Under Visualization Options, units can be configured so that time or bits/bytes can autoscale when displayed (e.g. display <code>10s</code> instead of <code>10000ms</code>, but at the same time display <code>900ms</code> instead of <code>0.9s</code>). Custom units can also be specified.</li>
+</ul>
 </li>
 </ol>
-<h2 id="viewing-custom-metrics-usage">Viewing Custom Metrics Usage<a class="headerlink" href="#viewing-custom-metrics-usage" title="Permanent link">&para;</a></h2>
-<p>Before we take a look at our custom metrics in Splunk Observability, let's see how we can manage custom metrics usage, against our org license. There are a couple ways to do this. <em>Required: Admin-level access to your org in Splunk Observability.</em></p>
-<h3 id="usage-by-token">Usage by Token<a class="headerlink" href="#usage-by-token" title="Permanent link">&para;</a></h3>
+<h2 id="signalflow">SignalFlow<a class="headerlink" href="#signalflow" title="Permanent link">&para;</a></h2>
+<p>If you click "View SignalFlow" on the top-right corner of the Plot Editor, you'll be able to see the SignalFlow query beneath the plot that you've created just now in the UI. There are many functions that you can leverage with SignalFlow, see the full list <a href="https://dev.splunk.com/observability/docs/signalflow/function_method_list">here</a>.</p>
 <ol>
-<li>
-<p>From the left sidebar, go into Settings &gt; Access Tokens (4th from the top). </p>
-<p><img alt="Access tokens in Splunk Observability" src="../images/custom_access.png" /></p>
-</li>
-<li>
-<p>Expand a token that you want to see the usage for, and you'll see a table and a chart (you may have to select "Custom Metrics" in the dropdown above it) showing the number of custom metrics that you have ingested.</p>
-<p><img alt="Usage by token" src="../images/custom_token.png" /></p>
-</li>
-</ol>
-<h3 id="overall-usage">Overall Usage<a class="headerlink" href="#overall-usage" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>From the left sidebar, go into Settings &gt; Subscription Usage. The Infrastructure Monitoring tab should be selected at the top. On the Usage Trends chart, select "Custom Metrics" in the Usage Metric dropdown.</p>
-<p><img alt="Subscription Usage" src="../images/custom_usage.png" /></p>
-</li>
-<li>
-<p>This is where you can also see the list of custom metrics that you have ingested. On the same page, click Usage Reports &gt; select the Usage Breakdown tab at the top &gt; Download Custom Metric Report.</p>
-<p><img alt="Download Custom Metric Report" src="../images/custom_report.png" /></p>
-</li>
+<li>Before moving to the next section, click "Save" on the top-right, and add your chart to a dashboard.</li>
 </ol>
 
   <hr>
@@ -1174,7 +1176,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../custom_metr_expl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Metrics Demystified" rel="prev">
+        <a href="../custom_find/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Finding Custom Metrics" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1183,20 +1185,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Metrics Demystified
+              Finding Custom Metrics
             </div>
           </div>
         </a>
       
       
         
-        <a href="../custom_find/" class="md-footer__link md-footer__link--next" aria-label="Next: Finding Custom Metrics" rel="next">
+        <a href="../custom_dash/" class="md-footer__link md-footer__link--next" aria-label="Next: Building Custom Dashboards" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Finding Custom Metrics
+              Building Custom Dashboards
             </div>
           </div>
           <div class="md-footer__button md-icon">
