@@ -1194,6 +1194,7 @@
 <h3 id="rollups">Rollups<a class="headerlink" href="#rollups" title="Permanent link">&para;</a></h3>
 <p>Rollups determine how data is presented when datapoints are coming in at a higher resolution than what the chart shows. For example, if 2 datapoints come in every 10 seconds, and the resolution of the chart is set to 10 seconds, the 2 datapoints will need to be combined <em>somehow</em> into 1 datapoint to match the chart's resolution.</p>
 <p>How those datapoints are combined can depend on the type of metric (guage, counter, cumulative counter). Refer to the table <a href="https://smathur-splunk.github.io/workshops/custom_metr_expl/#whats-the-difference-between-a-gauge-and-a-counter">here</a> (see the "Default function" column) for a quick look at what rollups align to what type of metric by default.</p>
+<p>Official documentation on rollups can be found <a href="https://docs.splunk.com/observability/data-visualization/charts/data-resolution-and-rollups.html">here</a> and <a href="https://docs.splunk.com/observability/infrastructure/retention.html#rollups-resolution-and-data-retention-policies">here</a>.</p>
 <p>This rollup is usually automatically determined, but you may want to manually specify which rollup to use for your chart.</p>
 <ol>
 <li>
