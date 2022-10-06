@@ -96,4 +96,5 @@ You should see a line that says `New Record address='<SNMP_AGENT_IP>'`.
 	| mpreview index="netmetrics" | search sourcetype="sc4snmp:metric"
 	```
 
-![Custom SNMP Dashboard in Splunk Observability](images/snmp_dash.png)
+10. Here's an example of a dashboard that you can build with SNMP data. Download the JSON for this sample dashboard [here](https://raw.githubusercontent.com/smathur-splunk/workshops/main/dashboard_SNMP%20Agents.json).
+  ![Custom SNMP Dashboard in Splunk Observability](images/snmp_dash.png)
