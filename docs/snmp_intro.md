@@ -6,7 +6,7 @@
 - SNMP agent: UDP `161` (polling), `162` (traps)
 - SC4SNMP host: UDP `161` (polling)
 
-## SC4SNMP Host Requirements
+### SC4SNMP Host Requirements
 - 4 cores
 - 8GB memory
 - 50GB storage
