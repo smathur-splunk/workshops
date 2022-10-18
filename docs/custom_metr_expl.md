@@ -24,7 +24,7 @@
 - **Cumulative counter** = total number of occurrences or items since the measurement began
 	- Examples: number of successful jobs, number of logged-in users, and number of warnings
 	- *Cumulative counter* metrics differ from *counter* metrics in the following ways:
-		- Cumulative counters only reset to 0 when the monitored machine or application restarts or when the counter value reaches the maximum value representable (2 32 or 2 64 ).
+		- Cumulative counters only reset to 0 when the monitored machine or application restarts or when the counter value reaches the maximum value representable (2<sup>32</sup> or 2<sup>64</sup>).
 		- In most cases, you’re interested in how much the metric value changed between measurements.
 		- Observability Cloud applies the SignalFlow `delta()` function to data points for cumulative counter metrics. When you specify a 10 second resolution for a chart, and Observability Cloud is receiving data for the metric every 1 second, each point on the line represents the change between the first data point received and the 10th data point received.
 
